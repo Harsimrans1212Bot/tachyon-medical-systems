@@ -17,10 +17,10 @@ const stats = [
 ];
 
 const services = [
-  { title: "Refurbishment", desc: "Complete restoration of medical equipment to original specifications with rigorous quality testing", icon: "🔧" },
-  { title: "Buy & Sell", desc: "Trusted marketplace for pre-owned and new medical imaging equipment worldwide", icon: "🤝" },
-  { title: "Import & Export", desc: "Global logistics, customs clearance, and compliance for medical equipment trade", icon: "🌍" },
-  { title: "Installation", desc: "Professional installation, deinstallation, and relocation services by certified engineers", icon: "⚙️" },
+  { title: "Refurbishment", desc: "Complete restoration of medical equipment to original specifications with rigorous quality testing", icon: "🔧", href: "/services/refurbishment" },
+  { title: "Buy & Sell", desc: "Trusted marketplace for pre-owned and new medical imaging equipment worldwide", icon: "🤝", href: "/services/buy-sell" },
+  { title: "Import & Export", desc: "Global logistics, customs clearance, and compliance for medical equipment trade", icon: "🌍", href: "/services/import-export" },
+  { title: "Installation", desc: "Professional installation, deinstallation, and relocation services by certified engineers", icon: "⚙️", href: "/services/installation" },
 ];
 
 function useScrollFade() {
@@ -142,15 +142,16 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, i) => (
-              <div
+              <Link
                 key={service.title}
-                className="p-8 rounded-2xl bg-gray-50 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 hover:border-deep-blue"
+                href={service.href}
+                className="block p-8 rounded-2xl bg-gray-50 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 hover:border-deep-blue cursor-pointer"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-lg font-bold text-deep-blue group-hover:text-white transition-colors">{service.title}</h3>
                 <p className="text-sm text-gray-500 group-hover:text-gray-300 mt-3 transition-colors">{service.desc}</p>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-12">
