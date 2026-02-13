@@ -15,17 +15,17 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#f0ede8]/95 backdrop-blur-md shadow-sm border-b border-[#e0ddd8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.jpg"
               alt="Tachyon Medical Systems Pvt. Ltd."
-              width={320}
-              height={60}
-              className="h-12 sm:h-14 w-auto max-w-[260px] sm:max-w-[320px]"
+              width={420}
+              height={80}
+              className="h-16 sm:h-[72px] w-auto max-w-[320px] sm:max-w-[420px]"
               priority
             />
           </Link>
