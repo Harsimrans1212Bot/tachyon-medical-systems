@@ -127,8 +127,8 @@ export default function Home() {
           style={{ opacity: hero.opacity, transform: `translateY(${hero.translateY}px)` }}
         >
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-sm text-light-cyan mb-8 animate-fade-in">
-              <span className="w-2 h-2 rounded-full bg-light-cyan animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-base font-semibold text-light-cyan mb-8 animate-fade-in">
+              <span className="text-orange text-lg">★</span>
               Trusted Since 1992
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 animate-fade-in-up">
@@ -148,12 +148,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 rounded-full border-2 border-white/30 flex justify-center pt-2">
-            <div className="w-1 h-2 bg-white/50 rounded-full" />
-          </div>
-        </div>
+        {/* spacer */}
       </section>
 
       {/* Stats */}

@@ -25,7 +25,7 @@ export default function Header() {
               alt="Tachyon Medical Systems Pvt. Ltd."
               width={420}
               height={80}
-              className="h-16 sm:h-[72px] w-auto max-w-[320px] sm:max-w-[420px]"
+              className="h-20 sm:h-[88px] w-auto max-w-[360px] sm:max-w-[460px] py-1"
               priority
             />
           </Link>

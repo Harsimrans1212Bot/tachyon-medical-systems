@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+
+const categoryImages: Record<string, string> = {
+  "CT Scanners": "/ct-scanner.jpg",
+  "MRI Systems": "/mri.jpg",
+  "PET-CT": "/ct-scanner.jpg",
+  "Cath Labs": "/cath-lab.jpg",
+  "Mammography": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop",
+};
 
 export const metadata: Metadata = {
   title: "Products | Tachyon Medical Systems",
@@ -114,10 +123,15 @@ export default function Products() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-8">
                   {cat.products.map((product) => (
                     <div key={product.name} className="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100 group">
-                      <div className="h-40 equipment-placeholder flex items-center justify-center">
-                        <div className="text-deep-blue/20 group-hover:text-deep-blue/30 transition-colors">
-                          {cat.icon}
-                        </div>
+                      <div className="h-40 relative overflow-hidden">
+                        <Image
+                          src={categoryImages[cat.name] || "/ct-scanner.jpg"}
+                          alt={product.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                       </div>
                       <div className="p-5">
                         <h3 className="font-bold text-deep-blue">{product.name}</h3>
