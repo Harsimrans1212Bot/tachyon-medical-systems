@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function Header() {
@@ -18,13 +19,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className="text-2xl font-black tracking-wider" style={{ color: "#003366" }}>
-              T<span style={{ color: "#E8651A" }}>A</span>CHYON
-            </span>
-            <span className="text-[9px] font-semibold tracking-[0.2em] text-gray-500 -mt-1">
-              MEDICAL SYSTEMS PVT. LTD.
-            </span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Tachyon Medical Systems Pvt. Ltd."
+              width={200}
+              height={71}
+              className="h-14 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
