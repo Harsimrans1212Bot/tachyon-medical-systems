@@ -21,11 +21,11 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo.png"
+              src="/logo.jpg"
               alt="Tachyon Medical Systems Pvt. Ltd."
-              width={200}
-              height={71}
-              className="h-14 w-auto"
+              width={320}
+              height={60}
+              className="h-12 sm:h-14 w-auto max-w-[260px] sm:max-w-[320px]"
               priority
             />
           </Link>
