@@ -11,8 +11,8 @@ const featuredProducts = [
 
 const stats = [
   { value: "30+", label: "Years of Experience" },
-  { value: "500+", label: "Systems Installed" },
-  { value: "20+", label: "Countries Served" },
+  { value: "1000+", label: "Systems Installed" },
+  { value: "10+", label: "Countries Served" },
   { value: "100%", label: "Client Satisfaction" },
 ];
 
@@ -139,8 +139,8 @@ export default function Home() {
               Top-notch customer service, extensive medical expertise, and unwavering dedication to your Medical Equipment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
-              <Link href="/products" className="px-8 py-4 bg-light-cyan text-deep-blue font-bold rounded-full hover:bg-white transition-all hover:shadow-xl text-center">
-                Explore Equipment
+              <Link href="/services" className="px-8 py-4 bg-light-cyan text-deep-blue font-bold rounded-full hover:bg-white transition-all hover:shadow-xl text-center">
+                Explore Services
               </Link>
               <Link href="/contact" className="px-8 py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-center">
                 Contact Us
@@ -173,8 +173,8 @@ export default function Home() {
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">What We Do</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Comprehensive Services</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">End-to-end medical equipment solutions covering every stage of the equipment lifecycle.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">End to End Medical Equipment Solutions</h2>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Comprehensive services covering every stage of the equipment lifecycle.</p>
           </div>
           <div ref={servicesCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, i) => (

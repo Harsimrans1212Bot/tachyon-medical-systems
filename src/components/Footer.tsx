@@ -62,7 +62,10 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-400">
               <p>1 Nyaypuri, Minar Road<br />Near Karan Stadium<br />Karnal-132001, Haryana, India</p>
               <p>
-                <a href="tel:+911842270291" className="hover:text-white transition-colors">+91 184 2270291</a>
+                <a href="tel:+911842270291" className="hover:text-white transition-colors">+91 184 2270291</a><br />
+                <a href="tel:+919215291291" className="hover:text-white transition-colors">+91 9215291291</a><br />
+                <a href="tel:+919992291291" className="hover:text-white transition-colors">+91 9992291291</a><br />
+                <a href="tel:+19178565211" className="hover:text-white transition-colors">+1 (917) 856-5211</a>
               </p>
               <p>
                 <a href="mailto:admin@tachyonmedical.com" className="hover:text-white transition-colors">admin@tachyonmedical.com</a>

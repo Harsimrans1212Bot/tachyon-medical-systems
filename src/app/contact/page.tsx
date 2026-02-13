@@ -55,7 +55,8 @@ export default function Contact() {
                       <p className="font-semibold text-deep-blue text-sm">Phone</p>
                       <p className="text-gray-500 text-sm">
                         Office: <a href="tel:+911842270291" className="hover:text-light-cyan transition-colors">+91 184 2270291</a><br />
-                        Direct: <a href="tel:+919215291291" className="hover:text-light-cyan transition-colors">+91-9215291291</a>
+                        Cell: <a href="tel:+919215291291" className="hover:text-light-cyan transition-colors">+91 9215291291</a><br />
+                        Cell: <a href="tel:+919992291291" className="hover:text-light-cyan transition-colors">+91 9992291291</a>
                       </p>
                     </div>
                   </div>
@@ -84,27 +85,39 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* US CONTACT INFO - TO BE ADDED */}
-              {/* 
-                ==========================================
-                US CONTACT INFO - TO BE ADDED
-                ==========================================
-                Uncomment and fill in when US office details are available:
-                
-                <div className="bg-white rounded-2xl p-8 border border-gray-100">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-full bg-deep-blue/10 flex items-center justify-center">
-                      <span className="text-lg">🇺🇸</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-deep-blue">United States Office</h3>
+              {/* US Office */}
+              <div className="bg-white rounded-2xl p-8 border border-gray-100">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-deep-blue/10 flex items-center justify-center">
+                    <span className="text-lg">🇺🇸</span>
                   </div>
-                  <div className="space-y-4">
-                    <p className="text-gray-500">Address: TBD</p>
-                    <p className="text-gray-500">Phone: TBD</p>
-                    <p className="text-gray-500">Email: TBD</p>
+                  <h3 className="text-lg font-bold text-deep-blue">United States</h3>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <svg className="w-5 h-5 text-light-cyan mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-deep-blue text-sm">Phone</p>
+                      <p className="text-gray-500 text-sm">
+                        <a href="tel:+19178565211" className="hover:text-light-cyan transition-colors">+1 (917) 856-5211</a>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <svg className="w-5 h-5 text-light-cyan mt-1 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-deep-blue text-sm">Email</p>
+                      <p className="text-gray-500 text-sm">
+                        <a href="mailto:tachyonmedical1166@gmail.com" className="hover:text-light-cyan transition-colors">tachyonmedical1166@gmail.com</a>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              */}
+              </div>
             </div>
 
             {/* Contact Form */}
@@ -127,20 +140,21 @@ export default function Contact() {
                     <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="john@hospital.com" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Phone</label>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Phone Number</label>
                     <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="+1 (555) 000-0000" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Equipment Interest</label>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Purpose of Contact</label>
                     <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
-                      <option>Select equipment type</option>
-                      <option>CT Scanner</option>
-                      <option>MRI System</option>
-                      <option>PET-CT</option>
-                      <option>Cath Lab</option>
-                      <option>Mammography</option>
-                      <option>Gamma Camera</option>
-                      <option>Other</option>
+                      <option>Select a reason</option>
+                      <option>Buying Equipment</option>
+                      <option>Selling Equipment</option>
+                      <option>Equipment Refurbishment</option>
+                      <option>Installation / Deinstallation</option>
+                      <option>Import / Export Inquiry</option>
+                      <option>Service & Maintenance</option>
+                      <option>Partnership Opportunity</option>
+                      <option>General Inquiry</option>
                     </select>
                   </div>
                   <div>
