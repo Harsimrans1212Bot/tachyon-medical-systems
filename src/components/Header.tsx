@@ -53,8 +53,8 @@ export default function Header() {
                 priority
               />
               <div className="flex flex-col leading-tight">
-                <span className="text-base font-black text-deep-blue tracking-tight">TACHYON</span>
-                <span className="text-[8px] font-semibold text-gray-500 tracking-wider uppercase">Medical Systems</span>
+                <span className="text-lg font-black text-deep-blue tracking-tight">T<span className="text-orange">A</span>CHYON</span>
+                <span className="text-[9px] font-semibold text-gray-500 tracking-wider uppercase">Medical Systems</span>
               </div>
             </div>
             {/* Desktop: full logo banner */}
