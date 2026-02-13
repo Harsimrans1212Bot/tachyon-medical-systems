@@ -3,10 +3,10 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const featuredProducts = [
-  { name: "GE Revolution EVO", category: "CT Scanner", desc: "Advanced computed tomography with superior image quality" },
-  { name: "GE Signa HDxt 1.5T", category: "MRI", desc: "High-definition MRI system for precise diagnostics" },
-  { name: "Philips FD 10/10", category: "Cath Lab", desc: "State-of-the-art cardiac catheterization laboratory" },
-  { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection" },
+  { name: "GE Revolution EVO", category: "CT Scanner", desc: "Advanced computed tomography with superior image quality", image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&h=300&fit=crop", href: "/products" },
+  { name: "GE Signa HDxt 1.5T", category: "MRI", desc: "High-definition MRI system for precise diagnostics", image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=300&fit=crop", href: "/products" },
+  { name: "Philips FD 10/10", category: "Cath Lab", desc: "State-of-the-art cardiac catheterization laboratory", image: "https://images.unsplash.com/photo-1551190822-a9ce113ac100?w=400&h=300&fit=crop", href: "/products" },
+  { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop", href: "/products" },
 ];
 
 const stats = [
@@ -60,11 +60,40 @@ function useReveal() {
   return { ref, visible };
 }
 
+function useRevealCards() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+    const cards = container.querySelectorAll('.reveal-card');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const card = entry.target as HTMLElement;
+            const delay = parseInt(card.dataset.delay || '0', 10);
+            setTimeout(() => card.classList.add('visible'), delay);
+            observer.unobserve(card);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+
+  return ref;
+}
+
 export default function Home() {
   const hero = useScrollFade();
   const servicesReveal = useReveal();
   const productsReveal = useReveal();
   const ctaReveal = useReveal();
+  const productsCardsRef = useRevealCards();
+  const servicesCardsRef = useRevealCards();
 
   return (
     <>
@@ -152,13 +181,13 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Comprehensive Services</h2>
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">End-to-end medical equipment solutions covering every stage of the equipment lifecycle.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div ref={servicesCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, i) => (
               <Link
                 key={service.title}
                 href={service.href}
-                className="block p-8 rounded-2xl bg-gray-50 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 hover:border-deep-blue cursor-pointer"
-                style={{ transitionDelay: `${i * 100}ms` }}
+                className="reveal-card block p-8 rounded-2xl bg-gray-50 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 hover:border-deep-blue cursor-pointer"
+                data-delay={i * 100}
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-lg font-bold text-deep-blue group-hover:text-white transition-colors">{service.title}</h3>
@@ -186,27 +215,24 @@ export default function Home() {
             <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Featured Products</h2>
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">World-class medical imaging and diagnostic equipment, meticulously refurbished to meet the highest standards.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div ref={productsCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredProducts.map((product, i) => (
-              <div
+              <Link
                 key={product.name}
-                className="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100"
-                style={{ transitionDelay: `${i * 100}ms` }}
+                href={product.href}
+                className="reveal-card block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100"
+                data-delay={i * 100}
               >
-                <div className="h-48 equipment-placeholder flex items-center justify-center">
-                  <div className="text-center">
-                    <svg className="w-16 h-16 mx-auto text-deep-blue/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
-                    </svg>
-                    <span className="text-xs font-semibold text-deep-blue/30 mt-2 block">{product.category}</span>
-                  </div>
+                <div className="h-48 relative overflow-hidden">
+                  <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
                 <div className="p-6">
                   <span className="text-xs font-bold text-light-cyan uppercase tracking-wider">{product.category}</span>
                   <h3 className="text-lg font-bold text-deep-blue mt-1">{product.name}</h3>
                   <p className="text-sm text-gray-500 mt-2">{product.desc}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-12">

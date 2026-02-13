@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Products | Tachyon Medical Systems",
-  description: "Browse our extensive range of medical imaging equipment including CT Scanners, MRI, PET-CT, Cath Labs, Mammography, and Gamma Cameras.",
+  description: "Browse our extensive range of medical imaging equipment including CT Scanners, MRI, PET-CT, Cath Labs, and Mammography.",
 };
 
 const categories = [
@@ -78,18 +78,6 @@ const categories = [
     ),
     products: [
       { name: "Hologic 3 Dimensions", specs: "3D Mammography System" },
-    ],
-  },
-  {
-    name: "Nuclear Medicine",
-    description: "Gamma camera systems for nuclear medicine imaging",
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-    products: [
-      { name: "Gamma Camera", specs: "SPECT Imaging System" },
     ],
   },
 ];
