@@ -13,6 +13,7 @@ const services = [
     features: ["Full cosmetic restoration", "Software upgrades & calibration", "Component replacement", "Quality assurance testing", "Warranty coverage"],
     icon: "🔧",
     color: "bg-light-cyan/10 text-light-cyan",
+    href: "/services/refurbishment",
   },
   {
     title: "Buy & Sell Equipment",
@@ -20,6 +21,7 @@ const services = [
     features: ["Fair market valuations", "Global buyer/seller network", "Equipment appraisals", "Trade-in programs", "Flexible financing options"],
     icon: "🤝",
     color: "bg-orange/10 text-orange",
+    href: "/services/buy-sell",
   },
   {
     title: "Import & Export",
@@ -27,6 +29,7 @@ const services = [
     features: ["Customs documentation", "International shipping", "Regulatory compliance", "Freight management", "Insurance coordination"],
     icon: "🌍",
     color: "bg-deep-blue/10 text-deep-blue",
+    href: "/services/import-export",
   },
   {
     title: "Installation & Deinstallation",
@@ -34,6 +37,7 @@ const services = [
     features: ["Site planning & preparation", "Professional installation", "Safe deinstallation", "System calibration", "Staff training"],
     icon: "⚙️",
     color: "bg-light-cyan/10 text-light-cyan",
+    href: "/services/installation",
   },
   {
     title: "Maintenance & Support",
@@ -41,6 +45,7 @@ const services = [
     features: ["Preventive maintenance", "Emergency repairs", "Spare parts supply", "Remote diagnostics", "Service contracts"],
     icon: "🛡️",
     color: "bg-orange/10 text-orange",
+    href: "",
   },
 ];
 
@@ -82,6 +87,12 @@ export default function Services() {
                       </li>
                     ))}
                   </ul>
+                  {service.href && (
+                    <Link href={service.href} className="inline-flex items-center gap-2 mt-6 text-sm font-bold text-light-cyan hover:text-orange transition-colors">
+                      Learn More
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </Link>
+                  )}
                 </div>
                 <div className="flex-1 w-full">
                   <div className="h-72 rounded-2xl equipment-placeholder flex items-center justify-center">
