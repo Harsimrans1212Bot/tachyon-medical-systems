@@ -164,9 +164,9 @@ export default function Home() {
 
   const stats = [
     { value: "30+", label: "Years of Experience" },
-    { value: "1000+", label: "Systems Installed" },
-    { value: "10+", label: "Countries Served" },
-    { value: "100%", label: "Client Satisfaction" },
+    { value: "1150+", label: "Machines Installed" },
+    { value: "8+", label: "Countries Served" },
+    { value: "99%", label: "Client Satisfaction" },
   ];
 
   const services = [
