@@ -1,108 +1,189 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const featuredProducts = [
-  { name: "GE Revolution EVO", category: "CT Scanner", desc: "Advanced computed tomography with superior image quality", image: "/ct-scanner.jpg", href: "/products" },
-  { name: "GE Signa HDxt 1.5T", category: "MRI", desc: "High-definition MRI system for precise diagnostics", image: "/mri.jpg", href: "/products" },
-  { name: "Philips FD 10/10", category: "Cath Lab", desc: "State-of-the-art cardiac catheterization laboratory", image: "/cath-lab.jpg", href: "/products" },
-  { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop", href: "/products" },
-];
-
-const stats = [
-  { value: "30+", label: "Years of Experience" },
-  { value: "1000+", label: "Systems Installed" },
-  { value: "10+", label: "Countries Served" },
-  { value: "100%", label: "Client Satisfaction" },
-];
-
-const services = [
-  { title: "Refurbishment", desc: "Complete restoration of medical equipment to original specifications with rigorous quality testing", icon: "🔧", href: "/services/refurbishment" },
-  { title: "Buy & Sell", desc: "Trusted marketplace for pre-owned and new medical imaging equipment worldwide", icon: "🤝", href: "/services/buy-sell" },
-  { title: "Import & Export", desc: "Global logistics, customs clearance, and compliance for medical equipment trade", icon: "🌍", href: "/services/import-export" },
-  { title: "Installation", desc: "Professional installation, deinstallation, and relocation services by certified engineers", icon: "⚙️", href: "/services/installation" },
-];
-
-function useScrollFade() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [opacity, setOpacity] = useState(1);
-  const [translateY, setTranslateY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!ref.current) return;
-      const rect = ref.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const scrollProgress = Math.max(0, Math.min(1, -rect.top / (windowHeight * 0.5)));
-      setOpacity(1 - scrollProgress);
-      setTranslateY(scrollProgress * 80);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  return { ref, opacity, translateY };
-}
-
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return { ref, visible };
-}
-
-function useRevealCards() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = ref.current;
-    if (!container) return;
-    const cards = container.querySelectorAll('.reveal-card');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const card = entry.target as HTMLElement;
-            const delay = parseInt(card.dataset.delay || '0', 10);
-            setTimeout(() => card.classList.add('visible'), delay);
-            observer.unobserve(card);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
-
-  return ref;
-}
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
-  const hero = useScrollFade();
-  const servicesReveal = useReveal();
-  const productsReveal = useReveal();
-  const ctaReveal = useReveal();
-  const productsCardsRef = useRevealCards();
-  const servicesCardsRef = useRevealCards();
+  const heroRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const servicesSectionRef = useRef<HTMLDivElement>(null);
+  const servicesCardsRef = useRef<HTMLDivElement>(null);
+  const productsSectionRef = useRef<HTMLDivElement>(null);
+  const productsCardsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero word-by-word split and fade out on scroll
+      const heroWords = heroRef.current?.querySelectorAll(".hero-word");
+      if (heroWords) {
+        gsap.to(heroWords, {
+          opacity: 0,
+          y: -60,
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 0.8,
+          },
+        });
+      }
+
+      // Hero sub-elements fade
+      const heroSub = heroRef.current?.querySelectorAll(".hero-fade");
+      if (heroSub) {
+        gsap.to(heroSub, {
+          opacity: 0,
+          y: -40,
+          stagger: 0.03,
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: "top top",
+            end: "60% top",
+            scrub: 0.6,
+          },
+        });
+      }
+
+      // Parallax orbs
+      if (orb1Ref.current) {
+        gsap.to(orb1Ref.current, {
+          y: -200,
+          scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
+        });
+      }
+      if (orb2Ref.current) {
+        gsap.to(orb2Ref.current, {
+          y: -80,
+          scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
+        });
+      }
+
+      // Stats counter animation
+      const statEls = statsRef.current?.querySelectorAll(".stat-value");
+      statEls?.forEach((el, i) => {
+        const text = el.textContent || "";
+        const isPercent = text.includes("%");
+        const num = parseInt(text.replace(/[^0-9]/g, ""), 10);
+        const suffix = text.replace(/[0-9]/g, "");
+        const obj = { val: 0 };
+
+        gsap.to(obj, {
+          val: num,
+          duration: 2,
+          delay: i * 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+            toggleActions: "play none none none",
+          },
+          onUpdate() {
+            (el as HTMLElement).textContent = Math.round(obj.val) + suffix;
+          },
+        });
+      });
+
+      // Services section reveal
+      ScrollTrigger.create({
+        trigger: servicesSectionRef.current,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.to(servicesSectionRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+        },
+      });
+
+      // Service cards staggered slide-in
+      const serviceCards = servicesCardsRef.current?.querySelectorAll(".reveal-card");
+      if (serviceCards?.length) {
+        gsap.set(serviceCards, { opacity: 0, y: 60 });
+        ScrollTrigger.create({
+          trigger: servicesCardsRef.current,
+          start: "top 80%",
+          onEnter: () => {
+            gsap.to(serviceCards, { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: "power2.out" });
+          },
+        });
+      }
+
+      // Products section reveal
+      ScrollTrigger.create({
+        trigger: productsSectionRef.current,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.to(productsSectionRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+        },
+      });
+
+      // Product cards staggered slide-in
+      const productCards = productsCardsRef.current?.querySelectorAll(".reveal-card");
+      if (productCards?.length) {
+        gsap.set(productCards, { opacity: 0, y: 60 });
+        ScrollTrigger.create({
+          trigger: productsCardsRef.current,
+          start: "top 80%",
+          onEnter: () => {
+            gsap.to(productCards, { opacity: 1, y: 0, duration: 0.6, stagger: 0.12, ease: "power2.out" });
+          },
+        });
+      }
+
+      // CTA reveal
+      ScrollTrigger.create({
+        trigger: ctaRef.current,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.to(ctaRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" });
+        },
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Helper to split text into word spans
+  const splitWords = (text: string, className = "hero-word") =>
+    text.split(" ").map((word, i) => (
+      <span key={i} className={`${className} inline-block mr-[0.3em]`}>
+        {word}
+      </span>
+    ));
+
+  const featuredProducts = [
+    { name: "GE Revolution EVO", category: "CT Scanner", desc: "Advanced computed tomography with superior image quality", image: "/ct-scanner.jpg", href: "/products" },
+    { name: "GE Signa HDxt 1.5T", category: "MRI", desc: "High-definition MRI system for precise diagnostics", image: "/mri.jpg", href: "/products" },
+    { name: "Philips FD 10/10", category: "Cath Lab", desc: "State-of-the-art cardiac catheterization laboratory", image: "/cath-lab.jpg", href: "/products" },
+    { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop", href: "/products" },
+  ];
+
+  const stats = [
+    { value: "30+", label: "Years of Experience" },
+    { value: "1000+", label: "Systems Installed" },
+    { value: "10+", label: "Countries Served" },
+    { value: "100%", label: "Client Satisfaction" },
+  ];
+
+  const services = [
+    { title: "Refurbishment", desc: "Complete restoration of medical equipment to original specifications with rigorous quality testing", icon: "🔧", href: "/services/refurbishment" },
+    { title: "Buy & Sell", desc: "Trusted marketplace for pre-owned and new medical imaging equipment worldwide", icon: "🤝", href: "/services/buy-sell" },
+    { title: "Import & Export", desc: "Global logistics, customs clearance, and compliance for medical equipment trade", icon: "🌍", href: "/services/import-export" },
+    { title: "Installation", desc: "Professional installation, deinstallation, and relocation services by certified engineers", icon: "⚙️", href: "/services/installation" },
+  ];
 
   return (
     <>
       {/* Hero */}
       <section className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
         <div className="absolute inset-0">
-          {/* Large glowing orbs */}
-          <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-light-cyan/5 blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-72 h-72 rounded-full bg-orange/5 blur-3xl" />
+          {/* Large glowing orbs with parallax */}
+          <div ref={orb1Ref} className="absolute top-20 right-20 w-96 h-96 rounded-full bg-light-cyan/5 blur-3xl" />
+          <div ref={orb2Ref} className="absolute bottom-20 left-20 w-72 h-72 rounded-full bg-orange/5 blur-3xl" />
           {/* Concentric rings */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5 animate-[spin_60s_linear_infinite]" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5 animate-[spin_45s_linear_infinite_reverse]" />
@@ -122,23 +203,24 @@ export default function Home() {
           <div className="absolute top-[50%] right-[20%] w-1 h-1 rounded-full bg-light-cyan/20 animate-ping" />
         </div>
         <div
-          ref={hero.ref}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative z-10 transition-none"
-          style={{ opacity: hero.opacity, transform: `translateY(${hero.translateY}px)` }}
+          ref={heroRef}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative z-10"
         >
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-base font-semibold text-light-cyan mb-8 animate-fade-in">
+            <div className="hero-fade inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-base font-semibold text-light-cyan mb-8 animate-fade-in">
               <span className="text-orange text-lg">★</span>
               Trusted Since 1992
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 animate-fade-in-up">
-              Premium Medical<br />
-              <span className="text-light-cyan">Equipment</span> Solutions
+              {splitWords("Premium Medical")}
+              <br />
+              <span className="hero-word inline-block mr-[0.3em] text-light-cyan">Equipment</span>
+              <span className="hero-word inline-block">Solutions</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl animate-fade-in-up animation-delay-200">
+            <p className="hero-fade text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl animate-fade-in-up animation-delay-200">
               Top-notch customer service, extensive medical expertise, and unwavering dedication to your Medical Equipment.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
+            <div className="hero-fade flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
               <Link href="/services" className="px-8 py-4 bg-light-cyan text-deep-blue font-bold rounded-full hover:bg-white transition-all hover:shadow-xl text-center">
                 Explore Services
               </Link>
@@ -148,16 +230,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-        {/* spacer */}
       </section>
 
       {/* Stats */}
       <section className="py-16 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div ref={statsRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-3xl sm:text-4xl font-black text-deep-blue mb-1">{stat.value}</div>
+                <div className="stat-value text-3xl sm:text-4xl font-black text-deep-blue mb-1">{stat.value}</div>
                 <div className="text-sm text-gray-500 font-medium">{stat.label}</div>
               </div>
             ))}
@@ -165,11 +246,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services - NOW FIRST */}
+      {/* Services */}
       <section className="py-24 bg-white">
         <div
-          ref={servicesReveal.ref}
-          className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ${servicesReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          ref={servicesSectionRef}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">What We Do</span>
@@ -177,12 +258,11 @@ export default function Home() {
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Comprehensive services covering every stage of the equipment lifecycle.</p>
           </div>
           <div ref={servicesCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, i) => (
+            {services.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
                 className="reveal-card block p-8 rounded-2xl bg-gray-50 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 hover:border-deep-blue cursor-pointer"
-                data-delay={i * 100}
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-lg font-bold text-deep-blue group-hover:text-white transition-colors">{service.title}</h3>
@@ -199,11 +279,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Products - NOW SECOND */}
+      {/* Featured Products */}
       <section className="py-24 bg-gray-50">
         <div
-          ref={productsReveal.ref}
-          className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-700 ${productsReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          ref={productsSectionRef}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Our Equipment</span>
@@ -211,12 +291,11 @@ export default function Home() {
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">World-class medical imaging and diagnostic equipment, meticulously refurbished to meet the highest standards.</p>
           </div>
           <div ref={productsCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredProducts.map((product, i) => (
+            {featuredProducts.map((product) => (
               <Link
                 key={product.name}
                 href={product.href}
                 className="reveal-card block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100"
-                data-delay={i * 100}
               >
                 <div className="h-48 relative overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
@@ -246,8 +325,8 @@ export default function Home() {
           <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-orange/10 blur-3xl" />
         </div>
         <div
-          ref={ctaReveal.ref}
-          className={`max-w-4xl mx-auto px-4 text-center relative z-10 transition-all duration-700 ${ctaReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+          ref={ctaRef}
+          className="max-w-4xl mx-auto px-4 text-center relative z-10 opacity-0 translate-y-10"
         >
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-6">
             Need to Upgrade or Set Up<br />Your Medical Facility?
