@@ -71,14 +71,26 @@ export default function Home() {
       {/* Hero */}
       <section className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
         <div className="absolute inset-0">
+          {/* Large glowing orbs */}
           <div className="absolute top-20 right-20 w-96 h-96 rounded-full bg-light-cyan/5 blur-3xl" />
           <div className="absolute bottom-20 left-20 w-72 h-72 rounded-full bg-orange/5 blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5" />
-          {/* Floating particles */}
-          <div className="absolute top-1/4 right-1/4 w-2 h-2 rounded-full bg-light-cyan/20 animate-pulse" />
-          <div className="absolute top-1/3 right-1/3 w-1 h-1 rounded-full bg-orange/30 animate-ping" />
-          <div className="absolute bottom-1/3 left-1/4 w-1.5 h-1.5 rounded-full bg-white/10 animate-pulse" />
+          {/* Concentric rings */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5 animate-[spin_60s_linear_infinite]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5 animate-[spin_45s_linear_infinite_reverse]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-white/[0.03] animate-[spin_30s_linear_infinite]" />
+          {/* Floating shapes */}
+          <div className="absolute top-[15%] left-[10%] w-16 h-16 rounded-full border border-light-cyan/20 animate-float" />
+          <div className="absolute top-[25%] right-[15%] w-24 h-24 rounded-full border border-orange/15 animate-float-delayed" />
+          <div className="absolute bottom-[20%] left-[20%] w-10 h-10 rounded-full bg-light-cyan/10 animate-float-slow" />
+          <div className="absolute top-[60%] right-[10%] w-14 h-14 rounded-full border border-white/10 animate-float" />
+          <div className="absolute top-[10%] right-[40%] w-8 h-8 rounded-full bg-orange/10 animate-float-delayed" />
+          <div className="absolute bottom-[30%] right-[30%] w-20 h-20 rounded-full border border-light-cyan/10 animate-float-slow" />
+          <div className="absolute top-[40%] left-[5%] w-6 h-6 rounded-full bg-white/5 animate-float-delayed" />
+          {/* Small particles */}
+          <div className="absolute top-[20%] right-[25%] w-2 h-2 rounded-full bg-light-cyan/30 animate-pulse" />
+          <div className="absolute top-[70%] left-[35%] w-1.5 h-1.5 rounded-full bg-orange/25 animate-ping" />
+          <div className="absolute bottom-[40%] left-[15%] w-1.5 h-1.5 rounded-full bg-white/15 animate-pulse" />
+          <div className="absolute top-[50%] right-[20%] w-1 h-1 rounded-full bg-light-cyan/20 animate-ping" />
         </div>
         <div
           ref={hero.ref}
