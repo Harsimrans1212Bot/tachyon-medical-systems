@@ -101,9 +101,12 @@ export default function Services() {
                 </div>
                 <div className="flex-1 w-full">
                   {service.image ? (
-                    <div className="h-72 rounded-2xl overflow-hidden">
-                      <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
-                    </div>
+                    <div
+                      className="h-72 rounded-2xl overflow-hidden bg-cover bg-center bg-fixed"
+                      style={{ backgroundImage: `url(${service.image})` }}
+                      role="img"
+                      aria-label={service.title}
+                    />
                   ) : (
                     <div className="h-72 rounded-2xl equipment-placeholder flex items-center justify-center">
                       <span className="text-6xl opacity-30">{service.icon}</span>
