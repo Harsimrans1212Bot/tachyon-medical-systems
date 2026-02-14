@@ -69,7 +69,7 @@ export default function Header() {
                 className="h-24 w-auto object-contain"
                 priority
               />
-              <span className="text-base font-semibold text-deep-blue tracking-wide whitespace-nowrap">New Era — Refurbished Imaging Equipment</span>
+              <span className="text-base font-semibold text-deep-blue tracking-wide whitespace-nowrap italic">New Era — Refurbished Imaging Equipment</span>
             </div>
           </Link>
 
@@ -79,7 +79,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-gray-700 hover:text-light-cyan transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-light-cyan after:transition-all hover:after:w-full"
+                className="text-base font-bold text-gray-700 hover:text-light-cyan transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-light-cyan after:transition-all hover:after:w-full"
               >
                 {link.label}
               </Link>
