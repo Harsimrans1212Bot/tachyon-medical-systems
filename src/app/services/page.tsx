@@ -22,6 +22,7 @@ const services = [
     icon: "🤝",
     color: "bg-orange/10 text-orange",
     href: "/services/buy-sell",
+    image: "/buy-sell.jpg",
   },
   {
     title: "Import & Export",
