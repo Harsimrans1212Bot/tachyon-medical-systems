@@ -49,12 +49,12 @@ export default function Header() {
                 alt="Tachyon Medical Systems"
                 width={40}
                 height={40}
-                className="h-12 w-12 object-contain"
+                className="h-14 w-14 object-contain"
                 priority
               />
               <div className="flex flex-col leading-tight">
-                <span className="text-2xl font-black text-deep-blue tracking-tight">T<span className="text-orange">A</span>CHYON</span>
-                <span className="text-[10px] font-semibold text-gray-500 tracking-wider uppercase">Medical Systems</span>
+                <span className="text-3xl font-black text-deep-blue tracking-tight">T<span className="text-orange">A</span>CHYON</span>
+                <span className="text-xs font-semibold text-gray-500 tracking-wider uppercase">Medical Systems</span>
               </div>
             </div>
             {/* Desktop: logo + tagline */}
