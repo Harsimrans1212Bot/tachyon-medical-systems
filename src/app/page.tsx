@@ -212,20 +212,22 @@ export default function Home() {
               Trusted Since 1992
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 animate-fade-in-up">
-              {splitWords("Premium Medical")}
+              {splitWords("Need to Upgrade")}
               <br />
-              <span className="hero-word inline-block mr-[0.3em] text-light-cyan">Equipment</span>
-              <span className="hero-word inline-block">Solutions</span>
+              {splitWords("or Set Up Your")}
+              <br />
+              <span className="hero-word inline-block mr-[0.3em] text-light-cyan">Medical</span>
+              <span className="hero-word inline-block">Facility?</span>
             </h1>
             <p className="hero-fade text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl animate-fade-in-up animation-delay-200">
-              Top-notch customer service, extensive medical expertise, and unwavering dedication to your Medical Equipment.
+              Whether you&apos;re building a new imaging center or upgrading existing equipment, our team of experts will help you find the perfect solution — from sourcing to installation.
             </p>
             <div className="hero-fade flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
-              <Link href="/services" className="px-8 py-4 bg-light-cyan text-deep-blue font-bold rounded-full hover:bg-white transition-all hover:shadow-xl text-center">
-                Explore Services
+              <Link href="/contact/inventory" className="px-8 py-4 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/80 transition-all hover:shadow-xl text-center">
+                Inventory Inquiries
               </Link>
-              <Link href="/contact" className="px-8 py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-center">
-                Contact Us
+              <Link href="/contact/services" className="px-8 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl text-center">
+                Installation
               </Link>
             </div>
           </div>
@@ -335,12 +337,12 @@ export default function Home() {
             Whether you&apos;re building a new imaging center or upgrading existing equipment, our team of experts will help you find the perfect solution — from sourcing to installation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl text-lg">
-              Contact Us
+            <Link href="/contact/inventory" className="px-10 py-4 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/80 transition-all hover:shadow-xl text-lg">
+              Inventory Inquiries
             </Link>
-            <a href="tel:+919215291291" className="px-10 py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg">
-              Call +91-9215291291
-            </a>
+            <Link href="/contact/services" className="px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl text-lg">
+              Installation
+            </Link>
           </div>
         </div>
       </section>
