@@ -388,7 +388,7 @@ export default async function MachinePage({ params }: PageProps) {
               {/* Quick Actions */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Link
-                  href="/contact?subject=Inventory%20Inquiry&machine="
+                  href="/contact/inventory"
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/90 transition-all hover:shadow-lg"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -397,7 +397,7 @@ export default async function MachinePage({ params }: PageProps) {
                   Get Quote
                 </Link>
                 <Link
-                  href="/contact?subject=Installation%20Services&machine="
+                  href="/contact/services"
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-lg"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -450,7 +450,7 @@ export default async function MachinePage({ params }: PageProps) {
                 Get pricing, check availability, request specifications, or discuss customization options for this equipment.
               </p>
               <Link
-                href={`/contact?subject=Inventory%20Inquiry&machine=${encodeURIComponent(machine.name)}`}
+                href="/contact/inventory"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/90 transition-all hover:shadow-lg"
               >
                 Contact for Inventory Inquiries
@@ -473,7 +473,7 @@ export default async function MachinePage({ params }: PageProps) {
                 Professional installation, deinstallation, relocation, and maintenance services for your medical equipment.
               </p>
               <Link
-                href={`/contact?subject=Installation%20Services&machine=${encodeURIComponent(machine.name)}`}
+                href="/contact/services"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-lg"
               >
                 Contact for Installation/Deinstallation Services
