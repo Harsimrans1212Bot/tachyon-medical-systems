@@ -287,7 +287,7 @@ export default function Home() {
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Our Equipment</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Featured Products</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Featured Inventory</h2>
             <p className="text-gray-500 mt-4 max-w-2xl mx-auto">World-class medical imaging and diagnostic equipment, meticulously refurbished to meet the highest standards.</p>
           </div>
           <div ref={productsCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -311,7 +311,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-12">
             <Link href="/inventory" className="inline-flex items-center gap-2 px-8 py-4 bg-deep-blue text-white font-bold rounded-full hover:bg-deep-blue/90 transition-all hover:shadow-xl">
-              View All Products
+              View All Inventory
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
           </div>
