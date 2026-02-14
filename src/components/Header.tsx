@@ -38,10 +38,10 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md shadow-sm border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
+      <div className="max-w-7xl mx-auto px-2 sm:px-2 lg:px-2">
         <div className="flex items-center justify-between h-16 sm:h-28">
           {/* Logo — small icon+text on mobile, full banner on desktop */}
-          <Link href="/" className="flex items-center -ml-4">
+          <Link href="/" className="flex items-center -ml-8">
             {/* Mobile: compact logo */}
             <div className="sm:hidden flex items-center gap-2">
               <Image
