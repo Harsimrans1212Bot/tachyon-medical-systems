@@ -276,9 +276,7 @@ const allMachines = [
 ];
 
 interface PageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>;
 }
 
 function getMachineBySlug(slug: string) {
@@ -306,7 +304,8 @@ function getMachineBySlug(slug: string) {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const machine = getMachineBySlug(params.slug);
+  const { slug } = await params;
+  const machine = getMachineBySlug(slug);
   
   return {
     title: `${machine.name} | Tachyon Medical Systems Inventory`,
@@ -314,10 +313,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default function MachinePage({ params }: PageProps) {
-  const machine = getMachineBySlug(params.slug);
+export default async function MachinePage({ params }: PageProps) {
+  const { slug } = await params;
+  const machine = getMachineBySlug(slug);
 
-  if (!machine && !allMachines.find(m => m.slug === params.slug)) {
+  if (!machine && !allMachines.find(m => m.slug === slug)) {
     notFound();
   }
 
