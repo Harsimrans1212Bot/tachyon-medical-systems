@@ -14,6 +14,7 @@ const services = [
     icon: "🔧",
     color: "bg-light-cyan/10 text-light-cyan",
     href: "/services/refurbishment",
+    image: "/mri.jpg",
   },
   {
     title: "Buy & Sell Equipment",
