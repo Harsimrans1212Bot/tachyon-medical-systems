@@ -460,7 +460,7 @@ export default async function MachinePage({ params }: PageProps) {
               </Link>
             </div>
 
-            {/* Installation/Deinstallation CTA */}
+            {/* Installation CTA */}
             <div className="bg-white/10 rounded-2xl p-8 text-left">
               <div className="w-12 h-12 bg-orange rounded-full flex items-center justify-center mb-6">
                 <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -468,15 +468,15 @@ export default async function MachinePage({ params }: PageProps) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">Installation/Deinstallation Services</h3>
+              <h3 className="text-xl font-bold text-white mb-3">Installation Services</h3>
               <p className="text-gray-300 mb-6 text-sm">
-                Professional installation, deinstallation, relocation, and maintenance services for your medical equipment.
+                Professional installation, uninstallation, relocation, and maintenance services for your medical equipment.
               </p>
               <Link
                 href="/contact/services"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-lg"
               >
-                Contact for Installation/Deinstallation Services
+                Contact for Installation Services
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

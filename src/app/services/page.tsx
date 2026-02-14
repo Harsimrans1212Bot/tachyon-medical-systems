@@ -32,9 +32,9 @@ const services = [
     href: "/services/import-export",
   },
   {
-    title: "Installation & Deinstallation",
-    description: "Professional installation and deinstallation services by certified engineers. We ensure your equipment is properly set up, calibrated, and ready for clinical use from day one.",
-    features: ["Site planning & preparation", "Professional installation", "Safe deinstallation", "System calibration", "Staff training"],
+    title: "Installation",
+    description: "Professional installation and uninstallation services by certified engineers. We ensure your equipment is properly set up, calibrated, and ready for clinical use from day one.",
+    features: ["Site planning & preparation", "Professional installation", "Safe uninstallation", "System calibration", "Staff training"],
     icon: "⚙️",
     color: "bg-light-cyan/10 text-light-cyan",
     href: "/services/installation",

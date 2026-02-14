@@ -25,7 +25,7 @@ const buyFeatures = [
 const sellFeatures = [
   { title: "Free Valuation", desc: "Get a fair market assessment of your equipment at no cost." },
   { title: "Quick Turnaround", desc: "We aim to provide offers within 48 hours of assessment." },
-  { title: "Safe Deinstallation", desc: "Our team handles professional removal from your site." },
+  { title: "Safe Uninstallation", desc: "Our team handles professional removal from your site." },
   { title: "Hassle-Free Process", desc: "We manage all logistics, paperwork, and compliance." },
   { title: "Trade-In Programs", desc: "Upgrade your equipment with trade-in value applied." },
   { title: "Competitive Offers", desc: "Access our global network of buyers for the best price." },

@@ -173,7 +173,7 @@ export default function Home() {
     { title: "Refurbishment", desc: "Complete restoration of medical equipment to original specifications with rigorous quality testing", icon: "🔧", href: "/services/refurbishment" },
     { title: "Buy & Sell", desc: "Trusted marketplace for pre-owned and new medical imaging equipment worldwide", icon: "🤝", href: "/services/buy-sell" },
     { title: "Import & Export", desc: "Global logistics, customs clearance, and compliance for medical equipment trade", icon: "🌍", href: "/services/import-export" },
-    { title: "Installation", desc: "Professional installation, deinstallation, and relocation services by certified engineers", icon: "⚙️", href: "/services/installation" },
+    { title: "Installation", desc: "Professional installation, uninstallation, and relocation services by certified engineers", icon: "⚙️", href: "/services/installation" },
   ];
 
   return (

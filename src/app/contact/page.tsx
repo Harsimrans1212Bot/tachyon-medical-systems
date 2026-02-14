@@ -50,7 +50,7 @@ export default function Contact() {
               </div>
             </Link>
 
-            {/* Installation/Deinstallation Services Card */}
+            {/* Installation Services Card */}
             <Link
               href="/contact/services"
               className="group bg-white rounded-2xl p-8 border border-gray-100 hover:border-orange/30 transition-all duration-300 card-hover"
@@ -62,10 +62,10 @@ export default function Contact() {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-deep-blue mb-4 group-hover:text-orange transition-colors duration-300">
-                Installation & Deinstallation Services
+                Installation Services
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Professional installation, deinstallation, relocation, and maintenance services for medical equipment by our certified engineers.
+                Professional installation, uninstallation, relocation, and maintenance services for medical equipment by our certified engineers.
               </p>
               <div className="flex items-center gap-2 text-orange font-semibold group-hover:gap-4 transition-all duration-300">
                 Request Service Quote

@@ -97,7 +97,7 @@ export default function Header() {
                 href="/contact/services"
                 className="px-5 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all hover:shadow-lg"
               >
-                Installation/Deinstallation
+                Installation
               </Link>
             </div>
           </nav>
@@ -146,7 +146,7 @@ export default function Header() {
                     onClick={() => setMenuOpen(false)}
                     className="block text-center px-4 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all"
                   >
-                    Installation/Deinstallation
+                    Installation
                   </Link>
                 </div>
               </div>

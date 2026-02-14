@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Installation & Deinstallation Services | Tachyon Medical Systems",
-  description: "Professional medical equipment installation and deinstallation services. CT Scanner, MRI, PET-CT, Cath Lab, Mammography, and Gamma Camera installation with site planning and training.",
+  title: "Installation Services | Tachyon Medical Systems",
+  description: "Professional medical equipment installation and uninstallation services. CT Scanner, MRI, PET-CT, Cath Lab, Mammography, and Gamma Camera installation with site planning and training.",
 };
 
 const pricing = [
@@ -59,7 +59,7 @@ export default function InstallationPage() {
               ← Back to Services
             </Link>
             <span className="block text-sm font-bold tracking-wider uppercase text-light-cyan mt-6">Installation Services</span>
-            <h1 className="text-4xl sm:text-5xl font-black text-white mt-3">Professional Installation & Deinstallation</h1>
+            <h1 className="text-4xl sm:text-5xl font-black text-white mt-3">Professional Installation</h1>
             <p className="text-lg text-gray-300 mt-6 leading-relaxed">
               From site planning to staff training, our certified engineers ensure your medical imaging equipment is installed safely, calibrated precisely, and ready for clinical use.
             </p>
@@ -128,13 +128,13 @@ export default function InstallationPage() {
         </div>
       </section>
 
-      {/* Deinstallation */}
+      {/* Uninstallation */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-sm font-bold tracking-wider uppercase text-orange">Also Available</span>
-              <h2 className="text-3xl font-black text-deep-blue mt-3">Deinstallation Services</h2>
+              <h2 className="text-3xl font-black text-deep-blue mt-3">Uninstallation Services</h2>
               <p className="text-gray-500 mt-4 leading-relaxed">
                 Safe, professional removal of medical imaging equipment. Our team ensures proper disconnection, cryogen recovery (MRI), component protection, and site restoration.
               </p>

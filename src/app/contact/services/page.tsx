@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Installation & Deinstallation Services | Tachyon Medical Systems",
-  description: "Professional installation, deinstallation, relocation, and maintenance services for medical equipment by certified engineers.",
+  title: "Installation Services | Tachyon Medical Systems",
+  description: "Professional installation, uninstallation, relocation, and maintenance services for medical equipment by certified engineers.",
 };
 
 export default function ServicesInquiries() {
@@ -12,10 +12,10 @@ export default function ServicesInquiries() {
       <section className="pt-32 pb-16 bg-gradient-to-r from-orange to-deep-blue">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-sm font-bold tracking-wider uppercase text-white/80">Installation & Deinstallation Services</span>
+            <span className="text-sm font-bold tracking-wider uppercase text-white/80">Installation Services</span>
             <h1 className="text-4xl sm:text-5xl font-black text-white mt-3">Professional Technical Services</h1>
             <p className="text-lg text-white/80 mt-6 leading-relaxed">
-              Our certified engineers provide comprehensive installation, deinstallation, relocation, and maintenance services for medical imaging equipment. From planning to completion, we ensure seamless deployment of your critical healthcare technology.
+              Our certified engineers provide comprehensive installation, uninstallation, relocation, and maintenance services for medical imaging equipment. From planning to completion, we ensure seamless deployment of your critical healthcare technology.
             </p>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function ServicesInquiries() {
                     <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm text-gray-500">
                       <option>Select service type</option>
                       <option>Installation</option>
-                      <option>Deinstallation</option>
+                      <option>Uninstallation</option>
                       <option>Relocation</option>
                       <option>Preventive Maintenance</option>
                       <option>Emergency Repair</option>
