@@ -212,12 +212,14 @@ export default function Home() {
               Trusted Since 1992
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 animate-fade-in-up">
-              {splitWords("Need to Upgrade")}
+              {splitWords("Need to")}
+              <span className="hero-word inline-block mr-[0.3em] text-orange">Upgrade</span>
               <br />
-              {splitWords("or Set Up Your")}
+              {splitWords("or")}
+              <span className="hero-word inline-block mr-[0.3em] text-light-cyan">Set Up</span>
+              {splitWords("Your")}
               <br />
-              <span className="hero-word inline-block mr-[0.3em] text-light-cyan">Medical</span>
-              <span className="hero-word inline-block">Facility?</span>
+              {splitWords("Medical Facility?")}
             </h1>
             <p className="hero-fade text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl animate-fade-in-up animation-delay-200">
               Whether you&apos;re building a new imaging center or upgrading existing equipment, our team of experts will help you find the perfect solution — from sourcing to installation.
@@ -331,18 +333,18 @@ export default function Home() {
           className="max-w-4xl mx-auto px-4 text-center relative z-10 opacity-0 translate-y-10"
         >
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-6">
-            Need to Upgrade or Set Up<br />Your Medical Facility?
+            Premium Medical<br /><span className="text-light-cyan">Equipment</span> Solutions
           </h2>
           <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
-            Whether you&apos;re building a new imaging center or upgrading existing equipment, our team of experts will help you find the perfect solution — from sourcing to installation.
+            Top-notch customer service, extensive medical expertise, and unwavering dedication to your Medical Equipment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact/inventory" className="px-10 py-4 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/80 transition-all hover:shadow-xl text-lg">
-              Inventory Inquiries
+            <Link href="/contact" className="px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl text-lg">
+              Contact Us
             </Link>
-            <Link href="/contact/services" className="px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl text-lg">
-              Installation
-            </Link>
+            <a href="tel:+919215291291" className="px-10 py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg">
+              Call +91-9215291291
+            </a>
           </div>
         </div>
       </section>
