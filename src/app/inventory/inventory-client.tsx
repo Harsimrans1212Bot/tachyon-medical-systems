@@ -8,7 +8,10 @@ const categoryImages: Record<string, string> = {
   "MRI Systems": "/mri.jpg",
   "PET-CT": "/ct-scanner.jpg",
   "Cath Labs": "/cath-lab.jpg",
-  "Mammography": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop",
+  "Mammography": "/mammography.jpg",
+  "Sonography/Ultrasound": "/sonography.jpg",
+  "ECG Systems": "/ecg.jpg",
+  "Multi-Parameter Monitors": "/multi-para-monitor.jpg",
 };
 
 const categories = [
@@ -85,6 +88,49 @@ const categories = [
       { name: "Hologic 3 Dimensions", slug: "hologic-3-dimensions", specs: "3D Mammography System" },
       { name: "GE Senographe", slug: "ge-senographe", specs: "Digital Mammography" },
       { name: "Siemens Mammomat", slug: "siemens-mammomat", specs: "Advanced Breast Imaging" },
+    ],
+  },
+  {
+    name: "Sonography/Ultrasound",
+    description: "Advanced ultrasound imaging systems for diagnostic and obstetric applications",
+    icon: (
+      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    machines: [
+      { name: "GE Voluson E8", slug: "ge-voluson-e8", specs: "Advanced 4D Ultrasound System" },
+      { name: "GE LOGIQ E9", slug: "ge-logiq-e9", specs: "Premium Ultrasound Platform" },
+      { name: "Philips EPIQ 7", slug: "philips-epiq-7", specs: "Advanced Ultrasound System" },
+      { name: "Siemens Acuson S2000", slug: "siemens-acuson-s2000", specs: "High-End Ultrasound System" },
+    ],
+  },
+  {
+    name: "ECG Systems",
+    description: "Electrocardiogram systems for cardiac rhythm monitoring and diagnosis",
+    icon: (
+      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+    machines: [
+      { name: "GE MAC 5500", slug: "ge-mac-5500", specs: "Advanced 12-Lead ECG System" },
+      { name: "Philips PageWriter TC70", slug: "philips-pagewriter-tc70", specs: "Cardiograph System" },
+      { name: "Nihon Kohden Cardiofax", slug: "nihon-kohden-cardiofax", specs: "ECG Recording System" },
+    ],
+  },
+  {
+    name: "Multi-Parameter Monitors",
+    description: "Versatile patient monitoring systems for tracking multiple vital signs in real-time",
+    icon: (
+      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+      </svg>
+    ),
+    machines: [
+      { name: "Philips IntelliVue MX800", slug: "philips-intellivue-mx800", specs: "Advanced Patient Monitor" },
+      { name: "GE CARESCAPE B650", slug: "ge-carescape-b650", specs: "Patient Monitoring System" },
+      { name: "Mindray BeneVision N22", slug: "mindray-benevision-n22", specs: "Multi-Parameter Monitor" },
     ],
   },
 ];

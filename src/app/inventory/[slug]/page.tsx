@@ -272,6 +272,81 @@ const allMachines = [
       "Comprehensive cardiac protocols",
     ],
   },
+  // Sonography/Ultrasound
+  {
+    slug: "ge-voluson-e8",
+    name: "GE Voluson E8",
+    category: "Sonography/Ultrasound",
+    price: "Contact for Pricing",
+    condition: "Refurbished - Excellent",
+    image: "/sonography.jpg",
+    specifications: {
+      "Imaging Technology": "4D/3D Real-time Ultrasound",
+      "Display": "23\" LCD Monitor",
+      "Transducer Ports": "4 active ports",
+      "Image Memory": "Up to 10,000 images",
+      "Frequency Range": "1-18 MHz",
+      "Weight": "110 kg (242 lbs)",
+    },
+    description: "The GE Voluson E8 is an advanced 4D ultrasound system designed for women's health applications. Features exceptional image quality and comprehensive obstetric and gynecologic imaging capabilities.",
+    features: [
+      "4D real-time imaging",
+      "SonoBiometry for automated measurements",
+      "VOCAL (Virtual Organ Computer-aided AnaLysis)",
+      "HDlive rendering technology",
+      "Advanced Doppler capabilities",
+    ],
+  },
+  // ECG Systems
+  {
+    slug: "ge-mac-5500",
+    name: "GE MAC 5500",
+    category: "ECG Systems",
+    price: "Contact for Pricing",
+    condition: "Refurbished - Very Good",
+    image: "/ecg.jpg",
+    specifications: {
+      "Lead Configuration": "12-Lead ECG",
+      "Display": "8.4\" Color LCD",
+      "Sampling Rate": "40,000 SPS",
+      "Frequency Response": "0.05-300 Hz",
+      "Input Impedance": ">100 MΩ",
+      "Paper Size": "8.5\" x 11\" (Letter)",
+    },
+    description: "The GE MAC 5500 is a comprehensive 12-lead ECG system offering advanced cardiac rhythm analysis and interpretation. Designed for clinical excellence with user-friendly operation.",
+    features: [
+      "12SL ECG Analysis Program",
+      "Comprehensive arrhythmia detection",
+      "HIPAA-compliant connectivity",
+      "Automated measurements and interpretation",
+      "Built-in thermal printer",
+    ],
+  },
+  // Multi-Parameter Monitors
+  {
+    slug: "philips-intellivue-mx800",
+    name: "Philips IntelliVue MX800",
+    category: "Multi-Parameter Monitors",
+    price: "Contact for Pricing",
+    condition: "Refurbished - Excellent",
+    image: "/multi-para-monitor.jpg",
+    specifications: {
+      "Display": "19\" Color TFT LCD",
+      "Parameters": "ECG, SpO2, NIBP, IBP, Temp, Resp",
+      "Waveform Channels": "Up to 16 waveforms",
+      "Trend Storage": "Up to 120 hours",
+      "Network Connectivity": "Ethernet, WiFi compatible",
+      "Power": "AC/DC with battery backup",
+    },
+    description: "The Philips IntelliVue MX800 is an advanced patient monitoring system providing comprehensive vital signs monitoring for critical care environments. Features intuitive interface and flexible configuration options.",
+    features: [
+      "Advanced parameter monitoring",
+      "Configurable alarm management",
+      "Clinical decision support tools",
+      "Seamless network integration",
+      "Plug-and-play measurement modules",
+    ],
+  },
   // Default fallback for unlisted machines
 ];
 
