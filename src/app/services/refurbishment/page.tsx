@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Equipment Refurbishment | Tachyon Medical Systems",
-  description: "Professional medical equipment refurbishment services for CT Scanners, MRI, PET-CT, Cath Labs, and Mammography systems. OEM-equivalent parts and full warranty.",
+  description: "Professional medical equipment refurbishment services for CT Scanners, MRI, PET-CT, Cath Labs, Mammography, Sonography, ECG, and Multi-Parameter Monitors. OEM-equivalent parts and full warranty.",
 };
 
 const steps = [
@@ -71,6 +71,39 @@ const equipment = [
       "X-ray tube replacement — molybdenum/rhodium target assessment, focal spot measurement, HVL verification",
       "AEC calibration — automatic exposure control optimization for various breast thicknesses and compositions",
       "Stereotactic biopsy attachment service — needle guidance accuracy, coordinate system verification",
+    ],
+  },
+  {
+    title: "Sonography/Ultrasound Refurbishment",
+    icon: "📡",
+    items: [
+      "Transducer refurbishment — element testing, lens replacement, acoustic impedance matching, cable repair",
+      "Display system upgrade — monitor calibration, DICOM grayscale conformance, backlight replacement",
+      "System board service — power supply testing, processor board diagnostics, memory upgrades",
+      "Software updates — latest imaging presets, measurement packages, connectivity protocols",
+      "Mechanical service — keyboard/trackball replacement, arm articulation, wheel and brake service",
+    ],
+  },
+  {
+    title: "ECG System Refurbishment",
+    icon: "💓",
+    items: [
+      "Amplifier calibration — gain accuracy, frequency response verification, CMRR testing",
+      "Lead wire and cable replacement — impedance testing, connector inspection, shielding integrity",
+      "Thermal printer service — print head replacement, paper feed mechanism, print quality calibration",
+      "Algorithm updates — latest interpretation software, arrhythmia detection, measurement accuracy",
+      "Battery and power system — cell replacement, charging circuit testing, runtime verification",
+    ],
+  },
+  {
+    title: "Multi-Parameter Monitor Refurbishment",
+    icon: "📟",
+    items: [
+      "Display panel replacement — LCD/LED screen, touchscreen digitizer, brightness and contrast calibration",
+      "Module refurbishment — SpO2, ECG, NIBP, IBP, EtCO2, and temperature module testing and calibration",
+      "Alarm system verification — audio and visual alarm testing, threshold accuracy, response time validation",
+      "Network connectivity — HL7 interface testing, central station communication, wireless module service",
+      "Battery and mounting — battery cell replacement, rail clamp service, wall mount bracket inspection",
     ],
   },
 ];
