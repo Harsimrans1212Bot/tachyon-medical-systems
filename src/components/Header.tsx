@@ -5,9 +5,7 @@ import { useState, useEffect, useRef } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [contactDropdownOpen, setContactDropdownOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const contactDropdownRef = useRef<HTMLDivElement>(null);
 
   // Close menu on outside click
   useEffect(() => {
@@ -21,24 +19,11 @@ export default function Header() {
     return () => document.removeEventListener("click", handleClick);
   }, [menuOpen]);
 
-  // Close contact dropdown on outside click
-  useEffect(() => {
-    if (!contactDropdownOpen) return;
-    const handleClick = (e: MouseEvent) => {
-      if (contactDropdownRef.current && !contactDropdownRef.current.contains(e.target as Node)) {
-        setContactDropdownOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, [contactDropdownOpen]);
-
   // Close menu on route change / escape
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setMenuOpen(false);
-        setContactDropdownOpen(false);
       }
     };
     window.addEventListener("keydown", handleEsc);
@@ -50,11 +35,7 @@ export default function Header() {
     { href: "/inventory", label: "Inventory" },
     { href: "/services", label: "Services" },
     { href: "/about", label: "About" },
-  ];
-
-  const contactOptions = [
-    { href: "/contact/inventory", label: "Inventory Inquiries", description: "Get pricing & availability" },
-    { href: "/contact/services", label: "Installation/Deinstallation", description: "Professional technical services" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
@@ -104,41 +85,21 @@ export default function Header() {
               </Link>
             ))}
             
-            {/* Contact Dropdown */}
-            <div className="relative" ref={contactDropdownRef}>
-              <button
-                onClick={() => setContactDropdownOpen(!contactDropdownOpen)}
-                className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-light-cyan transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-light-cyan after:transition-all hover:after:w-full"
+            {/* Two CTA Buttons */}
+            <div className="flex items-center gap-3 ml-4">
+              <Link
+                href="/contact/inventory"
+                className="px-5 py-2.5 bg-light-cyan text-white text-sm font-semibold rounded-full hover:bg-light-cyan/90 transition-all hover:shadow-lg"
               >
-                Contact
-                <svg className={`w-4 h-4 transition-transform ${contactDropdownOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              {contactDropdownOpen && (
-                <div className="absolute top-8 right-0 w-72 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-50">
-                  {contactOptions.map((option) => (
-                    <Link
-                      key={option.href}
-                      href={option.href}
-                      onClick={() => setContactDropdownOpen(false)}
-                      className="block px-6 py-4 hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0"
-                    >
-                      <div className="font-semibold text-deep-blue text-sm mb-1">{option.label}</div>
-                      <div className="text-xs text-gray-500">{option.description}</div>
-                    </Link>
-                  ))}
-                </div>
-              )}
+                Inventory Inquiries
+              </Link>
+              <Link
+                href="/contact/services"
+                className="px-5 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all hover:shadow-lg"
+              >
+                Installation/Deinstallation
+              </Link>
             </div>
-            
-            <Link
-              href="/contact/inventory"
-              className="ml-4 px-6 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all hover:shadow-lg"
-            >
-              Get a Quote
-            </Link>
           </nav>
 
           {/* Mobile Hamburger */}
@@ -165,35 +126,27 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-light-cyan transition-colors border-b border-gray-50"
+                    className="block px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-light-cyan transition-colors border-b border-gray-50 last:border-0"
                   >
                     {link.label}
                   </Link>
                 ))}
                 
-                {/* Contact Options in Mobile Menu */}
-                <div className="px-5 py-2 text-xs font-bold text-gray-500 uppercase tracking-wider border-b border-gray-50">
-                  Contact Options
-                </div>
-                {contactOptions.map((option) => (
-                  <Link
-                    key={option.href}
-                    href={option.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="block px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-light-cyan transition-colors border-b border-gray-50 last:border-0"
-                  >
-                    <div className="font-semibold">{option.label}</div>
-                    <div className="text-xs text-gray-500 mt-0.5">{option.description}</div>
-                  </Link>
-                ))}
-                
-                <div className="p-3">
+                {/* Two CTA Buttons */}
+                <div className="p-3 space-y-2">
                   <Link
                     href="/contact/inventory"
                     onClick={() => setMenuOpen(false)}
-                    className="block text-center px-5 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all"
+                    className="block text-center px-4 py-2.5 bg-light-cyan text-white text-sm font-semibold rounded-full hover:bg-light-cyan/90 transition-all"
                   >
-                    Get a Quote
+                    Inventory Inquiries
+                  </Link>
+                  <Link
+                    href="/contact/services"
+                    onClick={() => setMenuOpen(false)}
+                    className="block text-center px-4 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all"
+                  >
+                    Installation/Deinstallation
                   </Link>
                 </div>
               </div>

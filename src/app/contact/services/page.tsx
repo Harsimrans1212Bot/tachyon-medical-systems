@@ -139,32 +139,35 @@ export default function ServicesInquiries() {
                       <option>Installation</option>
                       <option>Deinstallation</option>
                       <option>Relocation</option>
-                      <option>Maintenance</option>
-                      <option>Other</option>
+                      <option>Preventive Maintenance</option>
+                      <option>Emergency Repair</option>
+                      <option>Site Survey</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Equipment Type</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="e.g., GE Revolution EVO CT Scanner" />
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Equipment Type & Model</label>
+                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="e.g., GE Revolution EVO CT Scanner, Siemens SOMATOM Force" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Location/Site Address</label>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Equipment Location / Site Address</label>
                     <textarea rows={2} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm resize-none" placeholder="Please provide the complete facility address where services are needed..." />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Preferred Timeline</label>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Preferred Start Date</label>
+                    <input type="date" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Site Readiness</label>
                     <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm text-gray-500">
-                      <option>Select timeline</option>
-                      <option>ASAP (Urgent)</option>
-                      <option>Within 2 weeks</option>
-                      <option>Within 1 month</option>
-                      <option>Within 3 months</option>
-                      <option>Flexible timeline</option>
+                      <option>Select site readiness</option>
+                      <option>Ready</option>
+                      <option>In preparation</option>
+                      <option>Need guidance</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Message</label>
-                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm resize-none" placeholder="Please provide specific details about your service requirements, site conditions, special considerations, or any other relevant information..." />
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Special Requirements</label>
+                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm resize-none" placeholder="e.g., crane access requirements, electrical specifications, shielding work, special logistics, etc." />
                   </div>
                   <button type="submit" className="w-full py-4 bg-orange text-white font-bold rounded-xl hover:bg-orange/90 transition-all hover:shadow-lg text-sm">
                     Submit Service Request

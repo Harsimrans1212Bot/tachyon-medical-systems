@@ -133,45 +133,52 @@ export default function InventoryInquiries() {
                     <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="Memorial Healthcare Center" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Equipment of Interest</label>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Equipment Category</label>
                     <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
-                      <option>Select equipment type</option>
+                      <option>Select equipment category</option>
                       <option>CT Scanner</option>
-                      <option>MRI System</option>
+                      <option>MRI</option>
                       <option>PET-CT</option>
                       <option>Cath Lab</option>
                       <option>Mammography</option>
                       <option>Gamma Camera</option>
-                      <option>Other</option>
                     </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Specific Model <span className="text-gray-400 font-normal">(if known, optional)</span></label>
+                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="e.g., GE Revolution EVO, Siemens SOMATOM Force" />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-deep-blue mb-2">Quantity</label>
-                      <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
-                        <option>Select quantity</option>
-                        <option>1 unit</option>
-                        <option>2-3 units</option>
-                        <option>4-5 units</option>
-                        <option>6+ units</option>
-                      </select>
+                      <label className="block text-sm font-semibold text-deep-blue mb-2">Quantity Needed</label>
+                      <input type="number" min="1" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="1" />
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-deep-blue mb-2">Budget Range</label>
                       <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
                         <option>Select budget range</option>
-                        <option>Under $100k</option>
-                        <option>$100k - $250k</option>
-                        <option>$250k - $500k</option>
-                        <option>$500k - $1M</option>
-                        <option>Over $1M</option>
-                        <option>Contact for pricing</option>
+                        <option>Under $100K</option>
+                        <option>$100K-$250K</option>
+                        <option>$250K-$500K</option>
+                        <option>$500K+</option>
+                        <option>Prefer not to say</option>
                       </select>
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Message</label>
-                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm resize-none" placeholder="Please provide specific equipment models, requirements, timeline, or any other details..." />
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Delivery Timeline</label>
+                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
+                      <option>Select delivery timeline</option>
+                      <option>Immediate</option>
+                      <option>1-3 months</option>
+                      <option>3-6 months</option>
+                      <option>6+ months</option>
+                      <option>Flexible</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-deep-blue mb-2">Additional Requirements</label>
+                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm resize-none" placeholder="Please provide any additional requirements, specific configurations, warranty needs, or other details..." />
                   </div>
                   <button type="submit" className="w-full py-4 bg-light-cyan text-white font-bold rounded-xl hover:bg-light-cyan/90 transition-all hover:shadow-lg text-sm">
                     Submit Inventory Inquiry
