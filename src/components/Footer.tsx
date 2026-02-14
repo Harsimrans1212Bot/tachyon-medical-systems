@@ -68,7 +68,7 @@ export default function Footer() {
                 <a href="tel:+19178565211" className="hover:text-white transition-colors">+1 (917) 856-5211</a>
               </p>
               <p>
-                <a href="mailto:admin@tachyonmedical.com" className="hover:text-white transition-colors">admin@tachyonmedical.com</a>
+                <a href="mailto:admin@tachyonmedical.com" className="hover:text-white transition-colors">admin@tachyonmedical.com</a><br /><a href="mailto:tachyonmedical1166@gmail.com" className="hover:text-white transition-colors">tachyonmedical1166@gmail.com</a>
               </p>
             </div>
           </div>

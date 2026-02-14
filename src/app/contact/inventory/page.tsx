@@ -67,7 +67,7 @@ export default function InventoryInquiries() {
                     <div>
                       <p className="font-semibold text-deep-blue text-sm">Email</p>
                       <p className="text-gray-500 text-sm">
-                        <a href="mailto:admin@tachyonmedical.com" className="hover:text-light-cyan transition-colors">admin@tachyonmedical.com</a>
+                        <a href="mailto:admin@tachyonmedical.com" className="hover:text-light-cyan transition-colors">admin@tachyonmedical.com</a><br /><a href="mailto:tachyonmedical1166@gmail.com" className="hover:text-light-cyan transition-colors">tachyonmedical1166@gmail.com</a>
                       </p>
                     </div>
                   </div>
