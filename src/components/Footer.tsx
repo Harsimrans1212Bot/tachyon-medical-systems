@@ -32,7 +32,7 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold tracking-wider uppercase mb-6 text-light-cyan">Quick Links</h3>
             <ul className="space-y-3">
-              {["Home", "Products", "Services", "About", "Contact"].map((item) => (
+              {["Home", "Inventory", "Services", "About", "Contact"].map((item) => (
                 <li key={item}>
                   <Link href={item === "Home" ? "/" : `/${item.toLowerCase()}`} className="text-gray-400 hover:text-white text-sm transition-colors">
                     {item}
@@ -48,7 +48,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {["CT Scanners", "MRI Systems", "PET-CT", "Cath Labs", "Mammography", "Gamma Cameras"].map((item) => (
                 <li key={item}>
-                  <Link href="/products" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <Link href="/inventory" className="text-gray-400 hover:text-white text-sm transition-colors">
                     {item}
                   </Link>
                 </li>

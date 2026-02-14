@@ -15,7 +15,7 @@ export default function Contact() {
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Contact Us</span>
             <h1 className="text-4xl sm:text-5xl font-black text-white mt-3">Let&apos;s Talk Equipment</h1>
             <p className="text-lg text-gray-300 mt-6 leading-relaxed">
-              Have a question about our products or services? Our team of experts is ready to help you find the perfect solution for your facility.
+              Have a question about our inventory or services? Our team of experts is ready to help you find the perfect solution for your facility.
             </p>
           </div>
         </div>
