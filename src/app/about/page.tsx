@@ -59,11 +59,11 @@ export default function About() {
             </div>
             <div className="flex items-center justify-center">
               <Image
-                src="/logo-large.jpg"
+                src="/logo-header.png"
                 alt="Tachyon Medical Systems Pvt. Ltd."
-                width={600}
-                height={200}
-                className="w-full max-w-sm rounded-2xl"
+                width={1280}
+                height={187}
+                className="w-full max-w-md"
               />
             </div>
           </div>
