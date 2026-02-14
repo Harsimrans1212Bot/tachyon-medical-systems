@@ -14,7 +14,7 @@ const services = [
     icon: "🔧",
     color: "bg-light-cyan/10 text-light-cyan",
     href: "/services/refurbishment",
-    image: "/mri.jpg",
+    image: "/refurbishment.jpg",
   },
   {
     title: "Buy & Sell Equipment",
@@ -50,6 +50,7 @@ const services = [
     icon: "🛡️",
     color: "bg-orange/10 text-orange",
     href: "",
+    image: "/maintenance.jpg",
   },
 ];
 
