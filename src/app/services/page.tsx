@@ -38,6 +38,7 @@ const services = [
     icon: "⚙️",
     color: "bg-light-cyan/10 text-light-cyan",
     href: "/services/installation",
+    image: "/installation.jpg",
   },
   {
     title: "Maintenance & Support",
@@ -95,9 +96,15 @@ export default function Services() {
                   )}
                 </div>
                 <div className="flex-1 w-full">
-                  <div className="h-72 rounded-2xl equipment-placeholder flex items-center justify-center">
-                    <span className="text-6xl opacity-30">{service.icon}</span>
-                  </div>
+                  {service.image ? (
+                    <div className="h-72 rounded-2xl overflow-hidden">
+                      <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                    </div>
+                  ) : (
+                    <div className="h-72 rounded-2xl equipment-placeholder flex items-center justify-center">
+                      <span className="text-6xl opacity-30">{service.icon}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
