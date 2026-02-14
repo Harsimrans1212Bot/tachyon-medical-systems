@@ -64,10 +64,10 @@ export default function Header() {
                 alt="Tachyon Medical Systems Pvt. Ltd."
                 width={640}
                 height={216}
-                className="h-20 w-auto object-contain"
+                className="h-24 w-auto object-contain"
                 priority
               />
-              <span className="text-base font-semibold text-deep-blue tracking-wide whitespace-nowrap">New Era · Refurbished Imaging Equipment</span>
+              <span className="text-sm font-semibold text-deep-blue tracking-wide whitespace-nowrap">New Era · Refurbished Imaging Equipment</span>
             </div>
           </Link>
 
