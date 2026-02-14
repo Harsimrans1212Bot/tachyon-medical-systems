@@ -86,7 +86,7 @@ export default function Header() {
             ))}
             
             {/* Two CTA Buttons */}
-            <div className="flex items-center gap-3 ml-4">
+            <div className="flex flex-col gap-1.5 ml-4">
               <Link
                 href="/contact/inventory"
                 className="px-5 py-2.5 bg-light-cyan text-white text-sm font-semibold rounded-full hover:bg-light-cyan/90 transition-all hover:shadow-lg"
