@@ -63,7 +63,7 @@ export default function About() {
                 alt="Tachyon Medical Systems Pvt. Ltd."
                 width={600}
                 height={200}
-                className="w-full max-w-lg rounded-2xl"
+                className="w-full max-w-sm rounded-2xl"
               />
             </div>
           </div>

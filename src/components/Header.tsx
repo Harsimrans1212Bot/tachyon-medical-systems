@@ -57,15 +57,18 @@ export default function Header() {
                 <span className="text-[9px] font-semibold text-gray-500 tracking-wider uppercase">Medical Systems</span>
               </div>
             </div>
-            {/* Desktop: full logo banner */}
-            <Image
-              src="/logo-header.png"
-              alt="Tachyon Medical Systems Pvt. Ltd."
-              width={600}
-              height={110}
-              className="hidden sm:block h-28 w-auto max-w-[500px] sm:max-w-[600px]"
-              priority
-            />
+            {/* Desktop: logo + tagline */}
+            <div className="hidden sm:flex items-center gap-4">
+              <Image
+                src="/logo-large.jpg"
+                alt="Tachyon Medical Systems Pvt. Ltd."
+                width={640}
+                height={216}
+                className="h-20 w-auto object-contain"
+                priority
+              />
+              <span className="text-base font-semibold text-deep-blue tracking-wide whitespace-nowrap">New Era · Refurbished Imaging Equipment</span>
+            </div>
           </Link>
 
           {/* Desktop Nav */}
