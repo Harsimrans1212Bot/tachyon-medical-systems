@@ -26,9 +26,6 @@ const categories = [
       { name: "GE BrightSpeed 16", slug: "ge-brightspeed-16", specs: "16-Slice CT Scanner" },
       { name: "GE LightSpeed 8", slug: "ge-lightspeed-8", specs: "8-Slice CT Scanner" },
       { name: "GE LightSpeed 16", slug: "ge-lightspeed-16", specs: "16-Slice CT Scanner" },
-      { name: "GE Revolution ACT", slug: "ge-revolution-act", specs: "Advanced CT Technology" },
-      { name: "GE Revolution EVO", slug: "ge-revolution-evo", specs: "Premium CT Scanner" },
-      { name: "GE Revolution GSI", slug: "ge-revolution-gsi", specs: "Gemstone Spectral Imaging" },
     ],
   },
   {
@@ -74,7 +71,6 @@ const categories = [
     machines: [
       { name: "Philips FD 10/10", slug: "philips-fd-10-10", specs: "Flat Detector Cath Lab" },
       { name: "GE Innova Cath Lab", slug: "ge-innova-cath-lab", specs: "Advanced Cardiac Imaging" },
-      { name: "Siemens Artis Cath Lab", slug: "siemens-artis-cath-lab", specs: "Interventional Suite" },
     ],
   },
   {
