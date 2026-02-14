@@ -32,6 +32,7 @@ const services = [
     icon: "🌍",
     color: "bg-deep-blue/10 text-deep-blue",
     href: "/services/import-export",
+    image: "/import-export.jpg",
   },
   {
     title: "Installation",
