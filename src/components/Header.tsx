@@ -58,7 +58,7 @@ export default function Header() {
               </div>
             </div>
             {/* Desktop: logo + tagline */}
-            <div className="hidden sm:flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-2">
               <Image
                 src="/logo-large.jpg"
                 alt="Tachyon Medical Systems Pvt. Ltd."
@@ -67,7 +67,7 @@ export default function Header() {
                 className="h-24 w-auto object-contain"
                 priority
               />
-              <span className="text-sm font-semibold text-deep-blue tracking-wide whitespace-nowrap">New Era · Refurbished Imaging Equipment</span>
+              <span className="text-base font-semibold text-deep-blue tracking-wide whitespace-nowrap">New Era — Refurbished Imaging Equipment</span>
             </div>
           </Link>
 
