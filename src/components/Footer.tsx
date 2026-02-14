@@ -46,7 +46,7 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold tracking-wider uppercase mb-6 text-light-cyan">Equipment</h3>
             <ul className="space-y-3">
-              {["CT Scanners", "MRI Systems", "PET-CT", "Cath Labs", "Mammography", "Gamma Cameras"].map((item) => (
+              {["CT Scanners", "MRI Systems", "PET-CT", "Cath Labs", "Mammography"].map((item) => (
                 <li key={item}>
                   <Link href="/inventory" className="text-gray-400 hover:text-white text-sm transition-colors">
                     {item}

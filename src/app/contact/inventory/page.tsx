@@ -141,7 +141,6 @@ export default function InventoryInquiries() {
                       <option>PET-CT</option>
                       <option>Cath Lab</option>
                       <option>Mammography</option>
-                      <option>Gamma Camera</option>
                     </select>
                   </div>
                   <div>

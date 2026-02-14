@@ -9,7 +9,6 @@ const categoryImages: Record<string, string> = {
   "PET-CT": "/ct-scanner.jpg",
   "Cath Labs": "/cath-lab.jpg",
   "Mammography": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop",
-  "Gamma Camera": "/ct-scanner.jpg",
 };
 
 const categories = [
@@ -90,21 +89,6 @@ const categories = [
       { name: "Hologic 3 Dimensions", slug: "hologic-3-dimensions", specs: "3D Mammography System" },
       { name: "GE Senographe", slug: "ge-senographe", specs: "Digital Mammography" },
       { name: "Siemens Mammomat", slug: "siemens-mammomat", specs: "Advanced Breast Imaging" },
-    ],
-  },
-  {
-    name: "Gamma Camera",
-    description: "Nuclear medicine imaging systems for diagnostic scintigraphy",
-    icon: (
-      <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-      </svg>
-    ),
-    machines: [
-      { name: "GE Millennium Gamma Camera", slug: "ge-millennium-gamma-camera", specs: "Dual-Head SPECT System" },
-      { name: "Siemens Symbia", slug: "siemens-symbia", specs: "SPECT/CT System" },
-      { name: "Philips BrighView", slug: "philips-brightview", specs: "Nuclear Medicine System" },
     ],
   },
 ];

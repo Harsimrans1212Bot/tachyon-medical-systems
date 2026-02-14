@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Installation Services | Tachyon Medical Systems",
-  description: "Professional medical equipment installation and uninstallation services. CT Scanner, MRI, PET-CT, Cath Lab, Mammography, and Gamma Camera installation with site planning and training.",
+  description: "Professional medical equipment installation and uninstallation services. CT Scanner, MRI, PET-CT, Cath Lab, Mammography with site planning and training.",
 };
 
 const pricing = [
@@ -12,7 +12,6 @@ const pricing = [
   { equipment: "PET-CT", range: "$75,000 – $200,000", icon: "⚛️", includes: "Shielding, installation, normalization, calibration, training" },
   { equipment: "Cath Lab", range: "$80,000 – $250,000", icon: "❤️", includes: "Structural reinforcement, installation, image chain setup, training" },
   { equipment: "Mammography", range: "$15,000 – $40,000", icon: "🩺", includes: "Installation, QC testing, MQSA compliance, training" },
-  { equipment: "Gamma Camera", range: "$30,000 – $80,000", icon: "☢️", includes: "Shielding, collimator setup, uniformity calibration, training" },
 ];
 
 const phases = [
