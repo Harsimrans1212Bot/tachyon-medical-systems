@@ -69,7 +69,7 @@ export default function Header() {
                 className="h-24 w-auto object-contain"
                 priority
               />
-              <span className="text-base font-semibold text-blue-600 tracking-wide whitespace-nowrap italic">New Era — Refurbished Imaging Equipment</span>
+              <span className="text-base font-semibold text-light-cyan tracking-wide whitespace-nowrap italic">New Era — Refurbished Imaging Equipment</span>
             </div>
           </Link>
 
