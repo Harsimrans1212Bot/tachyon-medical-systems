@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, sans-serif; background: #1a1a2e; color: white; padding: 24px; }
+  h1 { text-align: center; margin-bottom: 8px; font-size: 22px; }
+  .sub { text-align: center; color: #94a3b8; margin-bottom: 32px; font-size: 14px; }
+  .options { display: flex; flex-direction: column; gap: 32px; max-width: 500px; margin: 0 auto; }
+  .option { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 24px; border: 1px solid rgba(255,255,255,0.1); }
+  .option h2 { font-size: 16px; margin-bottom: 16px; color: #00A8E8; }
+  .previews { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+  .preview-item { text-align: center; }
+  .preview-item span { display: block; font-size: 11px; color: #94a3b8; margin-top: 6px; }
+  
+  /* Browser tab mockup */
+  .tab { display: inline-flex; align-items: center; gap: 8px; background: #2a2a3e; border-radius: 8px 8px 0 0; padding: 8px 16px; }
+  .tab-icon { width: 16px; height: 16px; border-radius: 3px; flex-shrink: 0; }
+  .tab-text { font-size: 12px; color: #ccc; white-space: nowrap; }
+  
+  /* Bookmark mockup */
+  .bookmark { display: inline-flex; align-items: center; gap: 8px; background: #333; border-radius: 8px; padding: 10px 16px; }
+  .bm-icon { width: 24px; height: 24px; border-radius: 5px; flex-shrink: 0; }
+  .bm-text { font-size: 13px; color: #ccc; }
+
+  /* Large preview */
+  .large { width: 64px; height: 64px; border-radius: 12px; }
+  
+  /* Option 1: Starburst */
+  .icon-starburst { background: #003366; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .icon-starburst .ring1 { position: absolute; border-radius: 50%; border: 1.5px solid rgba(0,168,232,0.6); }
+  .icon-starburst .ring2 { position: absolute; border-radius: 50%; border: 1.5px solid rgba(232,101,26,0.7); }
+  .icon-starburst .ring3 { position: absolute; border-radius: 50%; border: 1px solid rgba(0,168,232,0.5); }
+  .icon-starburst .dot { position: absolute; border-radius: 50%; background: #E8651A; }
+  .icon-starburst .cross-h { position: absolute; background: rgba(0,168,232,0.3); }
+  .icon-starburst .cross-v { position: absolute; background: rgba(0,168,232,0.3); }
+  
+  /* Option 2: Bold T */
+  .icon-t { background: #003366; display: flex; align-items: center; justify-content: center; font-weight: 900; color: white; }
+  
+  /* Option 3: TA */
+  .icon-ta { background: #003366; display: flex; align-items: center; justify-content: center; font-weight: 900; }
+  .icon-ta .t-letter { color: white; }
+  .icon-ta .a-letter { color: #E8651A; }
+  
+  /* Option 4: Starburst + T */
+  .icon-combo { background: #003366; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+</style>
+</head>
+<body>
+
+<h1>Favicon Options</h1>
+<p class="sub">Pick which icon you want in your browser tab</p>
+
+<div class="options">
+
+  <!-- Option 1 -->
+  <div class="option">
+    <h2>Option 1: Starburst / Crosshair (from logo)</h2>
+    <div class="previews">
+      <div class="preview-item">
+        <div class="tab">
+          <div class="tab-icon icon-starburst" style="border-radius:3px;">
+            <div class="ring1" style="width:12px;height:12px;"></div>
+            <div class="ring2" style="width:8px;height:8px;"></div>
+            <div class="dot" style="width:2px;height:2px;"></div>
+            <div class="cross-h" style="width:16px;height:0.5px;"></div>
+            <div class="cross-v" style="width:0.5px;height:16px;"></div>
+          </div>
+          <span class="tab-text">Tachyon Medical Systems</span>
+        </div>
+        <span>Browser tab</span>
+      </div>
+      <div class="preview-item">
+        <div class="large icon-starburst">
+          <div class="ring1" style="width:48px;height:48px;border-width:2px;"></div>
+          <div class="ring2" style="width:32px;height:32px;border-width:2px;"></div>
+          <div class="ring3" style="width:18px;height:18px;"></div>
+          <div class="dot" style="width:6px;height:6px;"></div>
+          <div class="cross-h" style="width:64px;height:1px;"></div>
+          <div class="cross-v" style="width:1px;height:64px;"></div>
+        </div>
+        <span>Home screen</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option 2 -->
+  <div class="option">
+    <h2>Option 2: Bold "T"</h2>
+    <div class="previews">
+      <div class="preview-item">
+        <div class="tab">
+          <div class="tab-icon icon-t" style="border-radius:3px;font-size:11px;">T</div>
+          <span class="tab-text">Tachyon Medical Systems</span>
+        </div>
+        <span>Browser tab</span>
+      </div>
+      <div class="preview-item">
+        <div class="large icon-t" style="font-size:36px;">T</div>
+        <span>Home screen</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option 3 -->
+  <div class="option">
+    <h2>Option 3: "TA" (like your logo)</h2>
+    <div class="previews">
+      <div class="preview-item">
+        <div class="tab">
+          <div class="tab-icon icon-ta" style="border-radius:3px;font-size:8px;gap:0px;">
+            <span class="t-letter">T</span><span class="a-letter">A</span>
+          </div>
+          <span class="tab-text">Tachyon Medical Systems</span>
+        </div>
+        <span>Browser tab</span>
+      </div>
+      <div class="preview-item">
+        <div class="large icon-ta" style="font-size:28px;gap:1px;">
+          <span class="t-letter">T</span><span class="a-letter">A</span>
+        </div>
+        <span>Home screen</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option 4 -->
+  <div class="option">
+    <h2>Option 4: Starburst + "T" Combo</h2>
+    <div class="previews">
+      <div class="preview-item">
+        <div class="tab">
+          <div class="tab-icon icon-combo" style="border-radius:3px;">
+            <div class="ring1" style="position:absolute;width:14px;height:14px;border-radius:50%;border:1px solid rgba(0,168,232,0.4);"></div>
+            <div style="position:relative;font-size:9px;font-weight:900;color:white;">T</div>
+          </div>
+          <span class="tab-text">Tachyon Medical Systems</span>
+        </div>
+        <span>Browser tab</span>
+      </div>
+      <div class="preview-item">
+        <div class="large icon-combo">
+          <div style="position:absolute;width:52px;height:52px;border-radius:50%;border:2px solid rgba(0,168,232,0.4);"></div>
+          <div style="position:absolute;width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(232,101,26,0.3);"></div>
+          <div style="position:relative;font-size:28px;font-weight:900;color:white;">T</div>
+        </div>
+        <span>Home screen</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p style="text-align:center;margin-top:32px;color:#64748b;font-size:13px;">Pick your favorite and tell me the number!</p>
+
+</body>
+</html>
