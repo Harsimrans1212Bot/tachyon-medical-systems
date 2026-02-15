@@ -120,6 +120,10 @@ html {
 }
 
 @media (prefers-color-scheme: dark) {
+  .card-hover {
+    backdrop-filter: blur(12px);
+    border-color: rgba(0, 168, 232, 0.08);
+  }
   .card-hover:hover {
     box-shadow: 0 20px 60px rgba(0, 168, 232, 0.12);
     border-color: rgba(0, 168, 232, 0.25) !important;
