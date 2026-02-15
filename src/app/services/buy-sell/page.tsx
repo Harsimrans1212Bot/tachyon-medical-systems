@@ -50,32 +50,6 @@ export default function BuySellPage() {
         </div>
       </section>
 
-      {/* Sales Team */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Meet the Team</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Our Sales Team</h2>
-            <p className="text-gray-500 mt-4">Contact our sales team for personalized assistance with your equipment needs.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, i) => (
-              <div key={i} className="bg-gray-50 rounded-2xl p-8 text-center card-hover border border-gray-100">
-                <div className="w-20 h-20 bg-light-cyan/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-10 h-10 text-light-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-lg font-bold text-deep-blue">{member.name}</h3>
-                <p className="text-sm text-gray-500 mt-1">{member.title}</p>
-                <p className="text-xs text-light-cyan font-medium mt-2">{member.region}</p>
-                <a href={`mailto:${member.email}`} className="text-sm text-orange hover:underline mt-4 inline-block">{member.email}</a>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Looking to Buy */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -156,6 +130,32 @@ export default function BuySellPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sales Team */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Meet the Team</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Our Sales Team</h2>
+            <p className="text-gray-500 mt-4">Contact our sales team for personalized assistance with your equipment needs.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map((member, i) => (
+              <div key={i} className="bg-gray-50 rounded-2xl p-8 text-center card-hover border border-gray-100">
+                <div className="w-20 h-20 bg-light-cyan/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-10 h-10 text-light-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-deep-blue">{member.name}</h3>
+                <p className="text-sm text-gray-500 mt-1">{member.title}</p>
+                <p className="text-xs text-light-cyan font-medium mt-2">{member.region}</p>
+                <a href={`mailto:${member.email}`} className="text-sm text-orange hover:underline mt-4 inline-block">{member.email}</a>
+              </div>
+            ))}
           </div>
         </div>
       </section>
