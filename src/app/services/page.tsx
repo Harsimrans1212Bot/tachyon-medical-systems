@@ -84,28 +84,41 @@ export default function Services() {
                   </div>
                   <h2 className="text-2xl sm:text-3xl font-black text-deep-blue dark:text-white">{service.title}</h2>
                   <p className="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed">{service.description}</p>
-                  <ul className="mt-6 space-y-3">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
-                        <svg className="w-5 h-5 text-light-cyan flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex flex-col sm:flex-row gap-6 mt-6">
+                    <ul className="space-y-3 flex-1">
+                      {service.features.map((feature) => (
+                        <li key={feature} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
+                          <svg className="w-5 h-5 text-light-cyan flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                    {/* Mobile inline image */}
+                    <div className="lg:hidden flex-1">
+                      {service.image ? (
+                        <div className="h-48 sm:h-56 rounded-2xl overflow-hidden">
+                          <img src={service.image} alt={service.title} className="w-full h-full object-cover object-center" />
+                        </div>
+                      ) : (
+                        <div className="h-48 rounded-2xl equipment-placeholder flex items-center justify-center">
+                          <span className="text-4xl opacity-30">{service.icon}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                   {service.href && (
-                    <Link href={service.href} className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/80 transition-all hover:shadow-lg text-sm">
+                    <Link href={service.href} className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/80 transition-all hover:shadow-lg text-sm">
                       Learn More
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                     </Link>
                   )}
                 </div>
-                <div className="flex-1 w-full">
+                {/* Desktop side image */}
+                <div className="hidden lg:block flex-1 w-full">
                   {service.image ? (
-                    <div
-                      className="h-80 sm:h-96 rounded-2xl overflow-hidden"
-                    >
+                    <div className="h-80 sm:h-96 rounded-2xl overflow-hidden">
                       <img src={service.image} alt={service.title} className="w-full h-full object-cover object-center" />
                     </div>
                   ) : (
