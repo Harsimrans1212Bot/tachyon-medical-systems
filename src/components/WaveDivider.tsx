@@ -36,7 +36,7 @@ export default function WaveDivider({ position = "bottom" }: { position?: "top" 
 
   return (
     <div
-      className={`absolute left-0 right-0 overflow-hidden pointer-events-none h-12 z-[2] ${position === "top" ? "top-0" : "bottom-0"}`}
+      className={`absolute left-0 right-0 overflow-hidden pointer-events-none h-12 z-[2] dark:hidden ${position === "top" ? "top-0" : "bottom-0"}`}
     >
       <svg
         ref={ref}
