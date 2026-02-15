@@ -142,7 +142,7 @@ export default function RefurbishmentPage() {
               <div key={step.num} className="relative bg-gray-50 dark:bg-white/5 rounded-2xl p-8 card-hover border border-gray-100 dark:border-white/10">
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-3xl">{step.icon}</span>
-                  <span className="text-4xl font-black text-light-cyan/20">{step.num}</span>
+                  <span className="text-4xl font-black text-orange">{step.num}</span>
                 </div>
                 <h3 className="text-xl font-bold text-deep-blue dark:text-white">{step.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm leading-relaxed">{step.desc}</p>
