@@ -399,20 +399,20 @@ export default async function MachinePage({ params }: PageProps) {
   return (
     <>
       {/* Breadcrumb */}
-      <section className="pt-28 pb-8 bg-gray-50">
+      <section className="pt-28 pb-8 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-sm text-gray-500">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
             <Link href="/" className="hover:text-light-cyan">Home</Link>
             <span>/</span>
             <Link href="/inventory" className="hover:text-light-cyan">Inventory</Link>
             <span>/</span>
-            <span className="text-deep-blue font-medium">{machine.name}</span>
+            <span className="text-deep-blue dark:text-white font-medium">{machine.name}</span>
           </nav>
         </div>
       </section>
 
       {/* Machine Details */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Image */}
@@ -440,21 +440,21 @@ export default async function MachinePage({ params }: PageProps) {
                   {machine.category}
                 </span>
               </div>
-              <h1 className="text-4xl font-black text-deep-blue mb-4">{machine.name}</h1>
+              <h1 className="text-4xl font-black text-deep-blue dark:text-white mb-4">{machine.name}</h1>
               <div className="text-3xl font-bold text-orange mb-6">{machine.price}</div>
               
-              <p className="text-gray-600 mb-8 leading-relaxed">{machine.description}</p>
+              <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">{machine.description}</p>
 
               {/* Key Features */}
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-deep-blue mb-4">Key Features</h3>
+                <h3 className="text-xl font-bold text-deep-blue dark:text-white mb-4">Key Features</h3>
                 <ul className="space-y-2">
                   {machine.features.map((feature, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <svg className="w-5 h-5 text-light-cyan mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-600 text-sm">{feature}</span>
+                      <span className="text-gray-600 dark:text-gray-300 text-sm">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -488,15 +488,15 @@ export default async function MachinePage({ params }: PageProps) {
       </section>
 
       {/* Specifications */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-white dark:bg-[#0d1b2a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black text-deep-blue mb-8">Technical Specifications</h2>
-          <div className="bg-gray-50 rounded-2xl p-8">
+          <h2 className="text-3xl font-black text-deep-blue dark:text-white mb-8">Technical Specifications</h2>
+          <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {Object.entries(machine.specifications).map(([key, value]) => (
-                <div key={key} className="flex justify-between items-center py-3 border-b border-gray-200 last:border-0">
-                  <span className="font-semibold text-gray-700">{key}:</span>
-                  <span className="text-gray-600">{value}</span>
+                <div key={key} className="flex justify-between items-center py-3 border-b border-gray-200 dark:border-white/10 last:border-0">
+                  <span className="font-semibold text-gray-700 dark:text-gray-300">{key}:</span>
+                  <span className="text-gray-600 dark:text-gray-300">{value}</span>
                 </div>
               ))}
             </div>

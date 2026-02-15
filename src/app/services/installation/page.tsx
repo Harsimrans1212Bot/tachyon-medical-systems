@@ -67,25 +67,25 @@ export default function InstallationPage() {
       </section>
 
       {/* Pricing */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Investment Guide</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Installation Cost Estimates</h2>
-            <p className="text-gray-500 mt-4">Transparent pricing to help you plan your equipment investment.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Installation Cost Estimates</h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4">Transparent pricing to help you plan your equipment investment.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {pricing.map((item) => (
-              <div key={item.equipment} className="bg-gray-50 rounded-2xl p-8 card-hover border border-gray-100">
+              <div key={item.equipment} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8 card-hover border border-gray-100 dark:border-white/10">
                 <span className="text-4xl block mb-4">{item.icon}</span>
-                <h3 className="text-xl font-black text-deep-blue">{item.equipment}</h3>
+                <h3 className="text-xl font-black text-deep-blue dark:text-white">{item.equipment}</h3>
                 <p className="text-2xl font-black text-light-cyan mt-2">{item.range}</p>
-                <p className="text-sm text-gray-500 mt-4">{item.includes}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">{item.includes}</p>
               </div>
             ))}
           </div>
-          <div className="mt-10 bg-orange/5 border border-orange/20 rounded-2xl p-6 text-center">
-            <p className="text-sm text-gray-600">
+          <div className="mt-10 bg-orange/5 dark:bg-orange/10 border border-orange/20 rounded-2xl p-6 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-300">
               <span className="font-bold text-orange">⚠️ Disclaimer:</span> Prices are estimates and vary based on site conditions, geographic location, equipment configuration, and local regulations. Contact us for a detailed, customized quote.
             </p>
           </div>
@@ -93,27 +93,27 @@ export default function InstallationPage() {
       </section>
 
       {/* Installation Phases */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">Our Process</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Installation Phases</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Installation Phases</h2>
           </div>
           <div className="space-y-8">
             {phases.map((phase, i) => (
-              <div key={phase.title} className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100">
+              <div key={phase.title} className="bg-white dark:bg-white/5 rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100 dark:border-white/10">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-light-cyan/10 text-2xl flex-shrink-0">
                     {phase.icon}
                   </div>
                   <div>
                     <span className="text-xs font-bold text-light-cyan uppercase">Phase {i + 1}</span>
-                    <h3 className="text-xl font-black text-deep-blue">{phase.title}</h3>
+                    <h3 className="text-xl font-black text-deep-blue dark:text-white">{phase.title}</h3>
                   </div>
                 </div>
                 <ul className="grid sm:grid-cols-2 gap-3">
                   {phase.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-gray-600">
+                    <li key={item} className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-300">
                       <svg className="w-4 h-4 text-light-cyan flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -128,13 +128,13 @@ export default function InstallationPage() {
       </section>
 
       {/* Uninstallation */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-sm font-bold tracking-wider uppercase text-orange">Also Available</span>
-              <h2 className="text-3xl font-black text-deep-blue mt-3">Uninstallation Services</h2>
-              <p className="text-gray-500 mt-4 leading-relaxed">
+              <h2 className="text-3xl font-black text-deep-blue dark:text-white mt-3">Uninstallation Services</h2>
+              <p className="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed">
                 Safe, professional removal of medical imaging equipment. Our team ensures proper disconnection, cryogen recovery (MRI), component protection, and site restoration.
               </p>
               <ul className="mt-8 space-y-3">
@@ -147,7 +147,7 @@ export default function InstallationPage() {
                   "Radiation survey and clearance (if applicable)",
                   "Documentation and chain of custody records",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm text-gray-600">
+                  <li key={item} className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-300">
                     <svg className="w-5 h-5 text-orange flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
@@ -164,10 +164,10 @@ export default function InstallationPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-black text-deep-blue mb-4">Plan Your Installation</h2>
-          <p className="text-gray-500 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-black text-deep-blue dark:text-white mb-4">Plan Your Installation</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
             Get a detailed site assessment and installation quote tailored to your facility. Our engineering team is ready to help.
           </p>
           <Link href="/contact" className="inline-flex px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl">

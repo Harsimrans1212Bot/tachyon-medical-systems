@@ -164,24 +164,24 @@ export default function InventoryClient() {
       </section>
 
       {/* Inventory by Category */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             {categories.map((category) => (
-              <div key={category.name} className="bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+              <div key={category.name} className="bg-white dark:bg-white/5 rounded-2xl overflow-hidden card-hover border border-gray-100 dark:border-white/10">
                 {/* Category Header */}
                 <button
                   onClick={() => toggleCategory(category.name)}
-                  className="w-full p-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+                  className="w-full p-6 flex items-center justify-between text-left hover:bg-gray-50 dark:hover:bg-white/5 transition-colors"
                 >
                   <div className="flex items-center gap-4">
                     <div className="text-light-cyan">{category.icon}</div>
                     <div>
-                      <h2 className="text-2xl font-black text-deep-blue">{category.name}</h2>
-                      <p className="text-gray-500 text-sm mt-1">{category.description}</p>
+                      <h2 className="text-2xl font-black text-deep-blue dark:text-white">{category.name}</h2>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{category.description}</p>
                     </div>
                   </div>
-                  <div className="text-deep-blue">
+                  <div className="text-deep-blue dark:text-white">
                     <svg
                       className={`w-6 h-6 transition-transform duration-300 ${
                         isExpanded(category.name) ? "rotate-180" : ""
@@ -197,13 +197,13 @@ export default function InventoryClient() {
 
                 {/* Collapsible Machine List */}
                 {isExpanded(category.name) && (
-                  <div className="px-6 pb-6 border-t border-gray-100">
+                  <div className="px-6 pb-6 border-t border-gray-100 dark:border-white/10">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6">
                       {category.machines.map((machine) => (
                         <Link
                           key={machine.slug}
                           href={`/inventory/${machine.slug}`}
-                          className="block bg-gray-50 rounded-lg p-4 hover:bg-light-cyan/10 hover:border-light-cyan border border-transparent transition-all group"
+                          className="block bg-gray-50 dark:bg-white/5 rounded-lg p-4 hover:bg-light-cyan/10 hover:border-light-cyan border border-transparent transition-all group"
                         >
                           <div className="h-32 relative overflow-hidden rounded-lg mb-3">
                             <Image
@@ -215,8 +215,8 @@ export default function InventoryClient() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                           </div>
-                          <h3 className="font-bold text-deep-blue text-sm mb-1">{machine.name}</h3>
-                          <p className="text-xs text-gray-500">{machine.specs}</p>
+                          <h3 className="font-bold text-deep-blue dark:text-white text-sm mb-1">{machine.name}</h3>
+                          <p className="text-xs text-gray-500 dark:text-gray-400">{machine.specs}</p>
                           <div className="flex items-center gap-1 text-xs font-semibold text-light-cyan mt-3 group-hover:text-orange transition-colors">
                             View Details
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

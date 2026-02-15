@@ -83,16 +83,16 @@ export default function ImportExportPage() {
       </section>
 
       {/* Trade Routes Visualization */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Global Network</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Active Trade Routes</h2>
-            <p className="text-gray-500 mt-4">Our established corridors ensure reliable and efficient equipment delivery worldwide.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Active Trade Routes</h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4">Our established corridors ensure reliable and efficient equipment delivery worldwide.</p>
           </div>
 
           {/* SVG Route Map */}
-          <div className="relative bg-deep-blue/5 rounded-2xl p-8 mb-8 overflow-hidden">
+          <div className="relative bg-deep-blue/5 dark:bg-white/5 rounded-2xl p-8 mb-8 overflow-hidden">
             <svg viewBox="0 0 800 400" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
               {/* Animated route lines */}
               <defs>
@@ -134,7 +134,7 @@ export default function ImportExportPage() {
           {/* Route Cards */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {routes.map((route, i) => (
-              <div key={i} className="bg-gray-50 rounded-2xl p-6 card-hover border border-gray-100">
+              <div key={i} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 card-hover border border-gray-100 dark:border-white/10">
                 <div className="flex items-center gap-3 mb-3">
                   <span className="text-lg">{route.from}</span>
                   <svg className="w-5 h-5 text-light-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -142,7 +142,7 @@ export default function ImportExportPage() {
                   </svg>
                   <span className="text-lg">{route.to}</span>
                 </div>
-                <p className="text-sm text-gray-500">{route.desc}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{route.desc}</p>
               </div>
             ))}
           </div>
@@ -150,23 +150,23 @@ export default function ImportExportPage() {
       </section>
 
       {/* Services */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">What We Handle</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Comprehensive Trade Services</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Comprehensive Trade Services</h2>
           </div>
           <div className="space-y-8">
             {services.map((svc) => (
-              <div key={svc.title} className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100">
+              <div key={svc.title} className="bg-white dark:bg-white/5 rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100 dark:border-white/10">
                 <div className="flex items-start gap-6">
                   <span className="text-4xl flex-shrink-0">{svc.icon}</span>
                   <div className="flex-1">
-                    <h3 className="text-xl font-black text-deep-blue">{svc.title}</h3>
-                    <p className="text-gray-500 mt-2 leading-relaxed">{svc.desc}</p>
+                    <h3 className="text-xl font-black text-deep-blue dark:text-white">{svc.title}</h3>
+                    <p className="text-gray-500 dark:text-gray-400 mt-2 leading-relaxed">{svc.desc}</p>
                     <ul className="mt-4 grid sm:grid-cols-2 gap-2">
                       {svc.points.map((p) => (
-                        <li key={p} className="flex items-center gap-2 text-sm text-gray-600">
+                        <li key={p} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300">
                           <svg className="w-4 h-4 text-light-cyan flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                           </svg>
@@ -183,18 +183,18 @@ export default function ImportExportPage() {
       </section>
 
       {/* Countries Served */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Worldwide Reach</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Countries We Serve</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Countries We Serve</h2>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {countries.map((c) => (
-              <div key={c.name} className="bg-gray-50 rounded-2xl p-6 text-center card-hover border border-gray-100">
+              <div key={c.name} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 text-center card-hover border border-gray-100 dark:border-white/10">
                 <span className="text-4xl block mb-3">{c.flag}</span>
-                <h4 className="font-bold text-deep-blue">{c.name}</h4>
-                <p className="text-xs text-gray-500 mt-1">{c.detail}</p>
+                <h4 className="font-bold text-deep-blue dark:text-white">{c.name}</h4>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{c.detail}</p>
               </div>
             ))}
           </div>
@@ -202,10 +202,10 @@ export default function ImportExportPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-black text-deep-blue mb-4">Need to Ship Medical Equipment?</h2>
-          <p className="text-gray-500 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-black text-deep-blue dark:text-white mb-4">Need to Ship Medical Equipment?</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
             Let our logistics team handle the complexities of international medical equipment trade. Get a shipping quote today.
           </p>
           <Link href="/contact" className="inline-flex px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl">

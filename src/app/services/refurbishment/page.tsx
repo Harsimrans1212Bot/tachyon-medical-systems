@@ -128,22 +128,22 @@ export default function RefurbishmentPage() {
       </section>
 
       {/* Process Steps */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Our Process</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Six-Step Refurbishment Process</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Every system undergoes our rigorous six-step process to ensure it meets or exceeds original manufacturer specifications.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Six-Step Refurbishment Process</h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Every system undergoes our rigorous six-step process to ensure it meets or exceeds original manufacturer specifications.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {steps.map((step) => (
-              <div key={step.num} className="relative bg-gray-50 rounded-2xl p-8 card-hover border border-gray-100">
+              <div key={step.num} className="relative bg-gray-50 dark:bg-white/5 rounded-2xl p-8 card-hover border border-gray-100 dark:border-white/10">
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-3xl">{step.icon}</span>
                   <span className="text-4xl font-black text-light-cyan/20">{step.num}</span>
                 </div>
-                <h3 className="text-xl font-bold text-deep-blue">{step.title}</h3>
-                <p className="text-gray-500 mt-2 text-sm leading-relaxed">{step.desc}</p>
+                <h3 className="text-xl font-bold text-deep-blue dark:text-white">{step.title}</h3>
+                <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -151,22 +151,22 @@ export default function RefurbishmentPage() {
       </section>
 
       {/* Equipment-Specific Sections */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">Equipment Specialties</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">What We Refurbish</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">What We Refurbish</h2>
           </div>
           <div className="space-y-12">
             {equipment.map((eq) => (
-              <div key={eq.title} className="bg-white rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100">
+              <div key={eq.title} className="bg-white dark:bg-white/5 rounded-2xl p-8 sm:p-10 shadow-sm border border-gray-100 dark:border-white/10">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-4xl">{eq.icon}</span>
-                  <h3 className="text-2xl font-black text-deep-blue">{eq.title}</h3>
+                  <h3 className="text-2xl font-black text-deep-blue dark:text-white">{eq.title}</h3>
                 </div>
                 <ul className="grid sm:grid-cols-2 gap-4">
                   {eq.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                    <li key={item} className="flex items-start gap-3 text-sm text-gray-600 dark:text-gray-300">
                       <svg className="w-5 h-5 text-light-cyan flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -181,13 +181,13 @@ export default function RefurbishmentPage() {
       </section>
 
       {/* Quality Assurance */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Quality Assurance</span>
-              <h2 className="text-3xl font-black text-deep-blue mt-3">Our Quality Commitment</h2>
-              <p className="text-gray-500 mt-4 leading-relaxed">
+              <h2 className="text-3xl font-black text-deep-blue dark:text-white mt-3">Our Quality Commitment</h2>
+              <p className="text-gray-500 dark:text-gray-400 mt-4 leading-relaxed">
                 Every refurbished system undergoes comprehensive testing before leaving our facility. We use only OEM-equivalent or genuine parts, and back our work with a full warranty.
               </p>
               <ul className="mt-8 space-y-4">
@@ -200,7 +200,7 @@ export default function RefurbishmentPage() {
                   "12-month parts and labor warranty",
                   "Detailed refurbishment documentation",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-gray-600">
+                  <li key={item} className="flex items-center gap-3 text-gray-600 dark:text-gray-300">
                     <svg className="w-5 h-5 text-orange flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -217,10 +217,10 @@ export default function RefurbishmentPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-black text-deep-blue mb-4">Ready to Refurbish Your Equipment?</h2>
-          <p className="text-gray-500 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-3xl font-black text-deep-blue dark:text-white mb-4">Ready to Refurbish Your Equipment?</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
             Get a detailed assessment and quote for your medical equipment refurbishment. Our team of certified engineers is ready to help.
           </p>
           <Link href="/contact" className="inline-flex px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl">

@@ -21,20 +21,20 @@ export default function InventoryInquiries() {
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Info */}
             <div>
-              <h2 className="text-2xl font-black text-deep-blue mb-8">Get In Touch</h2>
+              <h2 className="text-2xl font-black text-deep-blue dark:text-white mb-8">Get In Touch</h2>
 
               {/* India Office */}
-              <div className="bg-white rounded-2xl p-8 border border-gray-100 mb-8">
+              <div className="bg-white dark:bg-white/5 rounded-2xl p-8 border border-gray-100 dark:border-white/10 mb-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-deep-blue/10 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-deep-blue/10 dark:bg-white/10 flex items-center justify-center">
                     <span className="text-lg">🇮🇳</span>
                   </div>
-                  <h3 className="text-lg font-bold text-deep-blue">India Office (Headquarters)</h3>
+                  <h3 className="text-lg font-bold text-deep-blue dark:text-white">India Office (Headquarters)</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
@@ -43,8 +43,8 @@ export default function InventoryInquiries() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-deep-blue text-sm">Address</p>
-                      <p className="text-gray-500 text-sm">1 Nyaypuri, Minar Road<br />Near Karan Stadium<br />Karnal-132001, Haryana, India</p>
+                      <p className="font-semibold text-deep-blue dark:text-white text-sm">Address</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">1 Nyaypuri, Minar Road<br />Near Karan Stadium<br />Karnal-132001, Haryana, India</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -52,8 +52,8 @@ export default function InventoryInquiries() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-deep-blue text-sm">Phone</p>
-                      <p className="text-gray-500 text-sm">
+                      <p className="font-semibold text-deep-blue dark:text-white text-sm">Phone</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">
                         Office: <a href="tel:+911842270291" className="hover:text-light-cyan transition-colors">+91 184 2270291</a><br />
                         Cell: <a href="tel:+919215291291" className="hover:text-light-cyan transition-colors">+91 9215291291</a><br />
                         Cell: <a href="tel:+919992291291" className="hover:text-light-cyan transition-colors">+91 9992291291</a>
@@ -65,8 +65,8 @@ export default function InventoryInquiries() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-deep-blue text-sm">Email</p>
-                      <p className="text-gray-500 text-sm">
+                      <p className="font-semibold text-deep-blue dark:text-white text-sm">Email</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">
                         <a href="mailto:admin@tachyonmedical.com" className="hover:text-light-cyan transition-colors">admin@tachyonmedical.com</a><br /><a href="mailto:tachyonmedical1166@gmail.com" className="hover:text-light-cyan transition-colors">tachyonmedical1166@gmail.com</a>
                       </p>
                     </div>
@@ -75,12 +75,12 @@ export default function InventoryInquiries() {
               </div>
 
               {/* US Office */}
-              <div className="bg-white rounded-2xl p-8 border border-gray-100">
+              <div className="bg-white dark:bg-white/5 rounded-2xl p-8 border border-gray-100 dark:border-white/10">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-deep-blue/10 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-deep-blue/10 dark:bg-white/10 flex items-center justify-center">
                     <span className="text-lg">🇺🇸</span>
                   </div>
-                  <h3 className="text-lg font-bold text-deep-blue">United States</h3>
+                  <h3 className="text-lg font-bold text-deep-blue dark:text-white">United States</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
@@ -88,8 +88,8 @@ export default function InventoryInquiries() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-deep-blue text-sm">Phone</p>
-                      <p className="text-gray-500 text-sm">
+                      <p className="font-semibold text-deep-blue dark:text-white text-sm">Phone</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">
                         <a href="tel:+19178565211" className="hover:text-light-cyan transition-colors">+1 (917) 856-5211</a>
                       </p>
                     </div>
@@ -99,8 +99,8 @@ export default function InventoryInquiries() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-deep-blue text-sm">Email</p>
-                      <p className="text-gray-500 text-sm">
+                      <p className="font-semibold text-deep-blue dark:text-white text-sm">Email</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm">
                         <a href="mailto:tachyonmedical1166@gmail.com" className="hover:text-light-cyan transition-colors">tachyonmedical1166@gmail.com</a>
                       </p>
                     </div>
@@ -111,30 +111,30 @@ export default function InventoryInquiries() {
 
             {/* Inventory Inquiry Form */}
             <div>
-              <h2 className="text-2xl font-black text-deep-blue mb-8">Inventory Inquiry Form</h2>
-              <div className="bg-white rounded-2xl p-8 border border-gray-100">
+              <h2 className="text-2xl font-black text-deep-blue dark:text-white mb-8">Inventory Inquiry Form</h2>
+              <div className="bg-white dark:bg-white/5 rounded-2xl p-8 border border-gray-100 dark:border-white/10">
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-deep-blue mb-2">Name</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="John Doe" />
+                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Name</label>
+                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="John Doe" />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-deep-blue mb-2">Email</label>
-                      <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="john@hospital.com" />
+                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Email</label>
+                      <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="john@hospital.com" />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Phone</label>
-                    <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="+1 (555) 000-0000" />
+                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Phone</label>
+                    <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="+1 (555) 000-0000" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Company/Facility Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="Memorial Healthcare Center" />
+                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Company/Facility Name</label>
+                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="Memorial Healthcare Center" />
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Equipment Category</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
+                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Equipment Category</label>
+                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400 dark:bg-[#0d1b2a]">
                       <option>Select equipment category</option>
                       <option>CT Scanner</option>
                       <option>MRI</option>
@@ -147,17 +147,17 @@ export default function InventoryInquiries() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Specific Model <span className="text-gray-400 font-normal">(if known, optional)</span></label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="e.g., GE Revolution EVO, Siemens SOMATOM Force" />
+                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Specific Model <span className="text-gray-400 font-normal">(if known, optional)</span></label>
+                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="e.g., GE Revolution EVO, Siemens SOMATOM Force" />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-semibold text-deep-blue mb-2">Quantity Needed</label>
-                      <input type="number" min="1" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="1" />
+                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Quantity Needed</label>
+                      <input type="number" min="1" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="1" />
                     </div>
                     <div>
-                      <label className="block text-sm font-semibold text-deep-blue mb-2">Budget Range</label>
-                      <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
+                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Budget Range</label>
+                      <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400">
                         <option>Select budget range</option>
                         <option>Under $100K</option>
                         <option>$100K-$250K</option>
@@ -168,8 +168,8 @@ export default function InventoryInquiries() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Delivery Timeline</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500">
+                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Delivery Timeline</label>
+                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400 dark:bg-[#0d1b2a]">
                       <option>Select delivery timeline</option>
                       <option>Immediate</option>
                       <option>1-3 months</option>
@@ -179,8 +179,8 @@ export default function InventoryInquiries() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-deep-blue mb-2">Additional Requirements</label>
-                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm resize-none" placeholder="Please provide any additional requirements, specific configurations, warranty needs, or other details..." />
+                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Additional Requirements</label>
+                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm resize-none" placeholder="Please provide any additional requirements, specific configurations, warranty needs, or other details..." />
                   </div>
                   <button type="submit" className="w-full py-4 bg-light-cyan text-white font-bold rounded-xl hover:bg-light-cyan/90 transition-all hover:shadow-lg text-sm">
                     Submit Inventory Inquiry

@@ -39,7 +39,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md shadow-sm border-b border-gray-100">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#0d1b2a] backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-white/10">
       <div className="max-w-[90rem] mx-auto px-4 sm:px-8">
         <div className="flex items-center justify-between h-16 sm:h-28">
           {/* Logo — small icon+text on mobile, full banner on desktop */}
@@ -55,8 +55,8 @@ export default function Header() {
                 priority
               />
               <div className="flex flex-col leading-tight">
-                <span className="text-3xl font-black text-deep-blue tracking-tight">T<span className="text-orange">A</span>CHYON</span>
-                <span className="text-xs font-semibold text-gray-500 tracking-wider uppercase">Medical Systems</span>
+                <span className="text-3xl font-black text-deep-blue dark:text-white tracking-tight">T<span className="text-orange">A</span>CHYON</span>
+                <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 tracking-wider uppercase">Medical Systems</span>
               </div>
             </div>
             {/* Desktop: logo + tagline */}
@@ -69,7 +69,7 @@ export default function Header() {
                 className="h-24 w-auto object-contain"
                 priority
               />
-              <span className="text-base font-semibold tracking-wide whitespace-nowrap italic" style={{ color: "#145a85" }}>New Era — Refurbished Imaging Equipment</span>
+              <span className="text-base font-semibold tracking-wide whitespace-nowrap italic text-[#145a85] dark:text-gray-400">New Era — Refurbished Imaging Equipment</span>
             </div>
           </Link>
 
@@ -79,7 +79,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base font-bold text-gray-700 hover:text-light-cyan transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-light-cyan after:transition-all hover:after:w-full"
+                className="text-base font-bold text-gray-700 dark:text-gray-300 hover:text-light-cyan transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-light-cyan after:transition-all hover:after:w-full"
               >
                 {link.label}
               </Link>
@@ -106,7 +106,7 @@ export default function Header() {
           <div className="md:hidden relative" ref={menuRef}>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 text-deep-blue rounded-lg hover:bg-gray-100 transition-colors"
+              className="p-2 text-deep-blue dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -120,13 +120,13 @@ export default function Header() {
 
             {/* Dropdown Menu */}
             {menuOpen && (
-              <div className="absolute right-0 top-12 w-64 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden animate-fade-in z-50">
+              <div className="absolute right-0 top-12 w-64 bg-white dark:bg-[#0d1b2a] rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 overflow-hidden animate-fade-in z-50">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block px-5 py-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-light-cyan transition-colors border-b border-gray-50 last:border-0"
+                    className="block px-5 py-3.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-light-cyan transition-colors border-b border-gray-50 dark:border-white/5 last:border-0"
                   >
                     {link.label}
                   </Link>

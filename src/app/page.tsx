@@ -241,13 +241,13 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-white border-b border-gray-100">
+      <section className="py-16 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10">
         <div ref={statsRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="stat-value text-3xl sm:text-4xl font-black text-deep-blue mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-500 font-medium">{stat.label}</div>
+                <div className="stat-value text-3xl sm:text-4xl font-black text-deep-blue dark:text-white dark:text-white mb-1">{stat.value}</div>
+                <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -255,31 +255,31 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div
           ref={servicesSectionRef}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">What We Do</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">End to End Medical Equipment Solutions</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">Comprehensive services covering every stage of the equipment lifecycle.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">End to End Medical Equipment Solutions</h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Comprehensive services covering every stage of the equipment lifecycle.</p>
           </div>
           <div ref={servicesCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
-                className="reveal-card block p-8 rounded-2xl bg-gray-50 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 hover:border-deep-blue cursor-pointer"
+                className="reveal-card block p-8 rounded-2xl bg-gray-50 dark:bg-white/5 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 dark:border-white/10 hover:border-deep-blue cursor-pointer"
               >
                 <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-lg font-bold text-deep-blue group-hover:text-white transition-colors">{service.title}</h3>
-                <p className="text-sm text-gray-500 group-hover:text-gray-300 mt-3 transition-colors">{service.desc}</p>
+                <h3 className="text-lg font-bold text-deep-blue dark:text-white group-hover:text-white transition-colors">{service.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 mt-3 transition-colors">{service.desc}</p>
               </Link>
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link href="/services" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-deep-blue text-deep-blue font-bold rounded-full hover:bg-deep-blue hover:text-white transition-all">
+            <Link href="/services" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-deep-blue dark:border-white/30 text-deep-blue dark:text-white font-bold rounded-full hover:bg-deep-blue hover:text-white transition-all">
               View All Services
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
@@ -288,22 +288,22 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
         <div
           ref={productsSectionRef}
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Our Equipment</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue mt-3">Featured Inventory</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">World-class medical imaging and diagnostic equipment, meticulously refurbished to meet the highest standards.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Featured Inventory</h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">World-class medical imaging and diagnostic equipment, meticulously refurbished to meet the highest standards.</p>
           </div>
           <div ref={productsCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredProducts.map((product) => (
               <Link
                 key={product.name}
                 href={product.href}
-                className="reveal-card block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100"
+                className="reveal-card block bg-white dark:bg-white/5 rounded-2xl overflow-hidden card-hover border border-gray-100 dark:border-white/10"
               >
                 <div className="h-48 relative overflow-hidden">
                   <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
@@ -311,8 +311,8 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <span className="text-xs font-bold text-light-cyan uppercase tracking-wider">{product.category}</span>
-                  <h3 className="text-lg font-bold text-deep-blue mt-1">{product.name}</h3>
-                  <p className="text-sm text-gray-500 mt-2">{product.desc}</p>
+                  <h3 className="text-lg font-bold text-deep-blue dark:text-white mt-1">{product.name}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">{product.desc}</p>
                 </div>
               </Link>
             ))}
