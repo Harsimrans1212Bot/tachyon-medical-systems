@@ -51,7 +51,7 @@ export default function Header() {
                 alt="Tachyon Medical Systems"
                 width={40}
                 height={40}
-                className="h-14 w-14 object-contain"
+                className="h-14 w-14 object-contain dark:bg-white dark:rounded-lg dark:p-0.5"
                 priority
               />
               <div className="flex flex-col leading-tight">
@@ -66,7 +66,7 @@ export default function Header() {
                 alt="Tachyon Medical Systems Pvt. Ltd."
                 width={640}
                 height={216}
-                className="h-24 w-auto object-contain"
+                className="h-24 w-auto object-contain bg-white rounded-lg p-1"
                 priority
               />
               <span className="text-base font-semibold tracking-wide whitespace-nowrap italic text-[#145a85] dark:text-gray-400">New Era — Refurbished Imaging Equipment</span>
