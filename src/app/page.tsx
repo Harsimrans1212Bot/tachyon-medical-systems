@@ -184,10 +184,10 @@ export default function Home() {
           {/* Large glowing orbs with parallax */}
           <div ref={orb1Ref} className="absolute top-20 right-20 w-96 h-96 rounded-full bg-light-cyan/5 blur-3xl" />
           <div ref={orb2Ref} className="absolute bottom-20 left-20 w-72 h-72 rounded-full bg-orange/5 blur-3xl" />
-          {/* Concentric rings */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5 animate-[spin_60s_linear_infinite]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-white/5 animate-[spin_45s_linear_infinite_reverse]" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-white/[0.03] animate-[spin_30s_linear_infinite]" />
+          {/* MRI Bore Animation */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full animate-[mri-spin-cw_10s_linear_infinite]" style={{ borderWidth: '16px', borderStyle: 'solid', borderColor: 'rgba(100, 200, 255, 0.08)', borderTopColor: 'rgba(100, 200, 255, 0.3)', borderRightColor: 'rgba(100, 200, 255, 0.15)' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[370px] h-[370px] sm:w-[520px] sm:h-[520px] rounded-full animate-[mri-spin-ccw_7s_linear_infinite]" style={{ borderWidth: '12px', borderStyle: 'solid', borderColor: 'rgba(255, 140, 50, 0.06)', borderBottomColor: 'rgba(255, 140, 50, 0.25)', borderLeftColor: 'rgba(255, 140, 50, 0.12)' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] sm:w-[360px] sm:h-[360px] rounded-full animate-[mri-spin-cw_4s_linear_infinite]" style={{ borderWidth: '4px', borderStyle: 'solid', borderColor: 'rgba(100, 200, 255, 0.05)', borderTopColor: 'rgba(100, 200, 255, 0.2)' }} />
           {/* Floating shapes */}
           <div className="absolute top-[15%] left-[10%] w-16 h-16 rounded-full border border-light-cyan/20 animate-float" />
           <div className="absolute top-[25%] right-[15%] w-24 h-24 rounded-full border border-orange/15 animate-float-delayed" />
