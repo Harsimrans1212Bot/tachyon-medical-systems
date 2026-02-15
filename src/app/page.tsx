@@ -244,7 +244,7 @@ export default function Home() {
 
       {/* Stats */}
       <section className="py-16 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10 relative overflow-hidden">
-        <WaveDivider flip />
+        <WaveDivider position="top" />
         <SectionBackground variant="primary" />
         <div ref={statsRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -260,6 +260,7 @@ export default function Home() {
 
       {/* Services */}
       <section className="py-24 bg-white dark:bg-[#0d1b2a] relative overflow-hidden">
+        <WaveDivider position="top" />
         <SectionBackground variant="primary" />
         <div
           ref={servicesSectionRef}
@@ -295,7 +296,7 @@ export default function Home() {
 
       {/* Featured Products */}
       <section className="py-24 bg-gray-50 dark:bg-[#112240] relative overflow-hidden">
-        <WaveDivider flip />
+        <WaveDivider position="top" />
         <SectionBackground variant="secondary" />
         <div
           ref={productsSectionRef}
@@ -332,11 +333,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <WaveDivider />
       </section>
 
       {/* CTA */}
       <section className="py-24 hero-gradient relative overflow-hidden">
-        <WaveDivider flip />
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-light-cyan/10 blur-3xl" />
           <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-orange/10 blur-3xl" />
