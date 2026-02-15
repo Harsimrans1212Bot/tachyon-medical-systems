@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SectionBackground from "@/components/SectionBackground";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -241,8 +242,9 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="py-16 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10">
-        <div ref={statsRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10 relative overflow-hidden">
+        <SectionBackground variant="primary" />
+        <div ref={statsRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
@@ -255,10 +257,11 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a] relative overflow-hidden">
+        <SectionBackground variant="primary" />
         <div
           ref={servicesSectionRef}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">What We Do</span>
@@ -288,10 +291,11 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240] relative overflow-hidden">
+        <SectionBackground variant="secondary" />
         <div
           ref={productsSectionRef}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
+          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Our Equipment</span>

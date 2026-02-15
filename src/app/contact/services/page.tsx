@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Installation Services | Tachyon Medical Systems",
@@ -21,8 +22,9 @@ export default function ServicesInquiries() {
         </div>
       </section>
 
-      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Info */}
             <div>

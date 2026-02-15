@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Buy & Sell Medical Equipment | Tachyon Medical Systems",
@@ -51,8 +52,9 @@ export default function BuySellPage() {
       </section>
 
       {/* Looking to Buy */}
-      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">For Buyers</span>
@@ -93,8 +95,9 @@ export default function BuySellPage() {
       </section>
 
       {/* Looking to Sell */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-white dark:bg-[#0d1b2a]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8 shadow-sm border border-gray-100 dark:border-white/10 order-2 lg:order-1">
               <h3 className="text-lg font-bold text-deep-blue dark:text-white mb-6">Describe Your Equipment</h3>
@@ -135,8 +138,9 @@ export default function BuySellPage() {
       </section>
 
       {/* Sales Team */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-white dark:bg-[#0d1b2a]">
+        <SectionBackground variant="secondary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Meet the Team</span>
             <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Our Sales Team</h2>
@@ -161,8 +165,9 @@ export default function BuySellPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative overflow-hidden py-20 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="secondary" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-black text-deep-blue dark:text-white mb-4">Ready to Get Started?</h2>
           <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
             Contact our sales team for personalized assistance with buying or selling medical equipment.

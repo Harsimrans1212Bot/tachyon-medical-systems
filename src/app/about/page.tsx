@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "About Us | Tachyon Medical Systems",
@@ -39,8 +40,9 @@ export default function About() {
       </section>
 
       {/* Story */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-white dark:bg-[#0d1b2a] relative overflow-hidden">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="text-sm font-bold tracking-wider uppercase text-orange">Our Story</span>
@@ -71,8 +73,9 @@ export default function About() {
       </section>
 
       {/* Leadership */}
-      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 bg-gray-50 dark:bg-[#112240] relative overflow-hidden">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">Leadership</span>
             <h2 className="text-3xl font-black text-deep-blue dark:text-white mt-3">Meet Our Team</h2>
@@ -114,8 +117,9 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="secondary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Our Values</span>
             <h2 className="text-3xl font-black text-deep-blue dark:text-white mt-3">What Drives Us Forward</h2>
@@ -133,8 +137,9 @@ export default function About() {
       </section>
 
       {/* Timeline */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-white dark:bg-[#0d1b2a]">
+        <SectionBackground variant="secondary" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">Our Journey</span>
             <h2 className="text-3xl font-black text-deep-blue dark:text-white mt-3">Milestones</h2>

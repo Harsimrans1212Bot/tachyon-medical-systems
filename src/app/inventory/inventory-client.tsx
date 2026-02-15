@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import SectionBackground from "@/components/SectionBackground";
 
 const categoryImages: Record<string, string> = {
   "CT Scanners": "/ct-scanner.jpg",
@@ -164,8 +165,9 @@ export default function InventoryClient() {
       </section>
 
       {/* Inventory by Category */}
-      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-8">
             {categories.map((category) => (
               <div key={category.name} className="bg-white dark:bg-white/5 rounded-2xl overflow-hidden card-hover border border-gray-100 dark:border-white/10">

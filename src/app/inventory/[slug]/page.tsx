@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import SectionBackground from "@/components/SectionBackground";
 
 // Machine database - in a real app, this would come from a database
 const allMachines = [
@@ -399,8 +400,9 @@ export default async function MachinePage({ params }: PageProps) {
   return (
     <>
       {/* Breadcrumb */}
-      <section className="pt-28 pb-8 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden pt-28 pb-8 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
             <Link href="/" className="hover:text-light-cyan">Home</Link>
             <span>/</span>
@@ -412,8 +414,9 @@ export default async function MachinePage({ params }: PageProps) {
       </section>
 
       {/* Machine Details */}
-      <section className="py-16 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Image */}
             <div>
@@ -488,8 +491,9 @@ export default async function MachinePage({ params }: PageProps) {
       </section>
 
       {/* Specifications */}
-      <section className="py-16 bg-white dark:bg-[#0d1b2a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-16 bg-white dark:bg-[#0d1b2a]">
+        <SectionBackground variant="secondary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-black text-deep-blue dark:text-white mb-8">Technical Specifications</h2>
           <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

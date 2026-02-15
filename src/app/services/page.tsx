@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Services | Tachyon Medical Systems",
@@ -71,8 +72,9 @@ export default function Services() {
       </section>
 
       {/* Services */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-white dark:bg-[#0d1b2a]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-16">
             {services.map((service, i) => (
               <div key={service.title} className={`flex flex-col lg:flex-row gap-12 items-center ${i % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}>
@@ -119,8 +121,9 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gray-50 dark:bg-[#112240]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative overflow-hidden py-20 bg-gray-50 dark:bg-[#112240]">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-black text-deep-blue dark:text-white mb-4">Need a Custom Solution?</h2>
           <p className="text-gray-500 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
             Every healthcare facility has unique requirements. Let us design a tailored service package that meets your specific needs and budget.
