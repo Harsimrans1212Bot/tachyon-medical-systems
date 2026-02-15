@@ -4,6 +4,7 @@ import { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionBackground from "@/components/SectionBackground";
+import WaveDivider from "@/components/WaveDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -243,6 +244,7 @@ export default function Home() {
 
       {/* Stats */}
       <section className="py-16 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10 relative overflow-hidden">
+        <WaveDivider flip />
         <SectionBackground variant="primary" />
         <div ref={statsRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -288,10 +290,12 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        <WaveDivider />
       </section>
 
       {/* Featured Products */}
       <section className="py-24 bg-gray-50 dark:bg-[#112240] relative overflow-hidden">
+        <WaveDivider flip />
         <SectionBackground variant="secondary" />
         <div
           ref={productsSectionRef}
@@ -332,6 +336,7 @@ export default function Home() {
 
       {/* CTA */}
       <section className="py-24 hero-gradient relative overflow-hidden">
+        <WaveDivider flip />
         <div className="absolute inset-0">
           <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-light-cyan/10 blur-3xl" />
           <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-orange/10 blur-3xl" />
