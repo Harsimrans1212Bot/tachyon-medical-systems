@@ -70,49 +70,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Leadership */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-sm font-bold tracking-wider uppercase text-orange">Leadership</span>
-            <h2 className="text-3xl font-black text-deep-blue mt-3">Meet Our Team</h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">The experienced professionals behind Tachyon Medical Systems&apos; three decades of excellence.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-            {/* CEO */}
-            <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover">
-              <div className="h-64 bg-gradient-to-br from-deep-blue to-deep-blue/80 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center">
-                  <span className="text-4xl text-white/50">📷</span>
-                </div>
-              </div>
-              <div className="p-8">
-                <span className="text-xs font-bold text-light-cyan uppercase tracking-wider">Chief Executive Officer</span>
-                <h3 className="text-2xl font-black text-deep-blue mt-2">Harkesh Singh</h3>
-                <p className="text-gray-500 mt-4 leading-relaxed">
-                  With over 30 years of experience in the medical equipment industry, Harkesh Singh founded Tachyon Medical Systems in 1992 with a vision to make world-class medical imaging technology accessible to healthcare providers across the globe. Under his leadership, the company has grown from a regional operation to an internationally recognized name, serving facilities in over 20 countries.
-                </p>
-              </div>
-            </div>
-            {/* Manager */}
-            <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover">
-              <div className="h-64 bg-gradient-to-br from-light-cyan/80 to-deep-blue flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center">
-                  <span className="text-4xl text-white/50">📷</span>
-                </div>
-              </div>
-              <div className="p-8">
-                <span className="text-xs font-bold text-orange uppercase tracking-wider">Manager</span>
-                <h3 className="text-2xl font-black text-deep-blue mt-2">Harsimran Singh</h3>
-                <p className="text-gray-500 mt-4 leading-relaxed">
-                  Bringing fresh perspective and modern business strategy to Tachyon Medical Systems, Harsimran Singh oversees day-to-day operations and drives the company&apos;s expansion into new markets. With a focus on building strong client relationships and leveraging technology, he is shaping the next chapter of the company&apos;s growth story.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Values */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -153,6 +110,49 @@ export default function About() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-sm font-bold tracking-wider uppercase text-orange">Leadership</span>
+            <h2 className="text-3xl font-black text-deep-blue mt-3">Meet Our Team</h2>
+            <p className="text-gray-500 mt-4 max-w-2xl mx-auto">The experienced professionals behind Tachyon Medical Systems&apos; three decades of excellence.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+            {/* CEO */}
+            <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover">
+              <div className="h-64 bg-gradient-to-br from-deep-blue to-deep-blue/80 flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center">
+                  <span className="text-4xl text-white/50">📷</span>
+                </div>
+              </div>
+              <div className="p-8">
+                <span className="text-xs font-bold text-light-cyan uppercase tracking-wider">Chief Executive Officer</span>
+                <h3 className="text-2xl font-black text-deep-blue mt-2">Harkesh Singh</h3>
+                <p className="text-gray-500 mt-4 leading-relaxed">
+                  With over 30 years of experience in the medical equipment industry, Harkesh Singh founded Tachyon Medical Systems in 1992 with a vision to make world-class medical imaging technology accessible to healthcare providers across the globe. Under his leadership, the company has grown from a regional operation to an internationally recognized name, serving facilities in over 20 countries.
+                </p>
+              </div>
+            </div>
+            {/* Manager */}
+            <div className="bg-white rounded-2xl overflow-hidden border border-gray-100 card-hover">
+              <div className="h-64 bg-gradient-to-br from-light-cyan/80 to-deep-blue flex items-center justify-center">
+                <div className="w-32 h-32 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center">
+                  <span className="text-4xl text-white/50">📷</span>
+                </div>
+              </div>
+              <div className="p-8">
+                <span className="text-xs font-bold text-orange uppercase tracking-wider">Manager</span>
+                <h3 className="text-2xl font-black text-deep-blue mt-2">Harsimran Singh</h3>
+                <p className="text-gray-500 mt-4 leading-relaxed">
+                  Bringing fresh perspective and modern business strategy to Tachyon Medical Systems, Harsimran Singh oversees day-to-day operations and drives the company&apos;s expansion into new markets. With a focus on building strong client relationships and leveraging technology, he is shaping the next chapter of the company&apos;s growth story.
+                </p>
+              </div>
             </div>
           </div>
         </div>
