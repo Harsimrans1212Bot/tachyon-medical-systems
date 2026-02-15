@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: linear-gradient(135deg, #0a1628 0%, #0d2847 50%, #0a1628 100%); overflow: hidden; }
+  
+  .mri-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+  }
+
+  .ring {
+    position: absolute;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: rgba(100, 200, 255, 0.15);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Option A: Simple opposing rotation */
+  .option-a .ring-outer {
+    width: 350px; height: 350px;
+    border-width: 8px;
+    border-top-color: rgba(100, 200, 255, 0.4);
+    border-right-color: rgba(100, 200, 255, 0.25);
+    animation: spin-cw 8s linear infinite;
+  }
+  .option-a .ring-inner {
+    width: 250px; height: 250px;
+    border-width: 6px;
+    border-bottom-color: rgba(255, 140, 50, 0.4);
+    border-left-color: rgba(255, 140, 50, 0.25);
+    animation: spin-ccw 6s linear infinite;
+  }
+
+  /* Option B: Thicker rings, more MRI-like */
+  .option-b .ring-outer {
+    width: 350px; height: 350px;
+    border-width: 16px;
+    border-color: rgba(100, 200, 255, 0.08);
+    border-top-color: rgba(100, 200, 255, 0.3);
+    border-right-color: rgba(100, 200, 255, 0.15);
+    animation: spin-cw 10s linear infinite;
+  }
+  .option-b .ring-inner {
+    width: 260px; height: 260px;
+    border-width: 12px;
+    border-color: rgba(255, 140, 50, 0.06);
+    border-bottom-color: rgba(255, 140, 50, 0.25);
+    border-left-color: rgba(255, 140, 50, 0.12);
+    animation: spin-ccw 7s linear infinite;
+  }
+  .option-b .ring-core {
+    width: 180px; height: 180px;
+    border-width: 4px;
+    border-color: rgba(100, 200, 255, 0.05);
+    border-top-color: rgba(100, 200, 255, 0.2);
+    animation: spin-cw 4s linear infinite;
+  }
+
+  /* Option C: Pulsing glow + rotation */
+  .option-c .ring-outer {
+    width: 350px; height: 350px;
+    border-width: 12px;
+    border-color: rgba(100, 200, 255, 0.06);
+    border-top-color: rgba(100, 200, 255, 0.35);
+    animation: spin-cw 8s linear infinite;
+    box-shadow: 0 0 40px rgba(100, 200, 255, 0.08), inset 0 0 40px rgba(100, 200, 255, 0.05);
+  }
+  .option-c .ring-inner {
+    width: 250px; height: 250px;
+    border-width: 10px;
+    border-color: rgba(255, 140, 50, 0.05);
+    border-bottom-color: rgba(255, 140, 50, 0.3);
+    animation: spin-ccw 6s linear infinite;
+    box-shadow: 0 0 30px rgba(255, 140, 50, 0.06), inset 0 0 30px rgba(255, 140, 50, 0.04);
+  }
+  .option-c .ring-core {
+    width: 160px; height: 160px;
+    border-width: 3px;
+    border-color: rgba(255, 255, 255, 0.05);
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes spin-cw { to { transform: translate(-50%, -50%) rotate(360deg); } }
+  @keyframes spin-ccw { to { transform: translate(-50%, -50%) rotate(-360deg); } }
+  @keyframes pulse { 0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.05); } }
+
+  .label {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .options {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (max-width: 900px) {
+    .mri-container { width: 280px; height: 280px; }
+    .option-a .ring-outer, .option-b .ring-outer, .option-c .ring-outer { width: 250px; height: 250px; }
+    .option-a .ring-inner, .option-b .ring-inner, .option-c .ring-inner { width: 180px; height: 180px; }
+    .option-b .ring-core, .option-c .ring-core { width: 120px; height: 120px; }
+  }
+</style>
+</head>
+<body>
+  <div class="options">
+    <div class="mri-container option-a">
+      <div class="ring ring-outer"></div>
+      <div class="ring ring-inner"></div>
+      <div class="label">A: Clean & Simple</div>
+    </div>
+    <div class="mri-container option-b">
+      <div class="ring ring-outer"></div>
+      <div class="ring ring-inner"></div>
+      <div class="ring ring-core"></div>
+      <div class="label">B: Thick MRI Bore</div>
+    </div>
+    <div class="mri-container option-c">
+      <div class="ring ring-outer"></div>
+      <div class="ring ring-inner"></div>
+      <div class="ring ring-core"></div>
+      <div class="label">C: Glow + Pulse</div>
+    </div>
+  </div>
+</body>
+</html>
