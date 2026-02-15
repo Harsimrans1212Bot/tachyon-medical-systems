@@ -95,7 +95,7 @@ export default function Services() {
                     ))}
                   </ul>
                   {service.href && (
-                    <Link href={service.href} className="inline-flex items-center gap-2 mt-6 text-sm font-bold text-light-cyan hover:text-orange transition-colors">
+                    <Link href={service.href} className="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/80 transition-all hover:shadow-lg text-sm">
                       Learn More
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
                     </Link>
