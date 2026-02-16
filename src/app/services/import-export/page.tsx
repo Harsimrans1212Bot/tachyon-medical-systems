@@ -50,18 +50,11 @@ const services = [
 ];
 
 const countries = [
-  { flag: "🇺🇸", name: "United States", detail: "FDA regulated" },
-  { flag: "🇮🇳", name: "India", detail: "AERB licensed" },
-  { flag: "🇦🇪", name: "UAE", detail: "MOH approved" },
-  { flag: "🇸🇦", name: "Saudi Arabia", detail: "SFDA registered" },
-  { flag: "🇬🇧", name: "United Kingdom", detail: "CE/UKCA marked" },
-  { flag: "🇩🇪", name: "Germany", detail: "CE marked" },
-  { flag: "🇳🇬", name: "Nigeria", detail: "NAFDAC cleared" },
-  { flag: "🇰🇪", name: "Kenya", detail: "PPB registered" },
-  { flag: "🇧🇩", name: "Bangladesh", detail: "DGDA approved" },
-  { flag: "🇱🇰", name: "Sri Lanka", detail: "NMRA registered" },
-  { flag: "🇳🇵", name: "Nepal", detail: "DDA approved" },
-  { flag: "🇴🇲", name: "Oman", detail: "MOH registered" },
+  { flag: "🇮🇳", name: "India" },
+  { flag: "🇺🇸", name: "United States" },
+  { flag: "🇸🇦", name: "Saudi Arabia" },
+  { flag: "🇦🇪", name: "UAE" },
+  { flag: "🇬🇧", name: "United Kingdom" },
 ];
 
 export default function ImportExportPage() {
@@ -198,7 +191,6 @@ export default function ImportExportPage() {
               <div key={c.name} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 text-center card-hover border border-gray-100 dark:border-white/10">
                 <span className="text-4xl block mb-3">{c.flag}</span>
                 <h4 className="font-bold text-deep-blue dark:text-white">{c.name}</h4>
-                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{c.detail}</p>
               </div>
             ))}
           </div>
