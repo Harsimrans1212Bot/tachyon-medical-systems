@@ -82,7 +82,7 @@ export default function About() {
           </div>
           <div className="space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
             <p>
-              Since 1992, Tachyon Medical has rallied around a single mission rooted in the Gurbani teaching <em>&ldquo;Maanas ki Jaat sabeh eke pehchaan ho&rdquo;</em> — recognize the human race as one. It&rsquo;s more than words. Come visit us. Meet our team. Talk to us. Together, we move forward and build something meaningful.
+              Since 1992, Tachyon Medical has been guided by a single mission rooted in the Gurbani teaching <em>&ldquo;Maanas ki Jaat sabeh eke pehchaan ho&rdquo;</em> — recognize the human race as one. These aren&rsquo;t just words to us. We invite you to visit, meet our team, and see it for yourself. Together, we move forward and build something meaningful.
             </p>
             <p>
               This belief drives everything we do. As a team, we&rsquo;ve built a culture focused on extending the life of radiology equipment so our clients can extend the lives of their patients.
