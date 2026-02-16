@@ -78,26 +78,23 @@ export default function About() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="text-sm font-bold tracking-wider uppercase text-orange">Our Mission</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Humans Matter</h2>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">People First</h2>
           </div>
           <div className="space-y-6 text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
             <p>
-              At Tachyon Medical, we rally around our mission, as written in Gurbani <em>&ldquo;Maanas ki Jaat sabeh eke pehchaan ho&rdquo;</em>, recognize the human race as one, since 1992. Its our company&rsquo;s mission. But it&rsquo;s so much more. Come, visit us. Meet with us. Talk to us. Together, we take a journey forward, to build a good business.
+              Since 1992, Tachyon Medical has rallied around a single mission rooted in the Gurbani teaching <em>&ldquo;Maanas ki Jaat sabeh eke pehchaan ho&rdquo;</em> — recognize the human race as one. It&rsquo;s more than words. Come visit us. Meet our team. Talk to us. Together, we move forward and build something meaningful.
             </p>
             <p>
-              That&rsquo;s why, we as a team, keep creating a culture that extends life of radiology equipment, so that our clients can help extend life of patients. Humans.
+              This belief drives everything we do. As a team, we&rsquo;ve built a culture focused on extending the life of radiology equipment so our clients can extend the lives of their patients.
             </p>
             <p>
-              At Tachyon Medical, our mission statement isn&rsquo;t a slogan or just something that hangs on a wall when you walk into headquarters. The words <strong className="text-deep-blue dark:text-white">Humans Matter</strong> guide everything we do and speak.
+              Our mission isn&rsquo;t a slogan on a wall — it&rsquo;s felt in every interaction, whether you visit our office in Karnal, purchase equipment, or call us for a service contract. It shapes the strategies we set, the way we connect with healthcare providers across the country and beyond, and the impact we have on the patients they serve.
             </p>
             <p>
-              We hope you feel it when you walk through our office or warehouse in Karnal or engage a member of our team for anything from buying a piece of equipment or parts or asking for help with a service contract. Humans Matter lies at the core of who we are. It guides the strategies we set for our business and the way we serve and connect with healthcare providers, throughout the country and beyond. It extends beyond the walls of Tachyon Medical, impacting the patients our customers treat and guiding the way we show up for our families and our community.
-            </p>
-            <p>
-              We&rsquo;ve seen the power of putting people first. Amazing things happen when we treat humans like they matter more because they do. They matter more than money, more than things, more than success or market share.
+              We&rsquo;ve seen what happens when you put people first. They matter more than money, more than things, more than market share.
             </p>
             <p className="text-deep-blue dark:text-light-cyan font-semibold text-xl italic">
-              Following our mission and belief that People Matter, our team provides a second chance at life for imaging equipment — and people.
+              Following our mission and belief that people come first, our team provides a second chance at life for imaging equipment — and people.
             </p>
           </div>
         </div>
