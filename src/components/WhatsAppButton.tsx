@@ -6,17 +6,12 @@ export default function WhatsAppButton() {
   const [shrinking, setShrinking] = useState(false);
 
   useEffect(() => {
-    // Show bubble after 3 seconds
-    const showTimer = setTimeout(() => setShowBubble(true), 3000);
-
-    // Start shrink animation after 6 seconds (visible for 3s)
-    const shrinkTimer = setTimeout(() => setShrinking(true), 6000);
-
-    // Hide bubble after shrink animation completes
+    const showTimer = setTimeout(() => setShowBubble(true), 1500);
+    const shrinkTimer = setTimeout(() => setShrinking(true), 5000);
     const hideTimer = setTimeout(() => {
       setShowBubble(false);
       setShrinking(false);
-    }, 6800);
+    }, 5600);
 
     return () => {
       clearTimeout(showTimer);
@@ -26,14 +21,14 @@ export default function WhatsAppButton() {
   }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-      {/* Chat bubble */}
+    <div className="fixed bottom-6 right-6 z-50 flex items-end gap-3">
+      {/* Chat bubble — to the left of the button */}
       {showBubble && (
         <div
-          className={`bg-white text-gray-800 text-sm font-medium px-4 py-3 rounded-2xl rounded-br-sm shadow-lg max-w-[220px] transition-all ${
+          className={`bg-white text-gray-800 text-sm font-medium px-4 py-3 rounded-2xl rounded-br-sm shadow-lg max-w-[200px] mb-1 ${
             shrinking
-              ? "animate-[bubbleShrink_0.8s_ease-in_forwards]"
-              : "animate-[bubblePopIn_0.4s_ease-out_forwards]"
+              ? "animate-[bubbleShrink_0.5s_ease-in_forwards]"
+              : "animate-[bubblePopIn_0.3s_ease-out_forwards]"
           }`}
         >
           💬 Contact us directly on WhatsApp right now!!
@@ -45,7 +40,7 @@ export default function WhatsAppButton() {
         href="https://wa.me/919215291291?text=Hello%2C%20I%20need%20more%20information%20on%20your%20medical%20equipment%20services."
         target="_blank"
         rel="noopener noreferrer"
-        className="w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+        className="w-14 h-14 bg-[#25D366] rounded-full flex-shrink-0 flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
         aria-label="Chat on WhatsApp"
       >
         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">

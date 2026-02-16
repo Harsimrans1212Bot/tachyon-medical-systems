@@ -255,5 +255,5 @@ html {
 
 @keyframes bubbleShrink {
   0% { opacity: 1; transform: scale(1) translateX(0) translateY(0); }
-  100% { opacity: 0; transform: scale(0.2) translateX(30px) translateY(40px); }
+  100% { opacity: 0; transform: scale(0.15) translateX(60px) translateY(10px); }
 }
