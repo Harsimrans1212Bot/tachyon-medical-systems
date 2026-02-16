@@ -246,3 +246,14 @@ html {
 .animate-float-slow {
   animation: float-slow 14s ease-in-out infinite;
 }
+
+@keyframes bubblePopIn {
+  0% { opacity: 0; transform: scale(0.3) translateY(20px); }
+  50% { transform: scale(1.05) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes bubbleShrink {
+  0% { opacity: 1; transform: scale(1) translateX(0) translateY(0); }
+  100% { opacity: 0; transform: scale(0.2) translateX(30px) translateY(40px); }
+}
