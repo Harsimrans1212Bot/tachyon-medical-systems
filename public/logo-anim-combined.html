@@ -22,12 +22,13 @@
   .line-d1 { width: 240px; height: 1px; transform: rotate(45deg); }
   .line-d2 { width: 240px; height: 1px; transform: rotate(-45deg); }
 
-  /* All elements start invisible and off-screen */
-  .ring, .center-dot, .line { opacity: 0; transform: translate(-50%,-50%) scale(0); }
-  .line-h { opacity: 0; transform: translate(-50%, 0) scaleX(0); }
-  .line-v { opacity: 0; transform: translate(0, -50%) scaleY(0); }
-  .line-d1 { opacity: 0; transform: translate(-50%, 0) rotate(45deg) scaleX(0); }
-  .line-d2 { opacity: 0; transform: translate(-50%, 0) rotate(-45deg) scaleX(0); }
+  /* Start: everything gathered at center, small */
+  .ring, .center-dot { opacity: 0; transform: translate(-50%,-50%) scale(0.3); }
+  .line { opacity: 0; }
+  .line-h { transform: translate(-50%, 0) scaleX(0); }
+  .line-v { transform: translate(0, -50%) scaleY(0); }
+  .line-d1 { transform: translate(-50%, 0) rotate(45deg) scaleX(0); }
+  .line-d2 { transform: translate(-50%, 0) rotate(-45deg) scaleX(0); }
 </style>
 </head>
 <body>
@@ -49,14 +50,12 @@
   </div>
 </div>
 
-<p style="text-align:center;margin-top:30px;color:#64748b;font-size:12px;">Explode (1s) → Reassemble (1s) → Breathe forever</p>
-
 <script>
 const rings = [
-  { el: document.getElementById('r1'), restOp: 0.4, explodeScale: 1.6 },
-  { el: document.getElementById('r2'), restOp: 0.5, explodeScale: 1.9 },
-  { el: document.getElementById('r3'), restOp: 0.6, explodeScale: 2.2 },
-  { el: document.getElementById('r4'), restOp: 0.7, explodeScale: 2.8 },
+  { el: document.getElementById('r1'), restOp: 0.4, explodeScale: 1.6, delay: 0 },
+  { el: document.getElementById('r2'), restOp: 0.5, explodeScale: 1.9, delay: 80 },
+  { el: document.getElementById('r3'), restOp: 0.6, explodeScale: 2.2, delay: 160 },
+  { el: document.getElementById('r4'), restOp: 0.7, explodeScale: 2.8, delay: 240 },
 ];
 const dot = document.getElementById('dot');
 const lines = [
@@ -66,46 +65,55 @@ const lines = [
   document.getElementById('ld2'),
 ];
 
-// Phase 1: Explode outward (0 → 1s)
+// Phase 1a: Center dot appears and charges up (0 → 0.8s)
 setTimeout(() => {
-  rings.forEach((r, i) => {
-    r.el.style.transition = `all ${0.6 + i * 0.1}s ease-out`;
-    r.el.style.transform = `translate(-50%,-50%) scale(${r.explodeScale})`;
-    r.el.style.opacity = '0.8';
-  });
-  dot.style.transition = 'all 0.5s ease-out';
-  dot.style.transform = 'translate(-50%,-50%) scale(3)';
+  dot.style.transition = 'all 0.8s ease-out';
+  dot.style.transform = 'translate(-50%,-50%) scale(1.5)';
   dot.style.opacity = '1';
-  dot.style.boxShadow = '0 0 50px rgba(232,101,26,1)';
-  lines.forEach(l => {
-    l.style.transition = 'opacity 0.3s';
-    l.style.opacity = '0';
-  });
-}, 300);
+  dot.style.boxShadow = '0 0 35px rgba(232,101,26,0.9)';
+}, 200);
 
-// Fade out at peak
+// Phase 1b: Explode outward — staggered rings (1s → 2.5s)
 setTimeout(() => {
-  rings.forEach(r => {
-    r.el.style.transition = 'all 0.3s ease-in';
-    r.el.style.opacity = '0';
+  // Dot flares big
+  dot.style.transition = 'all 0.8s ease-out';
+  dot.style.transform = 'translate(-50%,-50%) scale(4)';
+  dot.style.boxShadow = '0 0 60px rgba(232,101,26,1)';
+
+  rings.forEach((r) => {
+    setTimeout(() => {
+      r.el.style.transition = `all ${1.0}s cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+      r.el.style.transform = `translate(-50%,-50%) scale(${r.explodeScale})`;
+      r.el.style.opacity = '0.7';
+    }, r.delay);
   });
-  dot.style.transition = 'all 0.3s ease-in';
-  dot.style.opacity = '0';
-  dot.style.transform = 'translate(-50%,-50%) scale(0)';
 }, 1000);
 
-// Phase 2: Reassemble (1.5s → 2.5s)
+// Phase 1c: Hold at peak, then fade out (2.2s → 3s)
+setTimeout(() => {
+  rings.forEach(r => {
+    r.el.style.transition = 'all 0.6s ease-in';
+    r.el.style.transform = `translate(-50%,-50%) scale(${r.explodeScale * 1.15})`;
+    r.el.style.opacity = '0';
+  });
+  dot.style.transition = 'all 0.5s ease-in';
+  dot.style.opacity = '0';
+  dot.style.transform = 'translate(-50%,-50%) scale(0)';
+  dot.style.boxShadow = '0 0 0 transparent';
+}, 2400);
+
+// Phase 2: Reassemble (3.2s → 4.5s)
 setTimeout(() => {
   rings.forEach((r, i) => {
-    r.el.style.transition = `all ${0.8 + i * 0.1}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
+    r.el.style.transition = `all ${0.9 + i * 0.1}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
     r.el.style.transform = 'translate(-50%,-50%) scale(1)';
     r.el.style.opacity = String(r.restOp);
   });
-  dot.style.transition = 'all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)';
+  dot.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
   dot.style.transform = 'translate(-50%,-50%) scale(1)';
   dot.style.opacity = '1';
   dot.style.boxShadow = '0 0 12px rgba(232,101,26,0.6)';
-}, 1500);
+}, 3200);
 
 // Lines fade in
 setTimeout(() => {
@@ -116,15 +124,14 @@ setTimeout(() => {
     'translate(-50%, 0) rotate(-45deg) scaleX(1)',
   ];
   lines.forEach((l, i) => {
-    l.style.transition = 'all 0.6s ease-out';
+    l.style.transition = `all ${0.5 + i * 0.1}s ease-out`;
     l.style.transform = lineTransforms[i];
     l.style.opacity = '0.2';
   });
-}, 2000);
+}, 3800);
 
-// Phase 3: Breathing pulse (starts at 3s, loops forever)
+// Phase 3: Breathing pulse forever (starts at 5s)
 setTimeout(() => {
-  // Apply infinite breathing animations
   const breatheCSS = document.createElement('style');
   breatheCSS.textContent = `
     @keyframes breathe-r1 { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.4; } 50% { transform: translate(-50%,-50%) scale(1.12); opacity: 0.65; } }
@@ -150,7 +157,7 @@ setTimeout(() => {
     l.style.transition = 'none';
     l.style.animation = 'breathe-line 4s ease-in-out infinite';
   });
-}, 3000);
+}, 5000);
 </script>
 
 </body>
