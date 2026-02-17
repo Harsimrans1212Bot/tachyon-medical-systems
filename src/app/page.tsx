@@ -19,6 +19,135 @@ export default function Home() {
   const orb1Ref = useRef<HTMLDivElement>(null);
   const orb2Ref = useRef<HTMLDivElement>(null);
 
+  // Starburst explode → reassemble → breathe
+  const sbR1 = useRef<HTMLDivElement>(null);
+  const sbR2 = useRef<HTMLDivElement>(null);
+  const sbR3 = useRef<HTMLDivElement>(null);
+  const sbR4 = useRef<HTMLDivElement>(null);
+  const sbDot = useRef<HTMLDivElement>(null);
+  const sbGlow = useRef<HTMLDivElement>(null);
+  const sbLH = useRef<HTMLDivElement>(null);
+  const sbLV = useRef<HTMLDivElement>(null);
+  const sbLD1 = useRef<HTMLDivElement>(null);
+  const sbLD2 = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const rings = [
+      { el: sbR1.current, restOp: 0.35, explodeScale: 1.5, delay: 0 },
+      { el: sbR2.current, restOp: 0.3, explodeScale: 1.8, delay: 100 },
+      { el: sbR3.current, restOp: 0.35, explodeScale: 2.1, delay: 200 },
+      { el: sbR4.current, restOp: 0.4, explodeScale: 2.6, delay: 300 },
+    ];
+    const dot = sbDot.current;
+    const glow = sbGlow.current;
+    const lines = [sbLH.current, sbLV.current, sbLD1.current, sbLD2.current];
+    if (!dot || !glow || rings.some(r => !r.el)) return;
+
+    // Phase 1a: Charge up
+    const t1 = setTimeout(() => {
+      rings.forEach(r => {
+        r.el!.style.transition = 'all 0.6s ease-out';
+        r.el!.style.transform = 'translate(-50%,-50%) scale(0.4)';
+        r.el!.style.opacity = '0.5';
+      });
+      dot.style.transition = 'all 0.8s ease-out';
+      dot.style.transform = 'translate(-50%,-50%) scale(2)';
+      dot.style.opacity = '1';
+      dot.style.boxShadow = '0 0 50px rgba(232,101,26,0.9)';
+    }, 300);
+
+    // Phase 1b: Explode
+    const t2 = setTimeout(() => {
+      glow.style.transition = 'all 0.6s ease-out';
+      glow.style.transform = 'translate(-50%,-50%) scale(4)';
+      glow.style.opacity = '0.8';
+
+      dot.style.transition = 'all 1s ease-out';
+      dot.style.transform = 'translate(-50%,-50%) scale(5)';
+      dot.style.boxShadow = '0 0 100px rgba(232,101,26,1)';
+      dot.style.opacity = '0.9';
+
+      rings.forEach(r => {
+        setTimeout(() => {
+          r.el!.style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          r.el!.style.transform = `translate(-50%,-50%) scale(${r.explodeScale})`;
+          r.el!.style.opacity = '0.6';
+        }, r.delay);
+      });
+    }, 1300);
+
+    // Glow fades
+    const t3 = setTimeout(() => {
+      glow.style.transition = 'all 1s ease-out';
+      glow.style.opacity = '0';
+    }, 1900);
+
+    // Phase 1c: Fade out
+    const t4 = setTimeout(() => {
+      rings.forEach(r => {
+        r.el!.style.transition = 'all 0.7s ease-in';
+        r.el!.style.transform = `translate(-50%,-50%) scale(${r.explodeScale * 1.15})`;
+        r.el!.style.opacity = '0';
+      });
+      dot.style.transition = 'all 0.6s ease-in';
+      dot.style.opacity = '0';
+      dot.style.transform = 'translate(-50%,-50%) scale(0)';
+      dot.style.boxShadow = '0 0 0 transparent';
+    }, 2800);
+
+    // Phase 2: Reassemble
+    const t5 = setTimeout(() => {
+      rings.forEach((r, i) => {
+        r.el!.style.transition = `all ${1.0 + i * 0.1}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
+        r.el!.style.transform = 'translate(-50%,-50%) scale(1)';
+        r.el!.style.opacity = String(r.restOp);
+      });
+      dot.style.transition = 'all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      dot.style.transform = 'translate(-50%,-50%) scale(1)';
+      dot.style.opacity = '1';
+      dot.style.boxShadow = '0 0 30px rgba(232,101,26,0.7)';
+    }, 3800);
+
+    // Lines fade in
+    const lineTransforms = [
+      'translate(-50%, 0) scaleX(1)',
+      'translate(0, -50%) scaleY(1)',
+      'translate(-50%, 0) rotate(45deg) scaleX(1)',
+      'translate(-50%, 0) rotate(-45deg) scaleX(1)',
+    ];
+    const t6 = setTimeout(() => {
+      lines.forEach((l, i) => {
+        if (!l) return;
+        l.style.transition = `all ${0.6 + i * 0.1}s ease-out`;
+        l.style.transform = lineTransforms[i];
+        l.style.opacity = '0.1';
+      });
+    }, 4500);
+
+    // Phase 3: Breathe forever
+    const t7 = setTimeout(() => {
+      const anims = [
+        { name: 'sb-br1', rest: 0.35, peak: 0.5, scale: 1.08 },
+        { name: 'sb-br2', rest: 0.3, peak: 0.45, scale: 0.92 },
+        { name: 'sb-br3', rest: 0.35, peak: 0.5, scale: 1.12 },
+        { name: 'sb-br4', rest: 0.4, peak: 0.55, scale: 1.06 },
+      ];
+      rings.forEach((r, i) => {
+        r.el!.style.transition = 'none';
+        r.el!.style.animation = `${anims[i].name} 4s ease-in-out infinite`;
+      });
+      dot.style.transition = 'none';
+      dot.style.animation = 'sb-brd 4s ease-in-out infinite';
+      lines.forEach(l => {
+        if (!l) return;
+        l.style.transition = 'none';
+        l.style.animation = 'sb-brl 4s ease-in-out infinite';
+      });
+    }, 5500);
+
+    return () => { [t1,t2,t3,t4,t5,t6,t7].forEach(clearTimeout); };
+  }, []);
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       // Hero word-by-word split and fade out on scroll
@@ -186,14 +315,19 @@ export default function Home() {
           {/* Large glowing orbs with parallax */}
           <div ref={orb1Ref} className="absolute top-20 right-20 w-96 h-96 rounded-full bg-light-cyan/5 blur-3xl" />
           <div ref={orb2Ref} className="absolute bottom-20 left-20 w-72 h-72 rounded-full bg-orange/5 blur-3xl" />
-          {/* MRI Bore Animation - Set A: outer 40px, middle 24px, inner 12px — touching each other */}
-          <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full animate-[mri-spin-cw_10s_linear_infinite]" style={{ borderWidth: '40px', borderStyle: 'solid', borderColor: 'rgba(100, 200, 255, 0.04)', borderTopColor: 'rgba(100, 200, 255, 0.15)', borderRightColor: 'rgba(100, 200, 255, 0.08)' }} />
-          <div className="absolute top-1/2 left-1/2 w-[420px] h-[420px] sm:w-[620px] sm:h-[620px] rounded-full animate-[mri-spin-ccw_7s_linear_infinite]" style={{ borderWidth: '24px', borderStyle: 'solid', borderColor: 'rgba(255, 140, 50, 0.03)', borderBottomColor: 'rgba(255, 140, 50, 0.13)', borderLeftColor: 'rgba(255, 140, 50, 0.07)' }} />
-          <div className="absolute top-1/2 left-1/2 w-[372px] h-[372px] sm:w-[572px] sm:h-[572px] rounded-full animate-[mri-spin-cw_4s_linear_infinite]" style={{ borderWidth: '12px', borderStyle: 'solid', borderColor: 'rgba(100, 200, 255, 0.03)', borderTopColor: 'rgba(100, 200, 255, 0.12)' }} />
-          {/* MRI Bore Animation - Set B (offset for seamless infinite look) */}
-          <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full animate-[mri-spin-cw_10s_linear_infinite]" style={{ borderWidth: '40px', borderStyle: 'solid', borderColor: 'rgba(100, 200, 255, 0.04)', borderTopColor: 'rgba(100, 200, 255, 0.15)', borderRightColor: 'rgba(100, 200, 255, 0.08)', animationDelay: '-5s' }} />
-          <div className="absolute top-1/2 left-1/2 w-[420px] h-[420px] sm:w-[620px] sm:h-[620px] rounded-full animate-[mri-spin-ccw_7s_linear_infinite]" style={{ borderWidth: '24px', borderStyle: 'solid', borderColor: 'rgba(255, 140, 50, 0.03)', borderBottomColor: 'rgba(255, 140, 50, 0.13)', borderLeftColor: 'rgba(255, 140, 50, 0.07)', animationDelay: '-3.5s' }} />
-          <div className="absolute top-1/2 left-1/2 w-[372px] h-[372px] sm:w-[572px] sm:h-[572px] rounded-full animate-[mri-spin-cw_4s_linear_infinite]" style={{ borderWidth: '12px', borderStyle: 'solid', borderColor: 'rgba(100, 200, 255, 0.03)', borderTopColor: 'rgba(100, 200, 255, 0.12)', animationDelay: '-2s' }} />
+          {/* Starburst Explode → Reassemble → Breathe */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] max-w-[850px] max-h-[850px] pointer-events-none">
+            <div ref={sbR1} className="absolute top-1/2 left-1/2 w-[95%] h-[95%] rounded-full" style={{ borderWidth: '3px', borderStyle: 'solid', borderColor: 'rgba(0,168,232,0.35)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
+            <div ref={sbR2} className="absolute top-1/2 left-1/2 w-[70%] h-[70%] rounded-full" style={{ borderWidth: '3px', borderStyle: 'solid', borderColor: 'rgba(232,160,80,0.3)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
+            <div ref={sbR3} className="absolute top-1/2 left-1/2 w-[45%] h-[45%] rounded-full" style={{ borderWidth: '2.5px', borderStyle: 'solid', borderColor: 'rgba(0,168,232,0.35)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
+            <div ref={sbR4} className="absolute top-1/2 left-1/2 w-[22%] h-[22%] rounded-full" style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(232,101,26,0.4)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
+            <div ref={sbDot} className="absolute top-1/2 left-1/2 w-4 h-4 rounded-full" style={{ background: 'radial-gradient(circle, #E8651A, #c44a10)', boxShadow: '0 0 30px rgba(232,101,26,0.7)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
+            <div ref={sbGlow} className="absolute top-1/2 left-1/2 w-[30%] h-[30%] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(232,101,26,0.4) 0%, rgba(0,168,232,0.15) 50%, transparent 70%)', opacity: 0, transform: 'translate(-50%,-50%) scale(0)' }} />
+            <div ref={sbLH} className="absolute top-1/2 left-1/2 w-full h-px" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(-50%, 0) scaleX(0)' }} />
+            <div ref={sbLV} className="absolute top-1/2 left-1/2 w-px h-full" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(0, -50%) scaleY(0)' }} />
+            <div ref={sbLD1} className="absolute top-1/2 left-1/2 w-full h-px" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(-50%, 0) rotate(45deg) scaleX(0)' }} />
+            <div ref={sbLD2} className="absolute top-1/2 left-1/2 w-full h-px" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(-50%, 0) rotate(-45deg) scaleX(0)' }} />
+          </div>
           {/* Floating shapes */}
           <div className="absolute top-[15%] left-[10%] w-16 h-16 rounded-full border border-light-cyan/20 animate-float" />
           <div className="absolute top-[25%] right-[15%] w-24 h-24 rounded-full border border-orange/15 animate-float-delayed" />
