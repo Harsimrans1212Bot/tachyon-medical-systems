@@ -115,13 +115,7 @@ export default function SectionBackground({ variant = "primary" }: { variant?: V
           }}
         />
 
-        {/* Scanning lines */}
-        {variant !== "minimal" && (
-          <>
-            <div className="scan-line-el" />
-            <div className="scan-line-el" style={{ animationDelay: "-2s" }} />
-          </>
-        )}
+        {/* Scanning lines removed */}
 
         {/* Pulse rings */}
         {variant === "primary" && (
