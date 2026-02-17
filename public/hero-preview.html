@@ -15,16 +15,15 @@
     overflow: hidden;
   }
 
-  /* ─── Starburst Animation Container ─── */
   .starburst-bg {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 140vw;
-    height: 140vw;
-    max-width: 900px;
-    max-height: 900px;
+    width: 120vw;
+    height: 120vw;
+    max-width: 850px;
+    max-height: 850px;
     pointer-events: none;
   }
 
@@ -36,18 +35,18 @@
     opacity: 0;
     transform: translate(-50%,-50%) scale(0.3);
   }
-  .sb-r1 { width: 95%; height: 95%; border-width: 2px; border-color: rgba(0,168,232,0.12); }
-  .sb-r2 { width: 70%; height: 70%; border-width: 2px; border-color: rgba(232,160,80,0.1); }
-  .sb-r3 { width: 45%; height: 45%; border-width: 1.5px; border-color: rgba(232,120,40,0.12); }
-  .sb-r4 { width: 22%; height: 22%; border-width: 1px; border-color: rgba(232,101,26,0.15); }
+  .sb-r1 { width: 95%; height: 95%; border-width: 3px; border-color: rgba(0,168,232,0.35); }
+  .sb-r2 { width: 70%; height: 70%; border-width: 3px; border-color: rgba(232,160,80,0.3); }
+  .sb-r3 { width: 45%; height: 45%; border-width: 2.5px; border-color: rgba(0,168,232,0.35); }
+  .sb-r4 { width: 22%; height: 22%; border-width: 2px; border-color: rgba(232,101,26,0.4); }
 
   .sb-dot {
     position: absolute;
     top: 50%; left: 50%;
-    width: 12px; height: 12px;
+    width: 16px; height: 16px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(232,101,26,0.8), rgba(232,101,26,0.3));
-    box-shadow: 0 0 20px rgba(232,101,26,0.4);
+    background: radial-gradient(circle, #E8651A, #c44a10);
+    box-shadow: 0 0 30px rgba(232,101,26,0.7);
     opacity: 0;
     transform: translate(-50%,-50%) scale(0.3);
   }
@@ -55,7 +54,7 @@
   .sb-line {
     position: absolute;
     top: 50%; left: 50%;
-    background: rgba(0,168,232,0.06);
+    background: rgba(0,168,232,0.1);
     transform-origin: 50% 50%;
     opacity: 0;
   }
@@ -64,18 +63,21 @@
   .sb-ld1 { width: 100%; height: 1px; transform: translate(-50%, 0) rotate(45deg) scaleX(0); }
   .sb-ld2 { width: 100%; height: 1px; transform: translate(-50%, 0) rotate(-45deg) scaleX(0); }
 
-  /* Floating shapes (keep existing look) */
-  .float-shape {
+  /* Glow ring that flashes during explode */
+  .sb-glow {
     position: absolute;
+    top: 50%; left: 50%;
+    width: 30%; height: 30%;
     border-radius: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    background: radial-gradient(circle, rgba(232,101,26,0.4) 0%, rgba(0,168,232,0.15) 50%, transparent 70%);
+    opacity: 0;
     pointer-events: none;
   }
 
-  /* Glowing orbs */
   .orb1 { position: absolute; top: 5%; right: 5%; width: 300px; height: 300px; background: rgba(0,168,232,0.04); border-radius: 50%; filter: blur(60px); }
   .orb2 { position: absolute; bottom: 10%; left: 5%; width: 200px; height: 200px; background: rgba(232,101,26,0.03); border-radius: 50%; filter: blur(50px); }
 
-  /* Content */
   .hero-content {
     position: relative;
     z-index: 10;
@@ -131,54 +133,43 @@
   .btn-cyan { background: #00A8E8; color: white; }
   .btn-orange { background: #E8651A; color: white; }
 
-  /* Small particles */
   .particle { position: absolute; border-radius: 50%; pointer-events: none; }
   .p1 { top: 20%; right: 25%; width: 4px; height: 4px; background: rgba(0,168,232,0.3); animation: pulse-p 2s infinite; }
   .p2 { top: 70%; left: 35%; width: 3px; height: 3px; background: rgba(232,101,26,0.25); animation: pulse-p 3s infinite 1s; }
-  .p3 { bottom: 40%; left: 15%; width: 3px; height: 3px; background: rgba(255,255,255,0.15); animation: pulse-p 2.5s infinite 0.5s; }
   @keyframes pulse-p { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-  /* Floating circle outlines */
+  .float-shape { position: absolute; border-radius: 50%; pointer-events: none; }
   .fc1 { top: 15%; left: 10%; width: 50px; height: 50px; border: 1px solid rgba(0,168,232,0.15); animation: float-a 8s ease-in-out infinite; }
   .fc2 { top: 25%; right: 15%; width: 70px; height: 70px; border: 1px solid rgba(232,101,26,0.1); animation: float-a 10s ease-in-out infinite 2s; }
   .fc3 { bottom: 20%; left: 20%; width: 35px; height: 35px; background: rgba(0,168,232,0.06); animation: float-a 12s ease-in-out infinite 1s; }
   @keyframes float-a { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-  .preview-label {
-    position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);
-    background: rgba(0,0,0,0.7); color: #64748b; padding: 6px 16px; border-radius: 8px; font-size: 11px; z-index: 99;
-  }
 </style>
 </head>
 <body>
 
 <section class="hero">
-  <!-- Background orbs -->
   <div class="orb1"></div>
   <div class="orb2"></div>
 
-  <!-- Starburst animation -->
   <div class="starburst-bg" id="sb">
     <div class="sb-ring sb-r1" id="r1"></div>
     <div class="sb-ring sb-r2" id="r2"></div>
     <div class="sb-ring sb-r3" id="r3"></div>
     <div class="sb-ring sb-r4" id="r4"></div>
     <div class="sb-dot" id="dot"></div>
+    <div class="sb-glow" id="glow"></div>
     <div class="sb-line sb-lh" id="lh"></div>
     <div class="sb-line sb-lv" id="lv"></div>
     <div class="sb-line sb-ld1" id="ld1"></div>
     <div class="sb-line sb-ld2" id="ld2"></div>
   </div>
 
-  <!-- Floating shapes -->
   <div class="float-shape fc1"></div>
   <div class="float-shape fc2"></div>
   <div class="float-shape fc3"></div>
   <div class="particle p1"></div>
   <div class="particle p2"></div>
-  <div class="particle p3"></div>
 
-  <!-- Content -->
   <div class="hero-content">
     <div class="badge"><span class="star">★</span> Trusted Since 1992</div>
     <h1>
@@ -196,66 +187,85 @@
   </div>
 </section>
 
-<div class="preview-label">PREVIEW — Explode → Reassemble → Breathe</div>
-
 <script>
 const rings = [
-  { el: document.getElementById('r1'), restOp: 0.12, explodeScale: 1.5, delay: 0 },
-  { el: document.getElementById('r2'), restOp: 0.1, explodeScale: 1.8, delay: 80 },
-  { el: document.getElementById('r3'), restOp: 0.12, explodeScale: 2.1, delay: 160 },
-  { el: document.getElementById('r4'), restOp: 0.15, explodeScale: 2.6, delay: 240 },
+  { el: document.getElementById('r1'), restOp: 0.35, explodeScale: 1.5, delay: 0 },
+  { el: document.getElementById('r2'), restOp: 0.3, explodeScale: 1.8, delay: 100 },
+  { el: document.getElementById('r3'), restOp: 0.35, explodeScale: 2.1, delay: 200 },
+  { el: document.getElementById('r4'), restOp: 0.4, explodeScale: 2.6, delay: 300 },
 ];
 const dot = document.getElementById('dot');
+const glow = document.getElementById('glow');
 const lines = [document.getElementById('lh'), document.getElementById('lv'), document.getElementById('ld1'), document.getElementById('ld2')];
 
-// Phase 1a: Dot charges (0.2s → 1s)
+// Phase 1a: Everything starts gathered at center, dot charges up (0.3s → 1.2s)
 setTimeout(() => {
+  // Rings appear small at center
+  rings.forEach(r => {
+    r.el.style.transition = 'all 0.6s ease-out';
+    r.el.style.transform = 'translate(-50%,-50%) scale(0.4)';
+    r.el.style.opacity = '0.5';
+  });
   dot.style.transition = 'all 0.8s ease-out';
-  dot.style.transform = 'translate(-50%,-50%) scale(1.5)';
-  dot.style.opacity = '0.8';
-  dot.style.boxShadow = '0 0 40px rgba(232,101,26,0.6)';
-}, 200);
+  dot.style.transform = 'translate(-50%,-50%) scale(2)';
+  dot.style.opacity = '1';
+  dot.style.boxShadow = '0 0 50px rgba(232,101,26,0.9)';
+}, 300);
 
-// Phase 1b: Explode (1s → 2.4s)
+// Phase 1b: EXPLODE — rings fly outward with glow flash (1.3s → 2.8s)
 setTimeout(() => {
-  dot.style.transition = 'all 0.8s ease-out';
-  dot.style.transform = 'translate(-50%,-50%) scale(4)';
-  dot.style.boxShadow = '0 0 80px rgba(232,101,26,0.7)';
-  dot.style.opacity = '0.6';
+  // Big glow flash
+  glow.style.transition = 'all 0.6s ease-out';
+  glow.style.transform = 'translate(-50%,-50%) scale(4)';
+  glow.style.opacity = '0.8';
 
+  // Dot flares
+  dot.style.transition = 'all 1s ease-out';
+  dot.style.transform = 'translate(-50%,-50%) scale(5)';
+  dot.style.boxShadow = '0 0 100px rgba(232,101,26,1)';
+  dot.style.opacity = '0.9';
+
+  // Rings explode outward — staggered, big and bright
   rings.forEach(r => {
     setTimeout(() => {
-      r.el.style.transition = 'all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      r.el.style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
       r.el.style.transform = `translate(-50%,-50%) scale(${r.explodeScale})`;
-      r.el.style.opacity = '0.25';
+      r.el.style.opacity = '0.6';
     }, r.delay);
   });
-}, 1000);
+}, 1300);
 
-// Phase 1c: Fade out (2.4s → 3s)
+// Glow fades
+setTimeout(() => {
+  glow.style.transition = 'all 1s ease-out';
+  glow.style.opacity = '0';
+}, 1900);
+
+// Phase 1c: Hold at peak then fade (2.8s → 3.5s)
 setTimeout(() => {
   rings.forEach(r => {
-    r.el.style.transition = 'all 0.6s ease-in';
-    r.el.style.transform = `translate(-50%,-50%) scale(${r.explodeScale * 1.1})`;
+    r.el.style.transition = 'all 0.7s ease-in';
+    r.el.style.transform = `translate(-50%,-50%) scale(${r.explodeScale * 1.15})`;
     r.el.style.opacity = '0';
   });
-  dot.style.transition = 'all 0.5s ease-in';
+  dot.style.transition = 'all 0.6s ease-in';
   dot.style.opacity = '0';
   dot.style.transform = 'translate(-50%,-50%) scale(0)';
-}, 2400);
+  dot.style.boxShadow = '0 0 0 transparent';
+}, 2800);
 
-// Phase 2: Reassemble (3.2s → 4.5s)
+// Phase 2: Reassemble (3.8s → 5s)
 setTimeout(() => {
   rings.forEach((r, i) => {
-    r.el.style.transition = `all ${0.9 + i * 0.1}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
+    r.el.style.transition = `all ${1.0 + i * 0.1}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
     r.el.style.transform = 'translate(-50%,-50%) scale(1)';
     r.el.style.opacity = String(r.restOp);
   });
-  dot.style.transition = 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)';
+  dot.style.transition = 'all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)';
   dot.style.transform = 'translate(-50%,-50%) scale(1)';
-  dot.style.opacity = '0.6';
-  dot.style.boxShadow = '0 0 20px rgba(232,101,26,0.4)';
-}, 3200);
+  dot.style.opacity = '1';
+  dot.style.boxShadow = '0 0 30px rgba(232,101,26,0.7)';
+}, 3800);
 
 // Lines fade in
 setTimeout(() => {
@@ -266,29 +276,29 @@ setTimeout(() => {
     'translate(-50%, 0) rotate(-45deg) scaleX(1)',
   ];
   lines.forEach((l, i) => {
-    l.style.transition = `all ${0.5 + i * 0.1}s ease-out`;
+    l.style.transition = `all ${0.6 + i * 0.1}s ease-out`;
     l.style.transform = lt[i];
-    l.style.opacity = '0.06';
+    l.style.opacity = '0.1';
   });
-}, 3800);
+}, 4500);
 
-// Phase 3: Breathe forever (5s+)
+// Phase 3: Breathe forever (5.5s+)
 setTimeout(() => {
   const css = document.createElement('style');
   css.textContent = `
-    @keyframes br1 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.12; } 50% { transform:translate(-50%,-50%) scale(1.08); opacity:0.18; } }
-    @keyframes br2 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.1; } 50% { transform:translate(-50%,-50%) scale(0.92); opacity:0.16; } }
-    @keyframes br3 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.12; } 50% { transform:translate(-50%,-50%) scale(1.12); opacity:0.2; } }
-    @keyframes br4 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.15; } 50% { transform:translate(-50%,-50%) scale(1.06); opacity:0.22; } }
-    @keyframes brd { 0%,100% { transform:translate(-50%,-50%) scale(1); box-shadow:0 0 20px rgba(232,101,26,0.4); } 50% { transform:translate(-50%,-50%) scale(1.3); box-shadow:0 0 35px rgba(232,101,26,0.6); } }
-    @keyframes brl { 0%,100% { opacity:0.06; } 50% { opacity:0.12; } }
+    @keyframes br1 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.35; } 50% { transform:translate(-50%,-50%) scale(1.08); opacity:0.5; } }
+    @keyframes br2 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.3; } 50% { transform:translate(-50%,-50%) scale(0.92); opacity:0.45; } }
+    @keyframes br3 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.35; } 50% { transform:translate(-50%,-50%) scale(1.12); opacity:0.5; } }
+    @keyframes br4 { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:0.4; } 50% { transform:translate(-50%,-50%) scale(1.06); opacity:0.55; } }
+    @keyframes brd { 0%,100% { transform:translate(-50%,-50%) scale(1); box-shadow:0 0 30px rgba(232,101,26,0.7); } 50% { transform:translate(-50%,-50%) scale(1.3); box-shadow:0 0 50px rgba(232,101,26,0.9); } }
+    @keyframes brl { 0%,100% { opacity:0.1; } 50% { opacity:0.2; } }
   `;
   document.head.appendChild(css);
   const anims = ['br1','br2','br3','br4'];
   rings.forEach((r,i) => { r.el.style.transition='none'; r.el.style.animation=`${anims[i]} 4s ease-in-out infinite`; });
   dot.style.transition='none'; dot.style.animation='brd 4s ease-in-out infinite';
   lines.forEach(l => { l.style.transition='none'; l.style.animation='brl 4s ease-in-out infinite'; });
-}, 5000);
+}, 5500);
 </script>
 
 </body>
