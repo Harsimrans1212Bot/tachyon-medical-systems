@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import Image from "next/image";
 import SectionBackground from "@/components/SectionBackground";
@@ -6,6 +7,8 @@ import SectionBackground from "@/components/SectionBackground";
 export const metadata: Metadata = {
   title: "About Us | Tachyon Medical Systems",
   description: "Learn about Tachyon Medical Systems — over 30 years of expertise in medical equipment solutions since 1992.",
+  alternates: { canonical: "https://www.tachyonmed.com/about" },
+  openGraph: { url: "https://www.tachyonmed.com/about" },
 };
 
 const milestones = [
@@ -26,6 +29,7 @@ const values = [
 export default function About() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{name:"Home",url:"https://www.tachyonmed.com/"}, {name:"About",url:"https://www.tachyonmed.com/about"}]} />
       {/* Hero */}
       <section className="pt-32 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

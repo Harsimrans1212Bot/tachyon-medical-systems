@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Buy & Sell Medical Equipment | Tachyon Medical Systems",
   description: "Trusted marketplace for pre-owned medical imaging equipment. Buy or sell MRI, CT, PET-CT, Cath Labs, and more with Tachyon Medical Systems.",
+  alternates: { canonical: "https://www.tachyonmed.com/services/buy-sell" },
+  openGraph: { url: "https://www.tachyonmed.com/services/buy-sell" },
 };
 
 const team = [
@@ -35,6 +38,8 @@ const sellFeatures = [
 export default function BuySellPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{name:"Home",url:"https://www.tachyonmed.com/"}, {name:"Services",url:"https://www.tachyonmed.com/services"}, {name:"Buy & Sell",url:"https://www.tachyonmed.com/services/buy-sell"}]} />
+      <ServiceJsonLd name="Medical Equipment Buy & Sell" description="Trusted marketplace for pre-owned medical imaging equipment." url="https://www.tachyonmed.com/services/buy-sell" />
       {/* Hero */}
       <section className="pt-32 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

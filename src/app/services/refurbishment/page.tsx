@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Equipment Refurbishment | Tachyon Medical Systems",
   description: "Professional medical equipment refurbishment services for CT Scanners, MRI, PET-CT, Cath Labs, Mammography, Sonography, ECG, and Multi-Parameter Monitors. OEM-equivalent parts and full warranty.",
+  alternates: { canonical: "https://www.tachyonmed.com/services/refurbishment" },
+  openGraph: { url: "https://www.tachyonmed.com/services/refurbishment" },
 };
 
 const steps = [
@@ -112,6 +115,8 @@ const equipment = [
 export default function RefurbishmentPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{name:"Home",url:"https://www.tachyonmed.com/"}, {name:"Services",url:"https://www.tachyonmed.com/services"}, {name:"Refurbishment",url:"https://www.tachyonmed.com/services/refurbishment"}]} />
+      <ServiceJsonLd name="Medical Equipment Refurbishment" description="Professional refurbishment of medical imaging equipment to OEM specifications." url="https://www.tachyonmed.com/services/refurbishment" />
       {/* Hero */}
       <section className="pt-32 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

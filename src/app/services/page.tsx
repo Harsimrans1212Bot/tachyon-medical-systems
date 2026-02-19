@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Services | Tachyon Medical Systems",
   description: "Comprehensive medical equipment services including refurbishment, buying & selling, import/export, installation, and maintenance.",
+  alternates: { canonical: "https://www.tachyonmed.com/services" },
+  openGraph: { url: "https://www.tachyonmed.com/services" },
 };
 
 const services = [
@@ -58,6 +61,7 @@ const services = [
 export default function Services() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{name:"Home",url:"https://www.tachyonmed.com/"}, {name:"Services",url:"https://www.tachyonmed.com/services"}]} />
       {/* Hero */}
       <section className="pt-32 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

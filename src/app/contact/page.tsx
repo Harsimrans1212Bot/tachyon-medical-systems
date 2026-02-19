@@ -1,15 +1,40 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Contact Us | Tachyon Medical Systems",
   description: "Get in touch with Tachyon Medical Systems for medical equipment inquiries, quotes, and support.",
+  alternates: { canonical: "https://www.tachyonmed.com/contact" },
+  openGraph: { url: "https://www.tachyonmed.com/contact" },
+};
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Tachyon Medical Systems Pvt. Ltd.",
+  image: "https://www.tachyonmed.com/logo-header.png",
+  url: "https://www.tachyonmed.com",
+  telephone: "+91-9215291291",
+  email: "admin@tachyonmedical.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "1 Nyaypuri, Minar Road, Near Karan Stadium",
+    addressLocality: "Karnal",
+    addressRegion: "Haryana",
+    postalCode: "132001",
+    addressCountry: "IN",
+  },
+  foundingDate: "1992",
+  description: "Full lifecycle medical equipment company — refurbishment, buying/selling, import/export, installation.",
 };
 
 export default function Contact() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{name:"Home",url:"https://www.tachyonmed.com/"}, {name:"Contact",url:"https://www.tachyonmed.com/contact"}]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       {/* Hero */}
       <section className="pt-32 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

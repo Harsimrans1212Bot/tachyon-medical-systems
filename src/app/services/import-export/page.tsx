@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Import & Export Services | Tachyon Medical Systems",
   description: "Global medical equipment import and export services. Customs clearance, freight logistics, regulatory compliance across USA, India, Middle East, and UK.",
+  alternates: { canonical: "https://www.tachyonmed.com/services/import-export" },
+  openGraph: { url: "https://www.tachyonmed.com/services/import-export" },
 };
 
 const routes = [
@@ -60,6 +63,8 @@ const countries = [
 export default function ImportExportPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{name:"Home",url:"https://www.tachyonmed.com/"}, {name:"Services",url:"https://www.tachyonmed.com/services"}, {name:"Import & Export",url:"https://www.tachyonmed.com/services/import-export"}]} />
+      <ServiceJsonLd name="Medical Equipment Import & Export" description="Global medical equipment import and export with customs clearance and logistics." url="https://www.tachyonmed.com/services/import-export" />
       {/* Hero */}
       <section className="pt-32 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

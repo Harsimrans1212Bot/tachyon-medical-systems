@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
+import { BreadcrumbJsonLd, ServiceJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
 import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
   title: "Installation Services | Tachyon Medical Systems",
   description: "Professional medical equipment installation and uninstallation services. CT Scanner, MRI, PET-CT, Cath Lab, Mammography with site planning and training.",
+  alternates: { canonical: "https://www.tachyonmed.com/services/installation" },
+  openGraph: { url: "https://www.tachyonmed.com/services/installation" },
 };
 
 const pricing = [
@@ -51,6 +54,8 @@ const phases = [
 export default function InstallationPage() {
   return (
     <>
+      <BreadcrumbJsonLd items={[{name:"Home",url:"https://www.tachyonmed.com/"}, {name:"Services",url:"https://www.tachyonmed.com/services"}, {name:"Installation",url:"https://www.tachyonmed.com/services/installation"}]} />
+      <ServiceJsonLd name="Medical Equipment Installation" description="Professional installation and deinstallation of CT, MRI, PET-CT, Cath Lab, and Mammography systems." url="https://www.tachyonmed.com/services/installation" />
       {/* Hero */}
       <section className="pt-32 pb-16 hero-gradient">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
