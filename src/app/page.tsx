@@ -195,7 +195,7 @@ export default function Home() {
         gsap.to(obj, {
           val: num,
           duration: 2,
-          delay: i * 0.2,
+          delay: 0,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
