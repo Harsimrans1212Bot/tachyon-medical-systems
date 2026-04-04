@@ -43,46 +43,46 @@ export default function Home() {
     const lines = [sbLH.current, sbLV.current, sbLD1.current, sbLD2.current];
     if (!dot || !glow || rings.some(r => !r.el)) return;
 
-    // Phase 1a: Charge up
+    // Phase 1a: Quick charge — starts immediately
     const t1 = setTimeout(() => {
       rings.forEach(r => {
-        r.el!.style.transition = 'all 0.6s ease-out';
+        r.el!.style.transition = 'all 0.35s ease-out';
         r.el!.style.transform = 'translate(-50%,-50%) scale(0.4)';
         r.el!.style.opacity = '0.5';
       });
-      dot.style.transition = 'all 0.8s ease-out';
+      dot.style.transition = 'all 0.4s ease-out';
       dot.style.transform = 'translate(-50%,-50%) scale(2)';
       dot.style.opacity = '1';
       dot.style.boxShadow = '0 0 50px rgba(232,101,26,0.9)';
-    }, 300);
+    }, 50);
 
     // Phase 1b: Explode
     const t2 = setTimeout(() => {
-      glow.style.transition = 'all 0.6s ease-out';
+      glow.style.transition = 'all 0.5s ease-out';
       glow.style.transform = 'translate(-50%,-50%) scale(4)';
       glow.style.opacity = '0.8';
 
-      dot.style.transition = 'all 1s ease-out';
+      dot.style.transition = 'all 0.8s ease-out';
       dot.style.transform = 'translate(-50%,-50%) scale(5)';
       dot.style.boxShadow = '0 0 100px rgba(232,101,26,1)';
       dot.style.opacity = '0.9';
 
       rings.forEach(r => {
         setTimeout(() => {
-          r.el!.style.transition = 'all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          r.el!.style.transition = 'all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
           r.el!.style.transform = `translate(-50%,-50%) scale(${r.explodeScale})`;
           r.el!.style.opacity = '0.6';
         }, r.delay);
       });
-    }, 1300);
+    }, 500);
 
     // Glow fades smoothly
     const t3 = setTimeout(() => {
       glow.style.transition = 'all 1.5s ease-in-out';
       glow.style.opacity = '0';
-    }, 1900);
+    }, 1100);
 
-    // Phase 2: Smooth contraction — rings ease back to rest (no fade-to-zero gap)
+    // Phase 2: Smooth contraction — rings ease back to rest
     const t4 = setTimeout(() => {
       rings.forEach((r, i) => {
         r.el!.style.transition = `all ${1.8 + i * 0.15}s cubic-bezier(0.25, 0.1, 0.25, 1)`;
@@ -93,7 +93,7 @@ export default function Home() {
       dot.style.transform = 'translate(-50%,-50%) scale(1)';
       dot.style.opacity = '1';
       dot.style.boxShadow = '0 0 30px rgba(232,101,26,0.7)';
-    }, 2800);
+    }, 2000);
 
     // Lines fade in during contraction
     const lineTransforms = [
@@ -109,7 +109,7 @@ export default function Home() {
         l.style.transform = lineTransforms[i];
         l.style.opacity = '0.1';
       });
-    }, 3600);
+    }, 2800);
 
     // Phase 3: Breathe forever — starts once contraction has settled
     const t6 = setTimeout(() => {
@@ -130,7 +130,7 @@ export default function Home() {
         l.style.transition = 'none';
         l.style.animation = 'sb-brl 4s ease-in-out infinite';
       });
-    }, 5000);
+    }, 4200);
 
     return () => { [t1,t2,t3,t4,t5,t6].forEach(clearTimeout); };
   }, []);
