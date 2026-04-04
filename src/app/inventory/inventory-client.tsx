@@ -25,7 +25,6 @@ const categories = [
       </svg>
     ),
     machines: [
-      { name: "GE Optima 660", slug: "ge-optima-660", specs: "64-Slice CT Scanner" },
       { name: "GE BrightSpeed 8", slug: "ge-brightspeed-8", specs: "8-Slice CT Scanner" },
       { name: "GE BrightSpeed 16", slug: "ge-brightspeed-16", specs: "16-Slice CT Scanner" },
       { name: "GE LightSpeed 8", slug: "ge-lightspeed-8", specs: "8-Slice CT Scanner" },
@@ -44,8 +43,6 @@ const categories = [
     machines: [
       { name: "GE 1.5T MRI", slug: "ge-1-5t-mri", specs: "1.5 Tesla MRI System" },
       { name: "GE 3.0T MRI", slug: "ge-3-0t-mri", specs: "3.0 Tesla MRI System" },
-      { name: "GE Signa HDxt 1.5T", slug: "ge-signa-hdxt-1-5t", specs: "High-Definition 1.5T" },
-      { name: "GE Excite HD 1.5T", slug: "ge-excite-hd-1-5t", specs: "HD Excite Platform" },
       { name: "Philips 1.5T MRI", slug: "philips-1-5t-mri", specs: "1.5 Tesla MRI System" },
       { name: "Philips 3.0T MRI", slug: "philips-3-0t-mri", specs: "3.0 Tesla MRI System" },
     ],

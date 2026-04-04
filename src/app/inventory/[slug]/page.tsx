@@ -8,30 +8,6 @@ import SectionBackground from "@/components/SectionBackground";
 const allMachines = [
   // CT Scanners
   {
-    slug: "ge-optima-660",
-    name: "GE Optima 660",
-    category: "CT Scanners",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Excellent",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "64-Slice",
-      "Gantry Aperture": "70 cm",
-      "Reconstruction Time": "< 1 second",
-      "kVp Range": "80, 100, 120, 140 kVp",
-      "Scan Time": "0.35 - 4 seconds",
-      "Table Weight Capacity": "204 kg (450 lbs)",
-    },
-    description: "The GE Optima 660 is a premium 64-slice CT scanner offering exceptional image quality with reduced dose. Features advanced reconstruction algorithms and high-speed scanning capabilities for improved patient throughput.",
-    features: [
-      "ASiR (Adaptive Statistical iterative Reconstruction)",
-      "Smart mA automatic exposure control",
-      "VolumeShuttle for cardiac imaging",
-      "Organ dose modulation",
-      "One-button protocols",
-    ],
-  },
-  {
     slug: "ge-brightspeed-8",
     name: "GE BrightSpeed 8",
     category: "CT Scanners",
