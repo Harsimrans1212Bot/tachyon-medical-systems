@@ -76,56 +76,43 @@ export default function Home() {
       });
     }, 1300);
 
-    // Glow fades
+    // Glow fades smoothly
     const t3 = setTimeout(() => {
-      glow.style.transition = 'all 1s ease-out';
+      glow.style.transition = 'all 1.5s ease-in-out';
       glow.style.opacity = '0';
     }, 1900);
 
-    // Phase 1c: Fade out
+    // Phase 2: Smooth contraction — rings ease back to rest (no fade-to-zero gap)
     const t4 = setTimeout(() => {
-      rings.forEach(r => {
-        r.el!.style.transition = 'all 0.7s ease-in';
-        r.el!.style.transform = `translate(-50%,-50%) scale(${r.explodeScale * 1.15})`;
-        r.el!.style.opacity = '0';
-      });
-      dot.style.transition = 'all 0.6s ease-in';
-      dot.style.opacity = '0';
-      dot.style.transform = 'translate(-50%,-50%) scale(0)';
-      dot.style.boxShadow = '0 0 0 transparent';
-    }, 2800);
-
-    // Phase 2: Reassemble
-    const t5 = setTimeout(() => {
       rings.forEach((r, i) => {
-        r.el!.style.transition = `all ${1.0 + i * 0.1}s cubic-bezier(0.34, 1.56, 0.64, 1)`;
+        r.el!.style.transition = `all ${1.8 + i * 0.15}s cubic-bezier(0.25, 0.1, 0.25, 1)`;
         r.el!.style.transform = 'translate(-50%,-50%) scale(1)';
         r.el!.style.opacity = String(r.restOp);
       });
-      dot.style.transition = 'all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      dot.style.transition = 'all 1.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
       dot.style.transform = 'translate(-50%,-50%) scale(1)';
       dot.style.opacity = '1';
       dot.style.boxShadow = '0 0 30px rgba(232,101,26,0.7)';
-    }, 3800);
+    }, 2800);
 
-    // Lines fade in
+    // Lines fade in during contraction
     const lineTransforms = [
       'translate(-50%, 0) scaleX(1)',
       'translate(0, -50%) scaleY(1)',
       'translate(-50%, 0) rotate(45deg) scaleX(1)',
       'translate(-50%, 0) rotate(-45deg) scaleX(1)',
     ];
-    const t6 = setTimeout(() => {
+    const t5 = setTimeout(() => {
       lines.forEach((l, i) => {
         if (!l) return;
-        l.style.transition = `all ${0.6 + i * 0.1}s ease-out`;
+        l.style.transition = `all ${0.8 + i * 0.1}s ease-in-out`;
         l.style.transform = lineTransforms[i];
         l.style.opacity = '0.1';
       });
-    }, 4500);
+    }, 3600);
 
-    // Phase 3: Breathe forever
-    const t7 = setTimeout(() => {
+    // Phase 3: Breathe forever — starts once contraction has settled
+    const t6 = setTimeout(() => {
       const anims = [
         { name: 'sb-br1', rest: 0.35, peak: 0.5, scale: 1.08 },
         { name: 'sb-br2', rest: 0.3, peak: 0.45, scale: 0.92 },
@@ -143,9 +130,9 @@ export default function Home() {
         l.style.transition = 'none';
         l.style.animation = 'sb-brl 4s ease-in-out infinite';
       });
-    }, 5500);
+    }, 5000);
 
-    return () => { [t1,t2,t3,t4,t5,t6,t7].forEach(clearTimeout); };
+    return () => { [t1,t2,t3,t4,t5,t6].forEach(clearTimeout); };
   }, []);
 
   useLayoutEffect(() => {
