@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useRef, useLayoutEffect } from "react";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionBackground from "@/components/SectionBackground";
@@ -135,7 +136,7 @@ export default function Home() {
     return () => { [t1,t2,t3,t4,t5,t6].forEach(clearTimeout); };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const ctx = gsap.context(() => {
       // Hero word-by-word split and fade out on scroll
       const heroWords = heroRef.current?.querySelectorAll(".hero-word");
@@ -436,7 +437,7 @@ export default function Home() {
                 className="reveal-card block bg-white dark:bg-white/5 rounded-2xl overflow-hidden card-hover border border-gray-100 dark:border-white/10"
               >
                 <div className="h-48 relative overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
                 <div className="p-6">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { BreadcrumbJsonLd } from "@/components/JsonLd";
 import Link from "next/link";
+import Image from "next/image";
 import SectionBackground from "@/components/SectionBackground";
 
 export const metadata: Metadata = {
@@ -102,8 +103,8 @@ export default function Services() {
                     {/* Image beside bullet points on all screens */}
                     <div className="w-36 sm:w-44 lg:hidden flex-shrink-0">
                       {service.image ? (
-                        <div className="h-full min-h-[160px] rounded-xl overflow-hidden">
-                          <img src={service.image} alt={service.title} className="w-full h-full object-cover object-center" />
+                        <div className="relative h-full min-h-[160px] rounded-xl overflow-hidden">
+                          <Image src={service.image} alt={service.title} fill className="object-cover object-center" sizes="176px" />
                         </div>
                       ) : (
                         <div className="h-full min-h-[160px] rounded-xl equipment-placeholder flex items-center justify-center">
@@ -122,8 +123,8 @@ export default function Services() {
                 {/* Desktop side image */}
                 <div className="hidden lg:block flex-1 w-full">
                   {service.image ? (
-                    <div className="h-80 sm:h-96 rounded-2xl overflow-hidden">
-                      <img src={service.image} alt={service.title} className="w-full h-full object-cover object-center" />
+                    <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden">
+                      <Image src={service.image} alt={service.title} fill className="object-cover object-center" sizes="50vw" />
                     </div>
                   ) : (
                     <div className="h-72 rounded-2xl equipment-placeholder flex items-center justify-center">

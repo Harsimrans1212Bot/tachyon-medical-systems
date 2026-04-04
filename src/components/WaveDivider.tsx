@@ -1,23 +1,28 @@
 "use client";
 import { useEffect, useRef } from "react";
 
-/**
- * Sine wave divider for top/bottom of light sections.
- * Moves left on scroll down, right on scroll up.
- * position="top" or "bottom"
- */
 export default function WaveDivider({ position = "bottom" }: { position?: "top" | "bottom" }) {
   const ref = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const lastScroll = useRef(0);
   const offset = useRef(0);
+  const isVisible = useRef(false);
 
   useEffect(() => {
     const svg = ref.current;
-    if (!svg) return;
+    const container = containerRef.current;
+    if (!svg || !container) return;
+
+    // Only run scroll animation when the wave is in the viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible.current = entry.isIntersecting; },
+      { rootMargin: "100px" }
+    );
+    observer.observe(container);
 
     let ticking = false;
     const onScroll = () => {
-      if (ticking) return;
+      if (ticking || !isVisible.current) return;
       ticking = true;
       requestAnimationFrame(() => {
         const scrollY = window.scrollY;
@@ -31,11 +36,15 @@ export default function WaveDivider({ position = "bottom" }: { position?: "top" 
 
     lastScroll.current = window.scrollY;
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <div
+      ref={containerRef}
       className={`absolute left-0 right-0 overflow-hidden pointer-events-none h-12 z-[2] dark:hidden ${position === "top" ? "top-0" : "bottom-0"}`}
     >
       <svg
