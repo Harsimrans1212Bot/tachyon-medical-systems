@@ -3,341 +3,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import SectionBackground from "@/components/SectionBackground";
-
-// Machine database - in a real app, this would come from a database
-const allMachines = [
-  // CT Scanners
-  {
-    slug: "ge-brightspeed-8",
-    name: "GE BrightSpeed 8",
-    category: "CT Scanners",
-    price: "$120,000 - $180,000",
-    condition: "Refurbished - Very Good",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "8-Slice",
-      "Gantry Aperture": "70 cm",
-      "Rotation Time": "0.5 - 2 seconds",
-      "kVp Range": "80, 100, 120, 140 kVp",
-      "Max Scan Length": "1800 mm",
-      "Table Weight Capacity": "204 kg (450 lbs)",
-    },
-    description: "The GE BrightSpeed 8 delivers reliable 8-slice CT imaging with excellent image quality. Ideal for routine examinations with proven clinical performance and cost-effective operation.",
-    features: [
-      "Smart mA dose modulation",
-      "HiLight Advantage detector",
-      "Fast reconstruction times",
-      "Comprehensive protocols library",
-      "User-friendly interface",
-    ],
-  },
-  {
-    slug: "ge-brightspeed-16",
-    name: "GE BrightSpeed 16",
-    category: "CT Scanners",
-    price: "$150,000 - $220,000",
-    condition: "Refurbished - Excellent",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "16-Slice",
-      "Gantry Aperture": "70 cm",
-      "Rotation Time": "0.5 - 2 seconds",
-      "kVp Range": "80, 100, 120, 140 kVp",
-      "Max Scan Length": "1800 mm",
-      "Table Weight Capacity": "204 kg (450 lbs)",
-    },
-    description: "The GE BrightSpeed 16 provides enhanced 16-slice imaging capability with superior image quality and faster scan times. Perfect for mid-volume imaging centers.",
-    features: [
-      "Smart mA dose optimization",
-      "HiLight Advantage detector technology",
-      "Advanced reconstruction algorithms",
-      "Comprehensive cardiac capabilities",
-      "Streamlined workflow",
-    ],
-  },
-  {
-    slug: "ge-lightspeed-8",
-    name: "GE LightSpeed 8",
-    category: "CT Scanners",
-    price: "$80,000 - $130,000",
-    condition: "Refurbished - Good",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "8-Slice",
-      "Gantry Aperture": "70 cm",
-      "Rotation Time": "0.5 - 2 seconds",
-      "kVp Range": "80, 120, 140 kVp",
-      "Max Scan Length": "1800 mm",
-      "Table Weight Capacity": "204 kg (450 lbs)",
-    },
-    description: "The GE LightSpeed 8 is a dependable 8-slice helical CT scanner offering consistent image quality for routine clinical applications. Cost-effective solution for small to mid-size facilities.",
-    features: [
-      "Helical and axial scanning modes",
-      "HiLight detector system",
-      "User-friendly operation",
-      "Reliable performance",
-      "Established clinical protocols",
-    ],
-  },
-  {
-    slug: "ge-lightspeed-16",
-    name: "GE LightSpeed 16",
-    category: "CT Scanners",
-    price: "$100,000 - $160,000",
-    condition: "Refurbished - Very Good",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "16-Slice",
-      "Gantry Aperture": "70 cm",
-      "Rotation Time": "0.5 - 2 seconds",
-      "kVp Range": "80, 120, 140 kVp",
-      "Max Scan Length": "1800 mm",
-      "Table Weight Capacity": "204 kg (450 lbs)",
-    },
-    description: "The GE LightSpeed 16 provides enhanced multi-slice imaging with improved scan speed and image quality. Reliable platform for diverse clinical applications.",
-    features: [
-      "16-slice helical scanning",
-      "HiLight detector technology",
-      "Cardiac and vascular imaging",
-      "Efficient patient workflow",
-      "Proven reliability",
-    ],
-  },
-  {
-    slug: "ge-revolution-act",
-    name: "GE Revolution ACT",
-    category: "CT Scanners",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Excellent",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "256-Slice",
-      "Coverage": "160 mm",
-      "Rotation Time": "0.28 seconds",
-      "kVp Range": "80-140 kVp with GSI",
-      "Detector": "Gemstone detector",
-      "Table Weight Capacity": "227 kg (500 lbs)",
-    },
-    description: "The GE Revolution ACT represents breakthrough CT technology with ultra-fast scanning and exceptional image quality. Features advanced cardiac and spectral imaging capabilities.",
-    features: [
-      "Revolution detector technology",
-      "ASiR-V iterative reconstruction",
-      "Spectral imaging capabilities",
-      "Single heartbeat cardiac imaging",
-      "Ultra-low dose protocols",
-    ],
-  },
-  {
-    slug: "ge-revolution-evo",
-    name: "GE Revolution EVO",
-    category: "CT Scanners",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Excellent",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "256-Slice",
-      "Coverage": "160 mm",
-      "Rotation Time": "0.28 seconds",
-      "kVp Range": "80-140 kVp",
-      "Detector": "Revolutionary detector",
-      "Table Weight Capacity": "227 kg (500 lbs)",
-    },
-    description: "The GE Revolution EVO delivers premium CT imaging with advanced reconstruction and dose optimization. Ideal for high-volume facilities requiring exceptional image quality.",
-    features: [
-      "Revolutionary detector system",
-      "ASiR-V reconstruction",
-      "Smart Workflow protocols",
-      "Dose optimization technology",
-      "Advanced cardiac imaging",
-    ],
-  },
-  {
-    slug: "ge-revolution-gsi",
-    name: "GE Revolution GSI",
-    category: "CT Scanners",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Excellent",
-    image: "/ct-scanner.jpg",
-    specifications: {
-      "Slice Count": "256-Slice",
-      "Coverage": "160 mm",
-      "Rotation Time": "0.28 seconds",
-      "Spectral Imaging": "Gemstone Spectral Imaging",
-      "Detector": "Gemstone detector",
-      "Table Weight Capacity": "227 kg (500 lbs)",
-    },
-    description: "The GE Revolution GSI combines advanced CT technology with Gemstone Spectral Imaging, providing unprecedented tissue characterization and material decomposition capabilities.",
-    features: [
-      "Gemstone Spectral Imaging (GSI)",
-      "Material decomposition",
-      "Monochromatic imaging",
-      "ASiR-V reconstruction",
-      "Advanced spectral applications",
-    ],
-  },
-  // MRI Systems
-  {
-    slug: "ge-1-5t-mri",
-    name: "GE 1.5T MRI",
-    category: "MRI Systems",
-    price: "$200,000 - $350,000",
-    condition: "Refurbished - Very Good",
-    image: "/mri.jpg",
-    specifications: {
-      "Field Strength": "1.5 Tesla",
-      "Bore Size": "60 cm",
-      "Gradient Strength": "33 mT/m",
-      "Slew Rate": "120 T/m/s",
-      "RF System": "Multi-channel",
-      "Table Weight Capacity": "250 kg (550 lbs)",
-    },
-    description: "Reliable 1.5T MRI system providing excellent image quality for routine neurological, musculoskeletal, and body imaging applications.",
-    features: [
-      "High-resolution imaging",
-      "Fast scanning protocols",
-      "Multiple coil configurations",
-      "User-friendly interface",
-      "Comprehensive pulse sequences",
-    ],
-  },
-  {
-    slug: "ge-3-0t-mri",
-    name: "GE 3.0T MRI",
-    category: "MRI Systems",
-    price: "$400,000 - $650,000",
-    condition: "Refurbished - Excellent",
-    image: "/mri.jpg",
-    specifications: {
-      "Field Strength": "3.0 Tesla",
-      "Bore Size": "60 cm",
-      "Gradient Strength": "50 mT/m",
-      "Slew Rate": "200 T/m/s",
-      "RF System": "Multi-channel with parallel imaging",
-      "Table Weight Capacity": "250 kg (550 lbs)",
-    },
-    description: "High-field 3.0T MRI system delivering superior image quality and advanced imaging capabilities for research and clinical applications.",
-    features: [
-      "Superior signal-to-noise ratio",
-      "Advanced parallel imaging",
-      "Functional and spectroscopy imaging",
-      "High-resolution protocols",
-      "Research-grade capabilities",
-    ],
-  },
-  // Add more machines as needed...
-  {
-    slug: "philips-fd-10-10",
-    name: "Philips FD 10/10",
-    category: "Cath Labs",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Excellent",
-    image: "/cath-lab.jpg",
-    specifications: {
-      "Detector Type": "Flat Panel Detector",
-      "Image Matrix": "1024 x 1024",
-      "C-arm Coverage": "10\" x 10\"",
-      "Angular Range": "120° + / -60°",
-      "Table Movement": "Longitudinal, lateral, height",
-      "Weight Capacity": "250 kg (550 lbs)",
-    },
-    description: "The Philips FD 10/10 is a state-of-the-art cardiac catheterization system providing exceptional image quality for interventional cardiology procedures.",
-    features: [
-      "Flat panel detector technology",
-      "Advanced imaging algorithms",
-      "Dose management tools",
-      "Flexible positioning",
-      "Comprehensive cardiac protocols",
-    ],
-  },
-  // Sonography/Ultrasound
-  {
-    slug: "ge-voluson-e8",
-    name: "GE Voluson E8",
-    category: "Sonography/Ultrasound",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Excellent",
-    image: "/sonography.jpg",
-    specifications: {
-      "Imaging Technology": "4D/3D Real-time Ultrasound",
-      "Display": "23\" LCD Monitor",
-      "Transducer Ports": "4 active ports",
-      "Image Memory": "Up to 10,000 images",
-      "Frequency Range": "1-18 MHz",
-      "Weight": "110 kg (242 lbs)",
-    },
-    description: "The GE Voluson E8 is an advanced 4D ultrasound system designed for women's health applications. Features exceptional image quality and comprehensive obstetric and gynecologic imaging capabilities.",
-    features: [
-      "4D real-time imaging",
-      "SonoBiometry for automated measurements",
-      "VOCAL (Virtual Organ Computer-aided AnaLysis)",
-      "HDlive rendering technology",
-      "Advanced Doppler capabilities",
-    ],
-  },
-  // ECG Systems
-  {
-    slug: "ge-mac-5500",
-    name: "GE MAC 5500",
-    category: "ECG Systems",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Very Good",
-    image: "/ecg.jpg",
-    specifications: {
-      "Lead Configuration": "12-Lead ECG",
-      "Display": "8.4\" Color LCD",
-      "Sampling Rate": "40,000 SPS",
-      "Frequency Response": "0.05-300 Hz",
-      "Input Impedance": ">100 MΩ",
-      "Paper Size": "8.5\" x 11\" (Letter)",
-    },
-    description: "The GE MAC 5500 is a comprehensive 12-lead ECG system offering advanced cardiac rhythm analysis and interpretation. Designed for clinical excellence with user-friendly operation.",
-    features: [
-      "12SL ECG Analysis Program",
-      "Comprehensive arrhythmia detection",
-      "HIPAA-compliant connectivity",
-      "Automated measurements and interpretation",
-      "Built-in thermal printer",
-    ],
-  },
-  // Multi-Parameter Monitors
-  {
-    slug: "philips-intellivue-mx800",
-    name: "Philips IntelliVue MX800",
-    category: "Multi-Parameter Monitors",
-    price: "Contact for Pricing",
-    condition: "Refurbished - Excellent",
-    image: "/multi-para-monitor.jpg",
-    specifications: {
-      "Display": "19\" Color TFT LCD",
-      "Parameters": "ECG, SpO2, NIBP, IBP, Temp, Resp",
-      "Waveform Channels": "Up to 16 waveforms",
-      "Trend Storage": "Up to 120 hours",
-      "Network Connectivity": "Ethernet, WiFi compatible",
-      "Power": "AC/DC with battery backup",
-    },
-    description: "The Philips IntelliVue MX800 is an advanced patient monitoring system providing comprehensive vital signs monitoring for critical care environments. Features intuitive interface and flexible configuration options.",
-    features: [
-      "Advanced parameter monitoring",
-      "Configurable alarm management",
-      "Clinical decision support tools",
-      "Seamless network integration",
-      "Plug-and-play measurement modules",
-    ],
-  },
-  // Default fallback for unlisted machines
-];
+import { getMachineBySlug, allMachines } from "@/data/inventory";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-function getMachineBySlug(slug: string) {
-  return allMachines.find(machine => machine.slug === slug) || {
+function getMachineOrFallback(slug: string) {
+  return getMachineBySlug(slug) || {
     slug: slug,
     name: slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '),
     category: "Medical Equipment",
+    manufacturer: "Various",
     price: "Contact for Pricing",
     condition: "Refurbished",
+    warranty: "Available upon request",
     image: "/ct-scanner.jpg",
     specifications: {
       "Model": "Professional Medical Equipment",
@@ -357,8 +37,8 @@ function getMachineBySlug(slug: string) {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const machine = getMachineBySlug(slug);
-  
+  const machine = getMachineOrFallback(slug);
+
   return {
     title: `${machine.name} | Tachyon Medical Systems Inventory`,
     description: `${machine.name} - ${machine.description.substring(0, 150)}...`,
@@ -367,7 +47,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function MachinePage({ params }: PageProps) {
   const { slug } = await params;
-  const machine = getMachineBySlug(slug);
+  const machine = getMachineOrFallback(slug);
 
   if (!machine && !allMachines.find(m => m.slug === slug)) {
     notFound();
@@ -404,24 +84,33 @@ export default async function MachinePage({ params }: PageProps) {
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 left-4 flex gap-2">
                   <span className="inline-flex px-3 py-1 bg-light-cyan text-white text-xs font-bold rounded-full">
                     {machine.condition}
                   </span>
+                  {machine.warranty && (
+                    <span className="inline-flex px-3 py-1 bg-orange text-white text-xs font-bold rounded-full">
+                      {machine.warranty}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
 
             {/* Details */}
             <div>
-              <div className="mb-4">
+              <div className="mb-4 flex items-center gap-3">
                 <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">
                   {machine.category}
+                </span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">|</span>
+                <span className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  {machine.manufacturer}
                 </span>
               </div>
               <h1 className="text-4xl font-black text-deep-blue dark:text-white mb-4">{machine.name}</h1>
               <div className="text-3xl font-bold text-orange mb-6">{machine.price}</div>
-              
+
               <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">{machine.description}</p>
 
               {/* Key Features */}
@@ -442,13 +131,13 @@ export default async function MachinePage({ params }: PageProps) {
               {/* Quick Actions */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Link
-                  href="/contact/inventory"
+                  href={`/contact/inventory?equipment=${encodeURIComponent(machine.name)}`}
                   className="flex items-center justify-center gap-2 px-6 py-3 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/90 transition-all hover:shadow-lg"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  Get Quote
+                  Request Quote
                 </Link>
                 <Link
                   href="/contact/services"
@@ -491,7 +180,7 @@ export default async function MachinePage({ params }: PageProps) {
           <p className="text-gray-300 mb-12">
             Get in touch with our team for pricing, availability, or to discuss installation and service options.
           </p>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Inventory Inquiries CTA */}
             <div className="bg-white/10 rounded-2xl p-8 text-left">
@@ -505,7 +194,7 @@ export default async function MachinePage({ params }: PageProps) {
                 Get pricing, check availability, request specifications, or discuss customization options for this equipment.
               </p>
               <Link
-                href="/contact/inventory"
+                href={`/contact/inventory?equipment=${encodeURIComponent(machine.name)}`}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/90 transition-all hover:shadow-lg"
               >
                 Contact for Inventory Inquiries

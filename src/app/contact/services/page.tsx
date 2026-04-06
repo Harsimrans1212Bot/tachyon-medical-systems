@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionBackground from "@/components/SectionBackground";
+import ServicesInquiryForm from "./ServicesInquiryForm";
 
 export const metadata: Metadata = {
   title: "Installation Services | Tachyon Medical Systems",
@@ -114,68 +115,7 @@ export default function ServicesInquiries() {
             {/* Services Inquiry Form */}
             <div>
               <h2 className="text-2xl font-black text-deep-blue dark:text-white mb-8">Installation Services Inquiry</h2>
-              <div className="bg-white dark:bg-white/5 rounded-2xl p-8 border border-gray-100 dark:border-white/10">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Name</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="John Doe" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Email</label>
-                      <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="john@hospital.com" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Phone</label>
-                    <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="+1 (555) 000-0000" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Company/Facility Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="Memorial Healthcare Center" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Service Type</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400 dark:bg-[#0d1b2a]">
-                      <option>Select service type</option>
-                      <option>Installation</option>
-                      <option>Uninstallation</option>
-                      <option>Relocation</option>
-                      <option>Preventive Maintenance</option>
-                      <option>Emergency Repair</option>
-                      <option>Site Survey</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Equipment Type & Model</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" placeholder="e.g., GE Revolution EVO CT Scanner, Siemens SOMATOM Force" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Equipment Location / Site Address</label>
-                    <textarea rows={2} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm resize-none" placeholder="Please provide the complete facility address where services are needed..." />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Preferred Start Date</label>
-                    <input type="date" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Site Readiness</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400 dark:bg-[#0d1b2a]">
-                      <option>Select site readiness</option>
-                      <option>Ready</option>
-                      <option>In preparation</option>
-                      <option>Need guidance</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Special Requirements</label>
-                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition-all text-sm resize-none" placeholder="e.g., crane access requirements, electrical specifications, shielding work, special logistics, etc." />
-                  </div>
-                  <button type="submit" className="w-full py-4 bg-orange text-white font-bold rounded-xl hover:bg-orange/90 transition-all hover:shadow-lg text-sm">
-                    Submit Service Request
-                  </button>
-                </form>
-              </div>
+              <ServicesInquiryForm />
             </div>
           </div>
         </div>

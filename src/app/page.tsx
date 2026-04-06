@@ -275,15 +275,15 @@ export default function Home() {
     ));
 
   const featuredProducts = [
-    { name: "GE Revolution EVO", category: "CT Scanner", desc: "Advanced computed tomography with superior image quality", image: "/ct-scanner.jpg", href: "/inventory" },
-    { name: "Philips FD 10/10", category: "Cath Lab", desc: "State-of-the-art cardiac catheterization laboratory", image: "/cath-lab.jpg", href: "/inventory" },
-    { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop", href: "/inventory" },
+    { name: "GE Revolution EVO", category: "CT Scanner", desc: "Advanced computed tomography with superior image quality", image: "/ct-scanner.jpg", href: "/inventory", warranty: "12-Month Warranty" },
+    { name: "Philips FD 10/10", category: "Cath Lab", desc: "State-of-the-art cardiac catheterization laboratory", image: "/cath-lab.jpg", href: "/inventory", warranty: "12-Month Warranty" },
+    { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop", href: "/inventory", warranty: "12-Month Warranty" },
   ];
 
   const stats = [
-    { value: "30+", label: "Years of Experience" },
-    { value: "1150+", label: "Machines Installed" },
-    { value: "8+", label: "Countries Served" },
+    { value: "32+", label: "Years in Business" },
+    { value: "1150+", label: "Systems Installed" },
+    { value: "15+", label: "Countries Served" },
     { value: "99%", label: "Client Satisfaction" },
   ];
 
@@ -379,6 +379,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trusted By */}
+      <section className="py-12 bg-gray-50 dark:bg-[#112240] border-b border-gray-100 dark:border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-8">Equipment from World-Leading Manufacturers</p>
+          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
+            {["GE Healthcare", "Philips", "Siemens Healthineers", "Hologic", "Mindray", "Nihon Kohden"].map((brand) => (
+              <span key={brand} className="text-lg font-bold text-gray-400 dark:text-gray-500">{brand}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Services */}
       <section className="py-24 bg-white dark:bg-[#0d1b2a] relative overflow-hidden">
         <WaveDivider position="top" />
@@ -443,6 +455,10 @@ export default function Home() {
                   <span className="text-xs font-bold text-light-cyan uppercase tracking-wider">{product.category}</span>
                   <h3 className="text-lg font-bold text-deep-blue dark:text-white mt-1">{product.name}</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">{product.desc}</p>
+                  <div className="flex items-center gap-1 mt-2">
+                    <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                    <span className="text-xs font-semibold text-green-600 dark:text-green-400">{product.warranty}</span>
+                  </div>
                 </div>
               </Link>
             ))}
@@ -455,6 +471,38 @@ export default function Home() {
           </div>
         </div>
         <WaveDivider />
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-24 bg-white dark:bg-[#0d1b2a] relative overflow-hidden">
+        <SectionBackground variant="primary" />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Testimonials</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">What Our Clients Say</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { quote: "Tachyon delivered a fully refurbished GE BrightSpeed 16 that exceeded our expectations. The installation was seamless and the team was incredibly professional.", name: "Dr. Rajesh Sharma", role: "Director, City Diagnostic Centre", location: "New Delhi, India" },
+              { quote: "We've purchased multiple MRI and CT systems from Tachyon over the years. Their equipment quality and after-sales support are consistently excellent.", name: "Ahmed Al-Rashid", role: "CEO, Gulf Medical Imaging", location: "Dubai, UAE" },
+              { quote: "The import process was handled entirely by Tachyon — customs, logistics, installation. We were up and running in record time.", name: "Dr. Priya Mehta", role: "Chief Radiologist, Metro Hospital", location: "Mumbai, India" },
+            ].map((t) => (
+              <div key={t.name} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8 border border-gray-100 dark:border-white/10">
+                <div className="flex gap-1 text-orange mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                  ))}
+                </div>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
+                <div>
+                  <p className="font-bold text-deep-blue dark:text-white text-sm">{t.name}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-xs">{t.role}</p>
+                  <p className="text-gray-400 dark:text-gray-500 text-xs">{t.location}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* CTA */}

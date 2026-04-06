@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SectionBackground from "@/components/SectionBackground";
+import InventoryInquiryForm from "./InventoryInquiryForm";
 
 export const metadata: Metadata = {
   title: "Inventory Inquiries | Tachyon Medical Systems",
@@ -114,81 +115,7 @@ export default function InventoryInquiries() {
             {/* Inventory Inquiry Form */}
             <div>
               <h2 className="text-2xl font-black text-deep-blue dark:text-white mb-8">Inventory Inquiry Form</h2>
-              <div className="bg-white dark:bg-white/5 rounded-2xl p-8 border border-gray-100 dark:border-white/10">
-                <form className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Name</label>
-                      <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="John Doe" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Email</label>
-                      <input type="email" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="john@hospital.com" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Phone</label>
-                    <input type="tel" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="+1 (555) 000-0000" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Company/Facility Name</label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="Memorial Healthcare Center" />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Equipment Category</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400 dark:bg-[#0d1b2a]">
-                      <option>Select equipment category</option>
-                      <option>CT Scanner</option>
-                      <option>MRI</option>
-                      <option>PET-CT</option>
-                      <option>Cath Lab</option>
-                      <option>Mammography</option>
-                      <option>Sonography/Ultrasound</option>
-                      <option>ECG Systems</option>
-                      <option>Multi-Parameter Monitors</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Specific Model <span className="text-gray-400 font-normal">(if known, optional)</span></label>
-                    <input type="text" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="e.g., GE Revolution EVO, Siemens SOMATOM Force" />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Quantity Needed</label>
-                      <input type="number" min="1" className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm" placeholder="1" />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Budget Range</label>
-                      <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400">
-                        <option>Select budget range</option>
-                        <option>Under $100K</option>
-                        <option>$100K-$250K</option>
-                        <option>$250K-$500K</option>
-                        <option>$500K+</option>
-                        <option>Prefer not to say</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Delivery Timeline</label>
-                    <select className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm text-gray-500 dark:text-gray-400 dark:bg-[#0d1b2a]">
-                      <option>Select delivery timeline</option>
-                      <option>Immediate</option>
-                      <option>1-3 months</option>
-                      <option>3-6 months</option>
-                      <option>6+ months</option>
-                      <option>Flexible</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-deep-blue dark:text-white mb-2">Additional Requirements</label>
-                    <textarea rows={4} className="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-white/10 dark:bg-white/5 dark:text-white focus:border-light-cyan focus:ring-2 focus:ring-light-cyan/20 outline-none transition-all text-sm resize-none" placeholder="Please provide any additional requirements, specific configurations, warranty needs, or other details..." />
-                  </div>
-                  <button type="submit" className="w-full py-4 bg-light-cyan text-white font-bold rounded-xl hover:bg-light-cyan/90 transition-all hover:shadow-lg text-sm">
-                    Submit Inventory Inquiry
-                  </button>
-                </form>
-              </div>
+              <InventoryInquiryForm />
             </div>
           </div>
         </div>
