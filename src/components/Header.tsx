@@ -5,9 +5,15 @@ import { useState, useEffect, useRef } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Close menu on outside click
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     if (!menuOpen) return;
     const handleClick = (e: MouseEvent) => {
@@ -15,20 +21,14 @@ export default function Header() {
         setMenuOpen(false);
       }
     };
+    const handleEsc = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
     document.addEventListener("click", handleClick);
-    return () => document.removeEventListener("click", handleClick);
-  }, [menuOpen]);
-
-  // Close menu on route change / escape
-  useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setMenuOpen(false);
-      }
-    };
     window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
-  }, []);
+    return () => {
+      document.removeEventListener("click", handleClick);
+      window.removeEventListener("keydown", handleEsc);
+    };
+  }, [menuOpen]);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -39,74 +39,53 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-[#0d1b2a] backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-white/10">
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-28">
-          {/* Logo — small icon+text on mobile, full banner on desktop */}
-          <Link href="/" className="flex items-center">
-            {/* Mobile: compact logo */}
-            <div className="sm:hidden flex items-center gap-2">
-              <Image
-                src="/logo.png"
-                alt="Tachyon Medical Systems"
-                width={40}
-                height={40}
-                className="h-14 w-14 object-contain dark:bg-white dark:rounded-lg dark:p-0.5"
-                priority
-              />
-              <div className="flex flex-col leading-tight">
-                <span className="text-3xl font-black text-deep-blue dark:text-white tracking-tight">T<span className="text-orange">A</span>CHYON</span>
-                <span className="text-xs font-semibold text-gray-500 dark:text-gray-400 tracking-wider uppercase">Medical Systems</span>
-              </div>
-            </div>
-            {/* Desktop: logo + tagline */}
-            <div className="hidden sm:flex items-center gap-2">
-              <Image
-                src="/logo-large.jpg"
-                alt="Tachyon Medical Systems Pvt. Ltd."
-                width={640}
-                height={216}
-                className="h-24 w-auto object-contain bg-white rounded-lg p-1"
-                priority
-              />
-              <span className="text-base font-semibold tracking-wide whitespace-nowrap italic text-[#145a85] dark:text-gray-400">New Era — Refurbished Imaging Equipment</span>
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/95 dark:bg-[#0d1b2a]/95 backdrop-blur-md shadow-sm" : "bg-transparent"}`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt="Tachyon Medical Systems"
+              width={44}
+              height={44}
+              className="h-10 w-10 object-contain dark:bg-white dark:rounded-md dark:p-0.5"
+              priority
+            />
+            <div className="flex flex-col leading-tight">
+              <span className={`text-lg font-extrabold tracking-tight ${scrolled ? "text-deep-blue dark:text-white" : "text-white"}`}>
+                TACHYON
+              </span>
+              <span className={`text-[10px] font-medium tracking-widest uppercase ${scrolled ? "text-gray-500 dark:text-gray-400" : "text-gray-300"}`}>
+                Medical Systems
+              </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base font-bold text-gray-700 dark:text-gray-300 hover:text-light-cyan transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-light-cyan after:transition-all hover:after:w-full"
+                className={`text-sm font-medium transition-colors ${scrolled ? "text-gray-700 dark:text-gray-300 hover:text-deep-blue dark:hover:text-white" : "text-white/80 hover:text-white"}`}
               >
                 {link.label}
               </Link>
             ))}
-            
-            {/* Two CTA Buttons */}
-            <div className="flex flex-col gap-1.5 ml-4">
-              <Link
-                href="/contact/inventory"
-                className="px-5 py-2.5 bg-light-cyan text-white text-sm font-semibold rounded-full hover:bg-light-cyan/90 transition-all hover:shadow-lg"
-              >
-                Inventory Inquiries
-              </Link>
-              <Link
-                href="/contact/services"
-                className="px-5 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all hover:shadow-lg"
-              >
-                Installation
-              </Link>
-            </div>
+            <Link
+              href="/contact/inventory"
+              className="ml-4 px-5 py-2.5 bg-light-cyan text-white text-sm font-semibold rounded-lg hover:bg-light-cyan/90 transition-all"
+            >
+              Get a Quote
+            </Link>
           </nav>
 
           {/* Mobile Hamburger */}
-          <div className="md:hidden relative" ref={menuRef}>
+          <div className="lg:hidden relative" ref={menuRef}>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 text-deep-blue dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+              className={`p-2 rounded-lg transition-colors ${scrolled ? "text-deep-blue dark:text-white hover:bg-gray-100 dark:hover:bg-white/10" : "text-white hover:bg-white/10"}`}
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -118,35 +97,25 @@ export default function Header() {
               </svg>
             </button>
 
-            {/* Dropdown Menu */}
             {menuOpen && (
-              <div className="absolute right-0 top-12 w-64 bg-white dark:bg-[#0d1b2a] rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 overflow-hidden animate-fade-in z-50">
+              <div className="absolute right-0 top-12 w-56 bg-white dark:bg-gray-900 rounded-xl shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden animate-fade-in z-50">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block px-5 py-3.5 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-light-cyan transition-colors border-b border-gray-50 dark:border-white/5 last:border-0"
+                    className="block px-5 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors border-b border-gray-50 dark:border-gray-800 last:border-0"
                   >
                     {link.label}
                   </Link>
                 ))}
-                
-                {/* Two CTA Buttons */}
-                <div className="p-3 space-y-2">
+                <div className="p-3">
                   <Link
                     href="/contact/inventory"
                     onClick={() => setMenuOpen(false)}
-                    className="block text-center px-4 py-2.5 bg-light-cyan text-white text-sm font-semibold rounded-full hover:bg-light-cyan/90 transition-all"
+                    className="block text-center px-4 py-2.5 bg-light-cyan text-white text-sm font-semibold rounded-lg hover:bg-light-cyan/90 transition-all"
                   >
-                    Inventory Inquiries
-                  </Link>
-                  <Link
-                    href="/contact/services"
-                    onClick={() => setMenuOpen(false)}
-                    className="block text-center px-4 py-2.5 bg-orange text-white text-sm font-semibold rounded-full hover:bg-orange/90 transition-all"
-                  >
-                    Installation
+                    Get a Quote
                   </Link>
                 </div>
               </div>
