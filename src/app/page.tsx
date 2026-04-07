@@ -4,8 +4,6 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SectionBackground from "@/components/SectionBackground";
-import WaveDivider from "@/components/WaveDivider";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,179 +14,28 @@ export default function Home() {
   const servicesCardsRef = useRef<HTMLDivElement>(null);
   const productsSectionRef = useRef<HTMLDivElement>(null);
   const productsCardsRef = useRef<HTMLDivElement>(null);
+  const whySectionRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const orb1Ref = useRef<HTMLDivElement>(null);
-  const orb2Ref = useRef<HTMLDivElement>(null);
-
-  // Starburst explode → reassemble → breathe
-  const sbR1 = useRef<HTMLDivElement>(null);
-  const sbR2 = useRef<HTMLDivElement>(null);
-  const sbR3 = useRef<HTMLDivElement>(null);
-  const sbR4 = useRef<HTMLDivElement>(null);
-  const sbDot = useRef<HTMLDivElement>(null);
-  const sbGlow = useRef<HTMLDivElement>(null);
-  const sbLH = useRef<HTMLDivElement>(null);
-  const sbLV = useRef<HTMLDivElement>(null);
-  const sbLD1 = useRef<HTMLDivElement>(null);
-  const sbLD2 = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const rings = [
-      { el: sbR1.current, restOp: 0.35, explodeScale: 1.5, delay: 0 },
-      { el: sbR2.current, restOp: 0.3, explodeScale: 1.8, delay: 100 },
-      { el: sbR3.current, restOp: 0.35, explodeScale: 2.1, delay: 200 },
-      { el: sbR4.current, restOp: 0.4, explodeScale: 2.6, delay: 300 },
-    ];
-    const dot = sbDot.current;
-    const glow = sbGlow.current;
-    const lines = [sbLH.current, sbLV.current, sbLD1.current, sbLD2.current];
-    if (!dot || !glow || rings.some(r => !r.el)) return;
-
-    // Phase 1a: Quick charge — starts immediately
-    const t1 = setTimeout(() => {
-      rings.forEach(r => {
-        r.el!.style.transition = 'all 0.35s ease-out';
-        r.el!.style.transform = 'translate(-50%,-50%) scale(0.4)';
-        r.el!.style.opacity = '0.5';
-      });
-      dot.style.transition = 'all 0.4s ease-out';
-      dot.style.transform = 'translate(-50%,-50%) scale(2)';
-      dot.style.opacity = '1';
-      dot.style.boxShadow = '0 0 50px rgba(232,101,26,0.9)';
-    }, 50);
-
-    // Phase 1b: Explode
-    const t2 = setTimeout(() => {
-      glow.style.transition = 'all 0.5s ease-out';
-      glow.style.transform = 'translate(-50%,-50%) scale(4)';
-      glow.style.opacity = '0.8';
-
-      dot.style.transition = 'all 0.8s ease-out';
-      dot.style.transform = 'translate(-50%,-50%) scale(5)';
-      dot.style.boxShadow = '0 0 100px rgba(232,101,26,1)';
-      dot.style.opacity = '0.9';
-
-      rings.forEach(r => {
-        setTimeout(() => {
-          r.el!.style.transition = 'all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-          r.el!.style.transform = `translate(-50%,-50%) scale(${r.explodeScale})`;
-          r.el!.style.opacity = '0.6';
-        }, r.delay);
-      });
-    }, 500);
-
-    // Glow fades smoothly
-    const t3 = setTimeout(() => {
-      glow.style.transition = 'all 1.5s ease-in-out';
-      glow.style.opacity = '0';
-    }, 1100);
-
-    // Phase 2: Smooth contraction — rings ease back to rest
-    const t4 = setTimeout(() => {
-      rings.forEach((r, i) => {
-        r.el!.style.transition = `all ${1.8 + i * 0.15}s cubic-bezier(0.25, 0.1, 0.25, 1)`;
-        r.el!.style.transform = 'translate(-50%,-50%) scale(1)';
-        r.el!.style.opacity = String(r.restOp);
-      });
-      dot.style.transition = 'all 1.6s cubic-bezier(0.25, 0.1, 0.25, 1)';
-      dot.style.transform = 'translate(-50%,-50%) scale(1)';
-      dot.style.opacity = '1';
-      dot.style.boxShadow = '0 0 30px rgba(232,101,26,0.7)';
-    }, 2000);
-
-    // Lines fade in during contraction
-    const lineTransforms = [
-      'translate(-50%, 0) scaleX(1)',
-      'translate(0, -50%) scaleY(1)',
-      'translate(-50%, 0) rotate(45deg) scaleX(1)',
-      'translate(-50%, 0) rotate(-45deg) scaleX(1)',
-    ];
-    const t5 = setTimeout(() => {
-      lines.forEach((l, i) => {
-        if (!l) return;
-        l.style.transition = `all ${0.8 + i * 0.1}s ease-in-out`;
-        l.style.transform = lineTransforms[i];
-        l.style.opacity = '0.1';
-      });
-    }, 2800);
-
-    // Phase 3: Breathe forever — starts once contraction has settled
-    const t6 = setTimeout(() => {
-      const anims = [
-        { name: 'sb-br1', rest: 0.35, peak: 0.5, scale: 1.08 },
-        { name: 'sb-br2', rest: 0.3, peak: 0.45, scale: 0.92 },
-        { name: 'sb-br3', rest: 0.35, peak: 0.5, scale: 1.12 },
-        { name: 'sb-br4', rest: 0.4, peak: 0.55, scale: 1.06 },
-      ];
-      rings.forEach((r, i) => {
-        r.el!.style.transition = 'none';
-        r.el!.style.animation = `${anims[i].name} 4s ease-in-out infinite`;
-      });
-      dot.style.transition = 'none';
-      dot.style.animation = 'sb-brd 4s ease-in-out infinite';
-      lines.forEach(l => {
-        if (!l) return;
-        l.style.transition = 'none';
-        l.style.animation = 'sb-brl 4s ease-in-out infinite';
-      });
-    }, 4200);
-
-    return () => { [t1,t2,t3,t4,t5,t6].forEach(clearTimeout); };
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero word-by-word split and fade out on scroll
-      const heroWords = heroRef.current?.querySelectorAll(".hero-word");
-      if (heroWords) {
-        gsap.to(heroWords, {
+      // Hero content fade-in
+      const heroEls = heroRef.current?.querySelectorAll(".hero-reveal");
+      if (heroEls) {
+        gsap.from(heroEls, {
           opacity: 0,
-          y: -60,
-          stagger: 0.05,
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "bottom top",
-            scrub: 0.8,
-          },
-        });
-      }
-
-      // Hero sub-elements fade
-      const heroSub = heroRef.current?.querySelectorAll(".hero-fade");
-      if (heroSub) {
-        gsap.to(heroSub, {
-          opacity: 0,
-          y: -40,
-          stagger: 0.03,
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "60% top",
-            scrub: 0.6,
-          },
-        });
-      }
-
-      // Parallax orbs
-      if (orb1Ref.current) {
-        gsap.to(orb1Ref.current, {
-          y: -200,
-          scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
-        });
-      }
-      if (orb2Ref.current) {
-        gsap.to(orb2Ref.current, {
-          y: -80,
-          scrollTrigger: { trigger: heroRef.current, start: "top top", end: "bottom top", scrub: true },
+          y: 40,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power2.out",
+          delay: 0.3,
         });
       }
 
       // Stats counter animation
       const statEls = statsRef.current?.querySelectorAll(".stat-value");
-      statEls?.forEach((el, i) => {
+      statEls?.forEach((el) => {
         const text = el.textContent || "";
-        const isPercent = text.includes("%");
         const num = parseInt(text.replace(/[^0-9]/g, ""), 10);
         const suffix = text.replace(/[0-9]/g, "");
         const obj = { val: 0 };
@@ -196,7 +43,6 @@ export default function Home() {
         gsap.to(obj, {
           val: num,
           duration: 2,
-          delay: 0,
           ease: "power2.out",
           scrollTrigger: {
             trigger: el,
@@ -253,6 +99,15 @@ export default function Home() {
         });
       }
 
+      // Why section reveal
+      ScrollTrigger.create({
+        trigger: whySectionRef.current,
+        start: "top 80%",
+        onEnter: () => {
+          gsap.to(whySectionRef.current, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" });
+        },
+      });
+
       // CTA reveal
       ScrollTrigger.create({
         trigger: ctaRef.current,
@@ -266,18 +121,10 @@ export default function Home() {
     return () => ctx.revert();
   }, []);
 
-  // Helper to split text into word spans
-  const splitWords = (text: string, className = "hero-word") =>
-    text.split(" ").map((word, i) => (
-      <span key={i} className={`${className} inline-block mr-[0.3em]`}>
-        {word}
-      </span>
-    ));
-
   const featuredProducts = [
     { name: "GE Revolution EVO", category: "CT Scanner", desc: "Advanced computed tomography with superior image quality", image: "/ct-scanner.jpg", href: "/inventory", warranty: "12-Month Warranty" },
     { name: "Philips FD 10/10", category: "Cath Lab", desc: "State-of-the-art cardiac catheterization laboratory", image: "/cath-lab.jpg", href: "/inventory", warranty: "12-Month Warranty" },
-    { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=300&fit=crop", href: "/inventory", warranty: "12-Month Warranty" },
+    { name: "Hologic 3D", category: "Mammography", desc: "3D mammography for early breast cancer detection", image: "/mammography.jpg", href: "/inventory", warranty: "12-Month Warranty" },
   ];
 
   const stats = [
@@ -288,90 +135,141 @@ export default function Home() {
   ];
 
   const services = [
-    { title: "Refurbishment", desc: "Complete restoration of medical equipment to original specifications with rigorous quality testing", icon: "🔧", href: "/services/refurbishment" },
-    { title: "Installation", desc: "Professional installation, uninstallation, and relocation services by certified engineers", icon: "⚙️", href: "/services/installation" },
-    { title: "Maintenance & Support", desc: "Preventive maintenance, emergency repairs, and responsive technical support services", icon: "🛡️", href: "/services" },
-    { title: "Buy & Sell", desc: "Trusted marketplace for pre-owned and new medical imaging equipment worldwide", icon: "🤝", href: "/services/buy-sell" },
+    {
+      title: "Refurbishment",
+      desc: "Complete restoration of medical equipment to original specifications with rigorous quality testing",
+      href: "/services/refurbishment",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17l-5.384-3.19A2 2 0 015 10.15V6a2 2 0 012-2h10a2 2 0 012 2v4.15a2 2 0 01-1.036 1.83l-5.384 3.19a2 2 0 01-2.16 0zM14.5 7.5L12 9l-2.5-1.5M12 9v4" />
+        </svg>
+      ),
+      bg: "bg-[#E8651A]",
+    },
+    {
+      title: "Installation",
+      desc: "Professional installation, uninstallation, and relocation services by certified engineers",
+      href: "/services/installation",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      ),
+      bg: "bg-[#0077B6]",
+    },
+    {
+      title: "Maintenance & Support",
+      desc: "Preventive maintenance, emergency repairs, and responsive technical support services",
+      href: "/services",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      ),
+      bg: "bg-[#E8651A]",
+    },
+    {
+      title: "Buy & Sell",
+      desc: "Trusted marketplace for pre-owned and new medical imaging equipment worldwide",
+      href: "/services/buy-sell",
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+      ),
+      bg: "bg-[#0077B6]",
+    },
+  ];
+
+  const vendors = [
+    { name: "GE HealthCare", width: "w-28" },
+    { name: "Philips", width: "w-20" },
+    { name: "Siemens", width: "w-24" },
+    { name: "Hologic", width: "w-22" },
+    { name: "Toshiba", width: "w-22" },
   ];
 
   return (
     <>
-      {/* Hero */}
-      <section className="hero-gradient min-h-screen flex items-center relative overflow-hidden">
+      {/* Hero with background image */}
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background image */}
         <div className="absolute inset-0">
-          {/* Large glowing orbs with parallax */}
-          <div ref={orb1Ref} className="absolute top-20 right-20 w-96 h-96 rounded-full bg-light-cyan/5 blur-3xl" />
-          <div ref={orb2Ref} className="absolute bottom-20 left-20 w-72 h-72 rounded-full bg-orange/5 blur-3xl" />
-          {/* Starburst Explode → Reassemble → Breathe */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] h-[120vw] max-w-[850px] max-h-[850px] pointer-events-none">
-            <div ref={sbR1} className="absolute top-1/2 left-1/2 w-[95%] h-[95%] rounded-full" style={{ borderWidth: '3px', borderStyle: 'solid', borderColor: 'rgba(0,168,232,0.35)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
-            <div ref={sbR2} className="absolute top-1/2 left-1/2 w-[70%] h-[70%] rounded-full" style={{ borderWidth: '3px', borderStyle: 'solid', borderColor: 'rgba(232,160,80,0.3)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
-            <div ref={sbR3} className="absolute top-1/2 left-1/2 w-[45%] h-[45%] rounded-full" style={{ borderWidth: '2.5px', borderStyle: 'solid', borderColor: 'rgba(0,168,232,0.35)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
-            <div ref={sbR4} className="absolute top-1/2 left-1/2 w-[22%] h-[22%] rounded-full" style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'rgba(232,101,26,0.4)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
-            <div ref={sbDot} className="absolute top-1/2 left-1/2 w-4 h-4 rounded-full" style={{ background: 'radial-gradient(circle, #E8651A, #c44a10)', boxShadow: '0 0 30px rgba(232,101,26,0.7)', opacity: 0, transform: 'translate(-50%,-50%) scale(0.3)' }} />
-            <div ref={sbGlow} className="absolute top-1/2 left-1/2 w-[30%] h-[30%] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(232,101,26,0.4) 0%, rgba(0,168,232,0.15) 50%, transparent 70%)', opacity: 0, transform: 'translate(-50%,-50%) scale(0)' }} />
-            <div ref={sbLH} className="absolute top-1/2 left-1/2 w-full h-px" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(-50%, 0) scaleX(0)' }} />
-            <div ref={sbLV} className="absolute top-1/2 left-1/2 w-px h-full" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(0, -50%) scaleY(0)' }} />
-            <div ref={sbLD1} className="absolute top-1/2 left-1/2 w-full h-px" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(-50%, 0) rotate(45deg) scaleX(0)' }} />
-            <div ref={sbLD2} className="absolute top-1/2 left-1/2 w-full h-px" style={{ background: 'rgba(0,168,232,0.1)', transformOrigin: '50% 50%', opacity: 0, transform: 'translate(-50%, 0) rotate(-45deg) scaleX(0)' }} />
-          </div>
-          {/* Floating shapes */}
-          <div className="absolute top-[15%] left-[10%] w-16 h-16 rounded-full border border-light-cyan/20 animate-float" />
-          <div className="absolute top-[25%] right-[15%] w-24 h-24 rounded-full border border-orange/15 animate-float-delayed" />
-          <div className="absolute bottom-[20%] left-[20%] w-10 h-10 rounded-full bg-light-cyan/10 animate-float-slow" />
-          <div className="absolute top-[60%] right-[10%] w-14 h-14 rounded-full border border-white/10 animate-float" />
-          <div className="absolute top-[10%] right-[40%] w-8 h-8 rounded-full bg-orange/10 animate-float-delayed" />
-          <div className="absolute bottom-[30%] right-[30%] w-20 h-20 rounded-full border border-light-cyan/10 animate-float-slow" />
-          <div className="absolute top-[40%] left-[5%] w-6 h-6 rounded-full bg-white/5 animate-float-delayed" />
-          {/* Small particles */}
-          <div className="absolute top-[20%] right-[25%] w-2 h-2 rounded-full bg-light-cyan/30 animate-pulse" />
-          <div className="absolute top-[70%] left-[35%] w-1.5 h-1.5 rounded-full bg-orange/25 animate-ping" />
-          <div className="absolute bottom-[40%] left-[15%] w-1.5 h-1.5 rounded-full bg-white/15 animate-pulse" />
-          <div className="absolute top-[50%] right-[20%] w-1 h-1 rounded-full bg-light-cyan/20 animate-ping" />
+          <Image
+            src="/hero-mri.jpg"
+            alt="Medical imaging equipment"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#001a33]/95 via-[#001a33]/85 to-[#001a33]/60" />
         </div>
-        <div
-          ref={heroRef}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative z-10"
-        >
+
+        <div ref={heroRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 w-full">
           <div className="max-w-3xl">
-            <div className="hero-fade inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 text-base font-semibold text-light-cyan mb-8 animate-fade-in">
-              <span className="text-orange text-lg">★</span>
+            {/* Trusted badge */}
+            <div className="hero-reveal inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 text-sm font-semibold text-white mb-8">
+              <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
               Trusted Since 1992
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 animate-fade-in-up">
-              {splitWords("Need to")}
-              <span className="hero-word inline-block mr-[0.3em] text-orange">Upgrade</span>
-              <br />
-              {splitWords("or")}
-              <span className="hero-word inline-block mr-[0.3em] text-light-cyan">Set Up</span>
-              {splitWords("Your")}
-              <br />
-              {splitWords("Medical Facility?")}
+
+            <h1 className="hero-reveal text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+              Refurbished Medical Imaging Equipment{" "}
+              <span className="text-[#4FC3F7]">You Can Rely On</span>
             </h1>
-            <p className="hero-fade text-lg sm:text-xl text-gray-300 leading-relaxed mb-10 max-w-2xl animate-fade-in-up animation-delay-200">
+
+            <p className="hero-reveal text-lg sm:text-xl text-gray-200 leading-relaxed mb-10 max-w-2xl">
               Whether you&apos;re building a new imaging center or upgrading existing equipment, our team of experts will help you find the perfect solution — from sourcing to installation.
             </p>
-            <div className="hero-fade flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
-              <Link href="/contact/inventory" className="px-8 py-4 bg-light-cyan text-white font-bold rounded-full hover:bg-light-cyan/80 transition-all hover:shadow-xl text-center">
-                Inventory Inquiries
+
+            <div className="hero-reveal flex flex-col sm:flex-row gap-4">
+              <Link
+                href="/inventory"
+                className="px-8 py-4 bg-white text-[#003366] font-bold rounded-full hover:bg-gray-100 transition-all hover:shadow-xl text-center"
+              >
+                Browse Inventory
               </Link>
-              <Link href="/contact/services" className="px-8 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl text-center">
-                Installation
+              <Link
+                href="/contact"
+                className="px-8 py-4 bg-[#0077B6] text-white font-bold rounded-full hover:bg-[#0077B6]/90 transition-all hover:shadow-xl text-center border border-[#0077B6]"
+              >
+                Request a Quote
               </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Vendor Logos Trust Bar */}
+      <section className="py-10 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6">
+            Equipment from World-Leading Manufacturers
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-16">
+            {vendors.map((v) => (
+              <span
+                key={v.name}
+                className="text-lg font-bold text-gray-400 dark:text-gray-500 opacity-70 hover:opacity-100 transition-opacity"
+              >
+                {v.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
-      <section className="py-16 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10 relative overflow-hidden">
-        <WaveDivider position="top" />
-        <SectionBackground variant="primary" />
-        <div ref={statsRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-gray-50 dark:bg-[#112240]">
+        <div ref={statsRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="stat-value text-3xl sm:text-4xl font-black text-deep-blue dark:text-white dark:text-white mb-1">{stat.value}</div>
+                <div className="stat-value text-3xl sm:text-4xl font-black text-[#0077B6] dark:text-[#4FC3F7] mb-1">
+                  {stat.value}
+                </div>
                 <div className="text-sm text-gray-500 dark:text-gray-400 font-medium">{stat.label}</div>
               </div>
             ))}
@@ -379,84 +277,94 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trusted By */}
-      <section className="py-12 bg-gray-50 dark:bg-[#112240] border-b border-gray-100 dark:border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-8">Equipment from World-Leading Manufacturers</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            {["GE Healthcare", "Philips", "Siemens Healthineers", "Hologic", "Mindray", "Nihon Kohden"].map((brand) => (
-              <span key={brand} className="text-lg font-bold text-gray-400 dark:text-gray-500">{brand}</span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Services */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a] relative overflow-hidden">
-        <WaveDivider position="top" />
-        <SectionBackground variant="primary" />
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
         <div
           ref={servicesSectionRef}
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
-            <span className="text-sm font-bold tracking-wider uppercase text-orange">What We Do</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">End to End Medical Equipment Solutions</h2>
-            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">Comprehensive services covering every stage of the equipment lifecycle.</p>
+            <span className="text-sm font-bold tracking-wider uppercase text-[#E8651A]">What We Do</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#003366] dark:text-white mt-3">
+              End to End Medical Equipment Solutions
+            </h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+              Comprehensive services covering every stage of the equipment lifecycle.
+            </p>
           </div>
           <div ref={servicesCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
-                className="reveal-card block p-8 rounded-2xl bg-gray-50 dark:bg-white/5 hover:bg-deep-blue group transition-all duration-300 card-hover border border-gray-100 dark:border-white/10 hover:border-deep-blue cursor-pointer"
+                className="reveal-card block p-8 rounded-2xl bg-gray-50 dark:bg-white/5 hover:bg-[#003366] group transition-all duration-300 border border-gray-100 dark:border-white/10 hover:border-[#003366] hover:shadow-lg cursor-pointer"
               >
-                <div className="text-4xl mb-4">{service.icon}</div>
-                <h3 className="text-lg font-bold text-deep-blue dark:text-white group-hover:text-white transition-colors">{service.title}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 mt-3 transition-colors">{service.desc}</p>
+                <div className={`w-12 h-12 rounded-lg ${service.bg} text-white flex items-center justify-center mb-4`}>
+                  {service.icon}
+                </div>
+                <h3 className="text-lg font-bold text-[#003366] dark:text-white group-hover:text-white transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 group-hover:text-gray-300 mt-3 transition-colors">
+                  {service.desc}
+                </p>
               </Link>
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link href="/services" className="inline-flex items-center gap-2 px-8 py-4 border-2 border-deep-blue dark:border-white/30 text-deep-blue dark:text-white font-bold rounded-full hover:bg-deep-blue hover:text-white transition-all">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#003366] dark:border-white/30 text-[#003366] dark:text-white font-bold rounded-full hover:bg-[#003366] hover:text-white transition-all"
+            >
               View All Services
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
         </div>
-        <WaveDivider />
       </section>
 
-      {/* Featured Products */}
-      <section className="py-24 bg-gray-50 dark:bg-[#112240] relative overflow-hidden">
-        <WaveDivider position="top" />
-        <SectionBackground variant="secondary" />
+      {/* Featured Equipment */}
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
         <div
           ref={productsSectionRef}
-          className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
         >
           <div className="text-center mb-16">
-            <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Our Equipment</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">Featured Inventory</h2>
-            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">World-class medical imaging and diagnostic equipment, meticulously refurbished to meet the highest standards.</p>
+            <span className="text-sm font-bold tracking-wider uppercase text-[#0077B6]">Our Equipment</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#003366] dark:text-white mt-3">Featured Inventory</h2>
+            <p className="text-gray-500 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+              World-class medical imaging and diagnostic equipment, meticulously refurbished to meet the highest standards.
+            </p>
           </div>
-          <div ref={productsCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div ref={productsCardsRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProducts.map((product) => (
               <Link
                 key={product.name}
                 href={product.href}
-                className="reveal-card block bg-white dark:bg-white/5 rounded-2xl overflow-hidden card-hover border border-gray-100 dark:border-white/10"
+                className="reveal-card block bg-white dark:bg-white/5 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow border border-gray-100 dark:border-white/10"
               >
-                <div className="h-48 relative overflow-hidden">
-                  <Image src={product.image} alt={product.name} fill className="object-cover" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="h-56 relative overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <span className="absolute top-4 left-4 px-3 py-1 bg-[#0077B6] text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                    {product.category}
+                  </span>
                 </div>
                 <div className="p-6">
-                  <span className="text-xs font-bold text-light-cyan uppercase tracking-wider">{product.category}</span>
-                  <h3 className="text-lg font-bold text-deep-blue dark:text-white mt-1">{product.name}</h3>
+                  <h3 className="text-lg font-bold text-[#003366] dark:text-white">{product.name}</h3>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">{product.desc}</p>
-                  <div className="flex items-center gap-1 mt-2">
-                    <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                  <div className="flex items-center gap-1 mt-3">
+                    <svg className="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
                     <span className="text-xs font-semibold text-green-600 dark:text-green-400">{product.warranty}</span>
                   </div>
                 </div>
@@ -464,68 +372,117 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-12">
-            <Link href="/inventory" className="inline-flex items-center gap-2 px-8 py-4 bg-deep-blue text-white font-bold rounded-full hover:bg-deep-blue/90 transition-all hover:shadow-xl">
+            <Link
+              href="/inventory"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#003366] text-white font-bold rounded-full hover:bg-[#003366]/90 transition-all hover:shadow-xl"
+            >
               View All Inventory
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
           </div>
         </div>
-        <WaveDivider />
       </section>
 
-      {/* Testimonials */}
-      <section className="py-24 bg-white dark:bg-[#0d1b2a] relative overflow-hidden">
-        <SectionBackground variant="primary" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Why Tachyon */}
+      <section className="py-24 bg-white dark:bg-[#0d1b2a]">
+        <div
+          ref={whySectionRef}
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 opacity-0 translate-y-10"
+        >
           <div className="text-center mb-16">
-            <span className="text-sm font-bold tracking-wider uppercase text-light-cyan">Testimonials</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-deep-blue dark:text-white mt-3">What Our Clients Say</h2>
+            <span className="text-sm font-bold tracking-wider uppercase text-[#E8651A]">Why Choose Us</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#003366] dark:text-white mt-3">
+              Why Tachyon Medical Systems
+            </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { quote: "Tachyon delivered a fully refurbished GE BrightSpeed 16 that exceeded our expectations. The installation was seamless and the team was incredibly professional.", name: "Dr. Rajesh Sharma", role: "Director, City Diagnostic Centre", location: "New Delhi, India" },
-              { quote: "We've purchased multiple MRI and CT systems from Tachyon over the years. Their equipment quality and after-sales support are consistently excellent.", name: "Ahmed Al-Rashid", role: "CEO, Gulf Medical Imaging", location: "Dubai, UAE" },
-              { quote: "The import process was handled entirely by Tachyon — customs, logistics, installation. We were up and running in record time.", name: "Dr. Priya Mehta", role: "Chief Radiologist, Metro Hospital", location: "Mumbai, India" },
-            ].map((t) => (
-              <div key={t.name} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8 border border-gray-100 dark:border-white/10">
-                <div className="flex gap-1 text-orange mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
-                  ))}
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
-                <div>
-                  <p className="font-bold text-deep-blue dark:text-white text-sm">{t.name}</p>
-                  <p className="text-gray-500 dark:text-gray-400 text-xs">{t.role}</p>
-                  <p className="text-gray-400 dark:text-gray-500 text-xs">{t.location}</p>
-                </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center p-8 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
+              <div className="w-14 h-14 rounded-xl bg-[#E8651A] text-white flex items-center justify-center mx-auto mb-5">
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                </svg>
               </div>
-            ))}
+              <h3 className="text-xl font-bold text-[#003366] dark:text-white mb-3">OEM-Equivalent Quality</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                Every system is refurbished using OEM-equivalent or genuine parts, tested rigorously, and backed by a full warranty.
+              </p>
+            </div>
+            <div className="text-center p-8 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
+              <div className="w-14 h-14 rounded-xl bg-[#0077B6] text-white flex items-center justify-center mx-auto mb-5">
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#003366] dark:text-white mb-3">Global Reach</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                Serving 15+ countries with offices in the US and India. We handle customs, logistics, and compliance seamlessly.
+              </p>
+            </div>
+            <div className="text-center p-8 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10">
+              <div className="w-14 h-14 rounded-xl bg-[#E8651A] text-white flex items-center justify-center mx-auto mb-5">
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#003366] dark:text-white mb-3">Dedicated Support</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">
+                From initial consultation to post-installation training, our team provides end-to-end support for your facility.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 hero-gradient relative overflow-hidden">
+      {/* Testimonial */}
+      <section className="py-24 bg-gray-50 dark:bg-[#112240]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="flex gap-1 justify-center text-[#E8651A] mb-6">
+            {[...Array(5)].map((_, i) => (
+              <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            ))}
+          </div>
+          <blockquote className="text-xl sm:text-2xl text-gray-700 dark:text-gray-200 leading-relaxed italic mb-8">
+            &ldquo;Tachyon delivered a fully refurbished GE BrightSpeed 16 that exceeded our expectations. The installation was seamless and the team was incredibly professional.&rdquo;
+          </blockquote>
+          <div>
+            <p className="font-bold text-[#003366] dark:text-white">Dr. Rajesh Sharma</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Director, City Diagnostic Centre &mdash; New Delhi, India</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA with background image */}
+      <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-light-cyan/10 blur-3xl" />
-          <div className="absolute bottom-10 left-10 w-48 h-48 rounded-full bg-orange/10 blur-3xl" />
+          <Image src="/mri.jpg" alt="MRI equipment" fill className="object-cover" sizes="100vw" />
+          <div className="absolute inset-0 bg-[#001a33]/90" />
         </div>
         <div
           ref={ctaRef}
-          className="max-w-4xl mx-auto px-4 text-center relative z-10 opacity-0 translate-y-10"
+          className="relative z-10 max-w-4xl mx-auto px-4 text-center opacity-0 translate-y-10"
         >
           <h2 className="text-3xl sm:text-5xl font-black text-white mb-6">
-            Premium Medical<br /><span className="text-light-cyan">Equipment</span> Solutions
+            Premium Medical<br />
+            <span className="text-[#4FC3F7]">Equipment</span> Solutions
           </h2>
           <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto">
             Top-notch customer service, extensive medical expertise, and unwavering dedication to your Medical Equipment.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-10 py-4 bg-orange text-white font-bold rounded-full hover:bg-orange/90 transition-all hover:shadow-xl text-lg">
+            <Link
+              href="/contact"
+              className="px-10 py-4 bg-[#E8651A] text-white font-bold rounded-full hover:bg-[#E8651A]/90 transition-all hover:shadow-xl text-lg"
+            >
               Contact Us
             </Link>
-            <a href="tel:+919215291291" className="px-10 py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg">
+            <a
+              href="tel:+919215291291"
+              className="px-10 py-4 border-2 border-white/30 text-white font-bold rounded-full hover:bg-white/10 transition-all text-lg"
+            >
               Call +91-9215291291
             </a>
           </div>
