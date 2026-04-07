@@ -183,11 +183,11 @@ export default function Home() {
   ];
 
   const vendors = [
-    { name: "GE HealthCare", width: "w-28" },
-    { name: "Philips", width: "w-20" },
-    { name: "Siemens", width: "w-24" },
-    { name: "Hologic", width: "w-22" },
-    { name: "Toshiba", width: "w-22" },
+    { name: "GE HealthCare", filter: "GE" },
+    { name: "Philips", filter: "Philips" },
+    { name: "Siemens", filter: "Siemens" },
+    { name: "Hologic", filter: "Hologic" },
+    { name: "Toshiba", filter: "Toshiba" },
   ];
 
   return (
@@ -248,14 +248,15 @@ export default function Home() {
           <p className="text-center text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6">
             Equipment from World-Leading Manufacturers
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-10 sm:gap-16">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
             {vendors.map((v) => (
-              <span
+              <Link
                 key={v.name}
-                className="text-lg font-bold text-gray-400 dark:text-gray-500 opacity-70 hover:opacity-100 transition-opacity"
+                href={`/inventory?manufacturer=${encodeURIComponent(v.filter)}`}
+                className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg border border-gray-200 dark:border-white/10 text-sm sm:text-base font-bold text-gray-500 dark:text-gray-400 hover:border-[#0077B6] hover:text-[#0077B6] dark:hover:text-[#4FC3F7] hover:bg-[#0077B6]/5 transition-all duration-200"
               >
                 {v.name}
-              </span>
+              </Link>
             ))}
           </div>
         </div>

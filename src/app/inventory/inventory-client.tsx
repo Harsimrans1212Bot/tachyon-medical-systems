@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import SectionBackground from "@/components/SectionBackground";
 import { allMachines, categories, manufacturers } from "@/data/inventory";
 
@@ -14,10 +15,19 @@ function parsePriceMin(price: string): number {
 }
 
 export default function InventoryClient() {
+  const searchParams = useSearchParams();
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [activeManufacturer, setActiveManufacturer] = useState("All");
   const [sort, setSort] = useState<SortOption>("name-asc");
+
+  // Read manufacturer filter from URL query param (e.g. /inventory?manufacturer=GE)
+  useEffect(() => {
+    const mfr = searchParams.get("manufacturer");
+    if (mfr && manufacturers.includes(mfr)) {
+      setActiveManufacturer(mfr);
+    }
+  }, [searchParams]);
 
   const filtered = useMemo(() => {
     let machines = allMachines;

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BreadcrumbJsonLd } from "@/components/JsonLd";
+import { Suspense } from "react";
 import InventoryClient from "./inventory-client";
 
 export const metadata: Metadata = {
@@ -10,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function Inventory() {
-  return <InventoryClient />;
+  return (
+    <Suspense>
+      <InventoryClient />
+    </Suspense>
+  );
 }
