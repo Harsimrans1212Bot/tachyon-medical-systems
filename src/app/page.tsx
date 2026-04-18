@@ -246,7 +246,7 @@ export default function Home() {
       {/* Vendor Logos Trust Bar */}
       <section className="py-10 bg-white dark:bg-[#0d1b2a] border-b border-gray-100 dark:border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6">
+          <p className="text-center text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-widest mb-6">
             Equipment from World-Leading Manufacturers
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
@@ -254,7 +254,7 @@ export default function Home() {
               <Link
                 key={v.name}
                 href={`/inventory?manufacturer=${encodeURIComponent(v.filter)}`}
-                className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg border border-gray-200 dark:border-white/10 text-sm sm:text-base font-bold text-gray-500 dark:text-gray-400 hover:border-[#0077B6] hover:text-[#0077B6] dark:hover:text-[#4FC3F7] hover:bg-[#0077B6]/5 transition-all duration-200"
+                className="px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg border border-gray-200 dark:border-white/10 text-sm sm:text-base font-bold text-gray-700 dark:text-gray-300 hover:border-[#0077B6] hover:text-[#0077B6] dark:hover:text-[#4FC3F7] hover:bg-[#0077B6]/5 transition-all duration-200"
               >
                 {v.name}
               </Link>

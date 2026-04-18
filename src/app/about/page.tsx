@@ -15,7 +15,7 @@ const milestones = [
   { year: "2000", title: "International Expansion", desc: "Began import/export operations, connecting healthcare providers globally." },
   { year: "2010", title: "Full-Service Provider", desc: "Expanded to offer complete lifecycle services including installation and maintenance." },
   { year: "2020", title: "Digital Transformation", desc: "Modernized operations and expanded reach to serve healthcare facilities worldwide." },
-  { year: "Today", title: "Industry Leader", desc: "Trusted by healthcare facilities across 20+ countries with 500+ systems installed." },
+  { year: "Today", title: "Industry Leader", desc: "Trusted by healthcare facilities across 20+ countries with 1150+ systems installed." },
 ];
 
 const values = [

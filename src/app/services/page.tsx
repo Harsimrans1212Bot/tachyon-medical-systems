@@ -52,7 +52,7 @@ const services = [
     title: "Maintenance & Support",
     description: "Keep your medical equipment operating at peak performance with our preventive maintenance programs and responsive technical support services.",
     features: ["Preventive maintenance", "Emergency repairs", "Spare parts supply", "Remote diagnostics", "Service contracts"],
-    href: "",
+    href: "/contact?service=maintenance",
     image: "/maintenance.jpg",
   },
   {
